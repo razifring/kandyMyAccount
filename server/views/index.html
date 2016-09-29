@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <base href="/">
+    <title>Live Auction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="scripts/zone.js/dist/zone.js"></script>
+    <script src="scripts/reflect-metadata/Reflect.js"></script>
+    <script src="scripts/systemjs/dist/system.src.js"></script>
+
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/portfolio-item.css" rel="stylesheet">
+    <script>
+
+      var packages = {
+        app: {
+          main: './main.js',
+          defaultExtension: 'js'
+        },
+        rxjs: {
+          defaultExtension: 'js'
+        }
+      };
+
+
+
+      System.config({
+        defaultJSExtensions: true,
+        packages: packages,
+        map: {
+          // our app is within the app folder
+          app: 'app',
+          // angular bundles
+          '@angular/core': 'scripts/@angular/core/bundles/core.umd.js',
+          '@angular/common': 'scripts/@angular/common/bundles/common.umd.js',
+          '@angular/compiler': 'scripts/@angular/compiler/bundles/compiler.umd.js',
+          '@angular/platform-browser': 'scripts/@angular/platform-browser/bundles/platform-browser.umd.js',
+          '@angular/platform-browser-dynamic': 'scripts/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+          '@angular/http': 'scripts/@angular/http/bundles/http.umd.js',
+          '@angular/router': 'scripts/@angular/router/bundles/router.umd.js',
+          '@angular/forms': 'scripts/@angular/forms/bundles/forms.umd.js',
+          '@angular/upgrade': 'scripts/@angular/upgrade/bundles/upgrade.umd.js',
+          // other libraries
+          'rxjs':                      'scripts/rxjs',
+        },
+      });
+      System.import('javascripts/app/main')
+            .then(null, console.error.bind(console));
+    </script>
+  </head>
+  <body>
+    <app-main>Loading...</app-main>
+  </body>
+</html>

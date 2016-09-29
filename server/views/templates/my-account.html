@@ -1,0 +1,13 @@
+<h1>Credit</h1>
+Your Current Balance: {{balance | currency:'USD':true:'.2-2'}}
+<h1>Active Packages</h1>
+
+<ul *ngIf="activePackages.length > 0">
+    <li *ngFor="let package of activePackages">
+        <div>Name: {{package.name}}</div>
+        <div>Usage: {{package.usage}}</div>
+    </li>
+</ul>
+<div *ngIf="activePackages.length == 0">
+    You do not have any packages, please purchase here:
+</div>
