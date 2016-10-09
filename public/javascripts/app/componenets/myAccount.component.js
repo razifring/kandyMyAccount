@@ -23,7 +23,6 @@ var MyAccountComponent = (function () {
     };
     MyAccountComponent = __decorate([
         core_1.Component({
-            selector: 'my-account',
             templateUrl: 'templates/my-account.html',
             providers: [packages_service_1.PackagesService]
         }), 

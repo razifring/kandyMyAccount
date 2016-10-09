@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {PackagesService} from '../services/packages.service';
 
 @Component({
-    selector: 'my-account',
     templateUrl: 'templates/my-account.html',
     providers: [PackagesService]
 })

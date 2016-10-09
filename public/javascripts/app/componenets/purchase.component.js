@@ -9,15 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var packages_service_1 = require("../services/packages.service");
 var PurchaseComponent = (function () {
-    function PurchaseComponent() {
+    function PurchaseComponent(packagesService) {
+        this.packagesService = packagesService;
+        this.callPlans = [];
+        this.didPlans = [];
     }
+    PurchaseComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.packagesService.getPurchsablePackages()
+            .subscribe(function (res) {
+            _this.callPlans = res.callPlans;
+            _this.didPlans = res.didPlans;
+        });
+    };
     PurchaseComponent = __decorate([
         core_1.Component({
-            selector: 'purchase',
-            templateUrl: 'templates/purchase.html'
+            templateUrl: 'templates/purchase.html',
+            providers: [packages_service_1.PackagesService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [packages_service_1.PackagesService])
     ], PurchaseComponent);
     return PurchaseComponent;
 }());

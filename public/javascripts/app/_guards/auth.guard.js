@@ -9,26 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var auth_service_1 = require("../services/auth.service");
-var NavBarComponent = (function () {
-    function NavBarComponent(authService) {
-        this.authService = authService;
+var router_1 = require('@angular/router');
+var AuthGuard = (function () {
+    function AuthGuard(router) {
+        this.router = router;
     }
-    NavBarComponent.prototype.ngOnInit = function () {
-        //this._isLoggedIn = this.authService.isLoggedIn.getValue();
-        var self = this;
-        this.authService.isLoggedIn.subscribe(function (value) {
-            self._isLoggedIn = value;
-        });
+    AuthGuard.prototype.canActivate = function () {
+        if (localStorage.getItem('currentUser')) {
+            // logged in so return true
+            return true;
+        }
+        // not logged in so redirect to login page
+        this.router.navigate(['/login']);
+        return false;
     };
-    NavBarComponent = __decorate([
-        core_1.Component({
-            selector: 'navbar',
-            templateUrl: 'templates/navbar.html',
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.AuthService])
-    ], NavBarComponent);
-    return NavBarComponent;
+    AuthGuard = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router])
+    ], AuthGuard);
+    return AuthGuard;
 }());
-exports.NavBarComponent = NavBarComponent;
-//# sourceMappingURL=navbar.component.js.map
+exports.AuthGuard = AuthGuard;
+//# sourceMappingURL=auth.guard.js.map

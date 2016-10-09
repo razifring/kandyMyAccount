@@ -1,11 +1,24 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PackagesService} from "../services/packages.service";
 
 
 @Component({
-    selector: 'purchase',
-    templateUrl: 'templates/purchase.html'
+    templateUrl: 'templates/purchase.html',
+    providers: [PackagesService]
 })
 
-export class PurchaseComponent {
+export class PurchaseComponent implements OnInit{
+    callPlans = [];
+    didPlans = [];
 
+    constructor(private packagesService: PackagesService){}
+
+    ngOnInit(): void {
+        this.packagesService.getPurchsablePackages()
+            .subscribe(
+                res => {
+                    this.callPlans = res.callPlans;
+                    this.didPlans = res.didPlans;
+                });
+    }
 }

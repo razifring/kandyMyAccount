@@ -27,6 +27,8 @@ module.exports = function(app) {
     // cache=memory or swig dies in NODE_ENV=production
     app.locals.cache = 'memory';
 
+    process.env.JWT_SECRET_KEY = config.jwsSecret;
+
     // Should be placed before express.static
     // To ensure that all assets and data are compressed (utilize bandwidth)
     app.use(compressions({
@@ -82,6 +84,8 @@ module.exports = function(app) {
 
     // Request body parsing middleware should be above methodOverride;
     app.use(bodyParser.json());
+    app.use(bodyParser.raw());
+
     app.use(expressValidator());
 
     // Import your asset file

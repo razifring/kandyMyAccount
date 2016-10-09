@@ -17,8 +17,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/../public')));
 
-
-
 // let angular handle all other requests
 app.use(function(req, res) {
    console.log('404 page:' + req.url);

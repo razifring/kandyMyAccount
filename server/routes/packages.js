@@ -14,7 +14,9 @@ var hasAuthorization = function(req, res, next) {
 
 module.exports = function(app) {
 
-    app.get('/packages', packages.all);
+    app.get('/api/packages', packages.getPurchasable);
+
+    app.get('/api/packages/:msisdn', packages.getUserPackages);
 
 
 };

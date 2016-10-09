@@ -1,25 +1,34 @@
-import { Http} from '@angular/http';
+import {HttpClient} from '../utils/http-client';
 import 'rxjs/add/operator/map';
 import {Injectable} from "@angular/core";
 import {Card} from '../dataObjects/card';
 import {Package} from '../dataObjects/package';
 import {Observable} from "rxjs/Observable";
 import {CommonService} from "./common.service";
+import {UserService} from "./user.service";
 
 @Injectable()
 export class PackagesService {
 
-    constructor(private _http: Http){
+    constructor(
+        private _http: HttpClient,
+        private userService: UserService
+    ){
         this._http = _http;
     }
 
     getActivePackages(): Observable<Package[]> {
-        return this._http.get('/packages')
+        return this._http.get('/api/packages/'+this.userService.getCurrentUser().msisdn)
             .map(CommonService.extractData);
     }
 
-    claimCard(card: Card){
-        return this._http.post('/cards', JSON.stringify(card))
-            .map(res => res.json());
+    getPurchsablePackages(): Observable<any>{
+        return this._http.get('/api/packages/')
+            .map(CommonService.extractData)
     }
+/*
+    claimCard(card: Card){
+        return this._http.post('/api/cards', JSON.stringify(card))
+            .map(res => res.json());
+    }*/
 }

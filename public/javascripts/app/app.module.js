@@ -16,6 +16,14 @@ var app_routing_1 = require('./app.routing');
 var navbar_component_1 = require("./componenets/navbar.component");
 var myAccount_component_1 = require("./componenets/myAccount.component");
 var purchase_component_1 = require("./componenets/purchase.component");
+var listPackages_component_1 = require("./componenets/listPackages.component");
+var forms_1 = require("@angular/forms");
+var login_component_1 = require("./componenets/login.component");
+var auth_guard_1 = require("./_guards/auth.guard");
+var auth_service_1 = require("./services/auth.service");
+var user_service_1 = require("./services/user.service");
+var http_client_1 = require("./utils/http-client");
+var selectPackages_component_1 = require("./componenets/selectPackages.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,15 +31,25 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
                 app_routing_1.routing
             ],
+            providers: [
+                auth_guard_1.AuthGuard,
+                http_client_1.HttpClient,
+                auth_service_1.AuthService,
+                user_service_1.UserService,
+            ],
             declarations: [
                 app_component_1.AppComponent,
+                login_component_1.LoginComponent,
                 myAccount_component_1.MyAccountComponent,
                 navbar_component_1.NavBarComponent,
-                purchase_component_1.PurchaseComponent
+                purchase_component_1.PurchaseComponent,
+                listPackages_component_1.ListPackagesComponent,
+                selectPackages_component_1.SelectPackagesComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

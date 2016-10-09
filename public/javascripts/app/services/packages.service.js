@@ -8,26 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var http_1 = require('@angular/http');
+var http_client_1 = require('../utils/http-client');
 require('rxjs/add/operator/map');
 var core_1 = require("@angular/core");
 var common_service_1 = require("./common.service");
+var user_service_1 = require("./user.service");
 var PackagesService = (function () {
-    function PackagesService(_http) {
+    function PackagesService(_http, userService) {
         this._http = _http;
+        this.userService = userService;
         this._http = _http;
     }
     PackagesService.prototype.getActivePackages = function () {
-        return this._http.get('/packages')
+        return this._http.get('/api/packages/' + this.userService.getCurrentUser().msisdn)
             .map(common_service_1.CommonService.extractData);
     };
-    PackagesService.prototype.claimCard = function (card) {
-        return this._http.post('/cards', JSON.stringify(card))
-            .map(function (res) { return res.json(); });
+    PackagesService.prototype.getPurchsablePackages = function () {
+        return this._http.get('/api/packages/')
+            .map(common_service_1.CommonService.extractData);
     };
     PackagesService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_client_1.HttpClient, user_service_1.UserService])
     ], PackagesService);
     return PackagesService;
 }());
