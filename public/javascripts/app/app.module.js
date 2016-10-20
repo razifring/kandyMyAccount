@@ -24,6 +24,13 @@ var auth_service_1 = require("./services/auth.service");
 var user_service_1 = require("./services/user.service");
 var http_client_1 = require("./utils/http-client");
 var selectPackages_component_1 = require("./componenets/selectPackages.component");
+var paypal_service_1 = require("./services/paypal.service");
+var commonUtils_1 = require("./utils/commonUtils");
+var thankyou_component_1 = require("./componenets/thankyou.component");
+var processing_component_1 = require("./componenets/processing.component");
+var spinner_component_1 = require("./componenets/common/spinner.component");
+var simpleSpinner_component_1 = require("./componenets/common/simpleSpinner.component");
+var paypalButton_1 = require("./componenets/common/paypalButton");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,13 +41,15 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
-                app_routing_1.routing
+                app_routing_1.routing,
             ],
             providers: [
                 auth_guard_1.AuthGuard,
                 http_client_1.HttpClient,
                 auth_service_1.AuthService,
                 user_service_1.UserService,
+                paypal_service_1.PaypalService,
+                commonUtils_1.CommonUtils,
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -49,7 +58,12 @@ var AppModule = (function () {
                 navbar_component_1.NavBarComponent,
                 purchase_component_1.PurchaseComponent,
                 listPackages_component_1.ListPackagesComponent,
-                selectPackages_component_1.SelectPackagesComponent
+                selectPackages_component_1.SelectPackagesComponent,
+                thankyou_component_1.ThankyouComponent,
+                processing_component_1.ProcessingComponent,
+                spinner_component_1.SpinnerComponent,
+                simpleSpinner_component_1.SimpleSpinnerComponent,
+                paypalButton_1.PaypalButtonComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

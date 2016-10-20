@@ -10,11 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var packages_service_1 = require("../services/packages.service");
+var paypal_service_1 = require("../services/paypal.service");
+var commonUtils_1 = require("../utils/commonUtils");
 var PurchaseComponent = (function () {
-    function PurchaseComponent(packagesService) {
+    function PurchaseComponent(packagesService, paypalService) {
         this.packagesService = packagesService;
+        this.paypalService = paypalService;
         this.callPlans = [];
         this.didPlans = [];
+        this.disableBtns = true;
     }
     PurchaseComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -24,12 +28,22 @@ var PurchaseComponent = (function () {
             _this.didPlans = res.didPlans;
         });
     };
+    PurchaseComponent.prototype.packageSelected = function ($packageId) {
+        this.selectedPackageId = $packageId;
+        this.disableBtns = false;
+    };
+    PurchaseComponent.prototype.goToPaypal = function () {
+        var _this = this;
+        this.disableBtns = true;
+        this.paypalService.createPaypalPayment(this.selectedPackageId)
+            .subscribe(function (res) { return commonUtils_1.CommonUtils.redirectTo(res.redirectUrl); }, function (res) { return _this.disableBtns = false; });
+    };
     PurchaseComponent = __decorate([
         core_1.Component({
             templateUrl: 'templates/purchase.html',
             providers: [packages_service_1.PackagesService]
         }), 
-        __metadata('design:paramtypes', [packages_service_1.PackagesService])
+        __metadata('design:paramtypes', [packages_service_1.PackagesService, paypal_service_1.PaypalService])
     ], PurchaseComponent);
     return PurchaseComponent;
 }());

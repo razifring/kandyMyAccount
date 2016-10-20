@@ -1,6 +1,6 @@
 'use strict';
 
-var auth = require('../controllers/auth');
+var auth = require('../controllers/authController');
 
 module.exports = function(app) {
 

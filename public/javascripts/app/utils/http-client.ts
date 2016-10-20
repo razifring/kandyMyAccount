@@ -4,6 +4,7 @@ import {AuthService} from "../services/auth.service";
 
 @Injectable()
 export class HttpClient {
+    useJsonContentType = false;
     constructor(
         private http: Http,
         private authService: AuthService
@@ -32,6 +33,15 @@ export class HttpClient {
         }
 
         this.createAuthorizationHeader(options.headers);
+        if(this.useJsonContentType){
+            options.headers.append('Content-Type', 'application/json');
+            this.useJsonContentType = false;
+        }
         return this.http.post(url, data, options);
+    }
+
+    addJsonuseJsonContentType(){
+        this.useJsonContentType = true;
+        return this;
     }
 }

@@ -10,6 +10,8 @@
 
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="stylesheets/portfolio-item.css" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/node_modules/angular2-busy/build/style/busy.css">
     <script>
 
       var packages = {
@@ -42,6 +44,10 @@
           '@angular/upgrade': 'scripts/@angular/upgrade/bundles/upgrade.umd.js',
           // other libraries
           'rxjs':                      'scripts/rxjs',
+          'angular2-busy':             'scripts/angular2-busy/index.js',
+          'angular2-dynamic-component':    'scripts/angular2-dynamic-component',
+          'ts-metadata-helper':    'scripts/ts-metadata-helper',
+          'core-js':    'scripts/core-js',
         },
       });
       System.import('javascripts/app/main')

@@ -1,6 +1,11 @@
-<h1>Purchase</h1>
-<h2>Philippine Call and Text Plans</h2>
-<select-package [packages]=callPlans></select-package>
 
-<h2>Philippine Mobile Number</h2>
-<select-package [packages]=didPlans></select-package>
+    <h1>Purchase</h1>
+    <h2>Philippine Call and Text Plans</h2>
+    <select-package [selected]=selectedPackageId [packages]=callPlans (onSelect)="packageSelected($event)"></select-package>
+    <div class="clearfix"></div>
+    <paypal-button (ButtonClicked)=goToPaypal($event) [disabled]=disableBtns></paypal-button>
+
+    <h2>Philippine Mobile Number</h2>
+    <select-package [selected]=selectedPackageId [packages]=didPlans (onSelect)="packageSelected($event)"></select-package>
+    <div class="clearfix"></div>
+    <paypal-button (ButtonClicked)=goToPaypal($event) [disabled]=disableBtns></paypal-button>

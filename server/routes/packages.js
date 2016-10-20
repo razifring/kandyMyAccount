@@ -1,7 +1,7 @@
 'use strict';
 
 // Packages routes use packages controller
-var packages = require('../controllers/packages');
+var packages = require('../controllers/packagesController');
 //var authorization = require('./middlewares/authorization');
 /*
 // Article authorization helpers

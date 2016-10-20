@@ -14,5 +14,10 @@ module.exports = {
 	// The name of the MongoDB collection to store sessions in
 	sessionCollection: 'sessions',
 
-	jwsSecret: 'razihershenhoren'
+	kandyApi: {
+		domainName: "pldt.com",
+		domainApiKey: "DAK9f118cdbb78e47778433be17a4d09357",
+		domainApiSecret: "DAS84e18ce6660640f288d50a1ddee235fc"
+	}
+
 };

@@ -4,10 +4,14 @@ var myAccount_component_1 = require('./componenets/myAccount.component');
 var purchase_component_1 = require('./componenets/purchase.component');
 var login_component_1 = require("./componenets/login.component");
 var auth_guard_1 = require("./_guards/auth.guard");
+var thankyou_component_1 = require("./componenets/thankyou.component");
+var processing_component_1 = require("./componenets/processing.component");
 var appRoutes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'myAccount', component: myAccount_component_1.MyAccountComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'purchase', component: purchase_component_1.PurchaseComponent, canActivate: [auth_guard_1.AuthGuard] },
+    { path: 'processing/:msisdn', component: processing_component_1.ProcessingComponent },
+    { path: 'thankyou', component: thankyou_component_1.ThankyouComponent },
     { path: '', component: myAccount_component_1.MyAccountComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: '**', component: login_component_1.LoginComponent }
 ];

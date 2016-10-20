@@ -1,5 +1,6 @@
 'use strict';
 
+var packageManager = require('../lib/managers/packageManager')
 /**
  * List of Pakcages
  */
@@ -30,32 +31,8 @@ exports.getUserPackages = function(req, res) {
 exports.getPurchasable = function(req, res) {
     console.log(req.params);
     var packages = {
-        callPlans: [{
-            'id': 11,
-            'name': 'Telebabad 30 Days',
-            'price': '5',
-            'currency': 'USD'
-        },{
-            'id': 12,
-            'name': 'Telebabad 7 Days',
-            'price': '5',
-            'currency': 'USD'
-        },
-            {
-                'id': 13,
-                'name': 'Telebabad 5 Days',
-                'price': '5',
-                'currency': 'USD'
-            }
-        ],
-        didPlans: [
-            {
-                'id': 11,
-                'name': 'VOIP number package',
-                'price': '2.99',
-                'currency': 'USD'
-            }
-        ]
+        callPlans: packageManager.getCallPlans(),
+        didPlans: packageManager.getDidPlans()
     };
 
     res.json(packages);

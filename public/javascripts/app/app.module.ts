@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpModule, JsonpModule, RequestOptions} from '@angular/http';
+import {HttpModule, JsonpModule} from '@angular/http';
 import { AppComponent }  from './componenets/app.component';
 import { routing } from './app.routing';
 import {NavBarComponent} from "./componenets/navbar.component";
@@ -12,9 +12,15 @@ import {LoginComponent} from "./componenets/login.component";
 import {AuthGuard} from "./_guards/auth.guard";
 import {AuthService} from "./services/auth.service";
 import {UserService} from "./services/user.service";
-import {CustomRequestOptions} from "./utils/customRequestOptions"
 import {HttpClient} from "./utils/http-client";
 import {SelectPackagesComponent} from "./componenets/selectPackages.component";
+import {PaypalService} from "./services/paypal.service";
+import {CommonUtils} from "./utils/commonUtils";
+import {ThankyouComponent} from "./componenets/thankyou.component";
+import {ProcessingComponent} from "./componenets/processing.component";
+import {SpinnerComponent} from "./componenets/common/spinner.component";
+import {SimpleSpinnerComponent} from "./componenets/common/simpleSpinner.component";
+import {PaypalButtonComponent} from "./componenets/common/paypalButton";
 
 
 @NgModule({
@@ -23,13 +29,15 @@ import {SelectPackagesComponent} from "./componenets/selectPackages.component";
         FormsModule,
         HttpModule,
         JsonpModule,
-        routing
+        routing,
     ],
     providers: [
         AuthGuard,
         HttpClient,
         AuthService,
         UserService,
+        PaypalService,
+        CommonUtils,
 
     ],
     declarations: [
@@ -39,7 +47,12 @@ import {SelectPackagesComponent} from "./componenets/selectPackages.component";
         NavBarComponent,
         PurchaseComponent,
         ListPackagesComponent,
-        SelectPackagesComponent
+        SelectPackagesComponent,
+        ThankyouComponent,
+        ProcessingComponent,
+        SpinnerComponent,
+        SimpleSpinnerComponent,
+        PaypalButtonComponent
 
     ],
     bootstrap: [ AppComponent ]
