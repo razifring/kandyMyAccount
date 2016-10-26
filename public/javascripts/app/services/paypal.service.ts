@@ -17,14 +17,14 @@ export class PaypalService {
 
     createPaypalPayment(packageId): Observable<any> {
         return this._http
-            .addJsonuseJsonContentType()
+            .addJsonContentType()
             .post('/api/paypal/', {packageId: packageId, msisdn: this.userService.getCurrentUser().msisdn}, {})
             .map(CommonService.extractData);
     }
 
     executePayment(msisdn, paymentId, payerId){
         return this._http
-            .addJsonuseJsonContentType()
+            .addJsonContentType()
             .post('/api/paypal/execute', {msisdn:msisdn, paymentId: paymentId, payerId:payerId}, {})
             .map(CommonService.extractData);
     }

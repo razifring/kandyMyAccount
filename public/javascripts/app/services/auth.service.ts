@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
 import {User} from "../dataObjects/user";
 import {UserService} from "./user.service";
+import {DropdownModule} from "ng2-dropdown";
 
 @Injectable()
 export class AuthService {
@@ -35,9 +36,9 @@ export class AuthService {
         };
         return this.http.post('/api/otp', JSON.stringify({ phonenumber: phonenumber}), options)
             .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let otp = response.json() && response.json().otp;
-                if(otp)
+                var result = response.json();
+                let status = result && result.status;
+                if(status)
                 {
                     localStorage.setItem('msisdn', phonenumber);
 
@@ -50,22 +51,29 @@ export class AuthService {
             });
     }
 
-    validateOtp(otp): Observable<boolean> {
+    validateOtp(otp, countryCode, phonenumber): Observable<boolean> {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         var options = {
             headers: headers
         };
-        return this.http.post('/api/authenticate', JSON.stringify({ otp: otp }), options)
+        var params = {
+            otp: otp,
+            countryCode: countryCode,
+            phonenumber: phonenumber
+        };
+
+        return this.http.post('/api/authenticate', JSON.stringify(params), options)
             .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let token = response.json() && response.json().token;
-                if (token) {
+                var result = response.json();
+                let status = result && result.status;
+
+                if (status) {
                     // set token property
-                    this.token = token;
+                    this.token = result.token;
                     var msisdn = localStorage.getItem('msisdn');
                     // store username and token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, token: token }));
+                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, token: this.token }));
                     this.userService.setCurrentUser(User.create(msisdn));
                     this.isLoggedIn.next(true);
                     // return true to indicate successful login

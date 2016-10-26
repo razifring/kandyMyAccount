@@ -31,6 +31,10 @@ var processing_component_1 = require("./componenets/processing.component");
 var spinner_component_1 = require("./componenets/common/spinner.component");
 var simpleSpinner_component_1 = require("./componenets/common/simpleSpinner.component");
 var paypalButton_1 = require("./componenets/common/paypalButton");
+var cards_component_1 = require("./componenets/cards.component");
+var redeemCardForm_component_1 = require("./componenets/redeemCardForm.component");
+var ng2_dropdown_1 = require("ng2-dropdown");
+var countryCodes_1 = require("./utils/countryCodes");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -41,6 +45,7 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
+                ng2_dropdown_1.DropdownModule,
                 app_routing_1.routing,
             ],
             providers: [
@@ -50,6 +55,7 @@ var AppModule = (function () {
                 user_service_1.UserService,
                 paypal_service_1.PaypalService,
                 commonUtils_1.CommonUtils,
+                countryCodes_1.CountryCodes,
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -60,10 +66,12 @@ var AppModule = (function () {
                 listPackages_component_1.ListPackagesComponent,
                 selectPackages_component_1.SelectPackagesComponent,
                 thankyou_component_1.ThankyouComponent,
+                cards_component_1.CardsComponent,
                 processing_component_1.ProcessingComponent,
                 spinner_component_1.SpinnerComponent,
                 simpleSpinner_component_1.SimpleSpinnerComponent,
-                paypalButton_1.PaypalButtonComponent
+                paypalButton_1.PaypalButtonComponent,
+                redeemCardForm_component_1.RedeemCardFormComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

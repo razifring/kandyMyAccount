@@ -21,6 +21,10 @@ import {ProcessingComponent} from "./componenets/processing.component";
 import {SpinnerComponent} from "./componenets/common/spinner.component";
 import {SimpleSpinnerComponent} from "./componenets/common/simpleSpinner.component";
 import {PaypalButtonComponent} from "./componenets/common/paypalButton";
+import {CardsComponent} from "./componenets/cards.component";
+import {RedeemCardFormComponent} from "./componenets/redeemCardForm.component";
+import {DropdownModule} from "ng2-dropdown";
+import {CountryCodes} from "./utils/countryCodes";
 
 
 @NgModule({
@@ -29,6 +33,7 @@ import {PaypalButtonComponent} from "./componenets/common/paypalButton";
         FormsModule,
         HttpModule,
         JsonpModule,
+        DropdownModule,
         routing,
     ],
     providers: [
@@ -38,6 +43,7 @@ import {PaypalButtonComponent} from "./componenets/common/paypalButton";
         UserService,
         PaypalService,
         CommonUtils,
+        CountryCodes,
 
     ],
     declarations: [
@@ -49,10 +55,12 @@ import {PaypalButtonComponent} from "./componenets/common/paypalButton";
         ListPackagesComponent,
         SelectPackagesComponent,
         ThankyouComponent,
+        CardsComponent,
         ProcessingComponent,
         SpinnerComponent,
         SimpleSpinnerComponent,
-        PaypalButtonComponent
+        PaypalButtonComponent,
+        RedeemCardFormComponent
 
     ],
     bootstrap: [ AppComponent ]

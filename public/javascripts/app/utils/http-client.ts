@@ -40,7 +40,7 @@ export class HttpClient {
         return this.http.post(url, data, options);
     }
 
-    addJsonuseJsonContentType(){
+    addJsonContentType(){
         this.useJsonContentType = true;
         return this;
     }

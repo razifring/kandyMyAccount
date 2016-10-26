@@ -18,5 +18,7 @@ module.exports = function(app) {
 
     app.get('/api/packages/:msisdn', packages.getUserPackages);
 
+    app.post('/api/cards', packages.redeemCard)
+
 
 };

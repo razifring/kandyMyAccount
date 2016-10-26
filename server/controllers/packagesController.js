@@ -1,10 +1,14 @@
 'use strict';
 
-var packageManager = require('../lib/managers/packageManager')
+var packageManager = require('../lib/managers/packageManager');
 /**
  * List of Pakcages
  */
 exports.getUserPackages = function(req, res) {
+    packageManager.getActivePackages(req.params.msisdn, function(packages){
+        res.json(packages);
+    });
+
     console.log(req.params);
     var packages = [{
         'id': 11,
@@ -25,7 +29,7 @@ exports.getUserPackages = function(req, res) {
         }
     ];
 
-    res.json(packages);
+    //res.json(packages);
 };
 
 exports.getPurchasable = function(req, res) {
@@ -36,4 +40,10 @@ exports.getPurchasable = function(req, res) {
     };
 
     res.json(packages);
+};
+
+exports.redeemCard = function(req, res){
+    var cardNum = req.body.cardNumber;
+    console.log(cardNum);
+    res.json(true);
 };

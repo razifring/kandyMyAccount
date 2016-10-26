@@ -1,0 +1,24 @@
+<div class="container">
+    <form *ngIf="!successResponse" class="redeem-card-form" (ngSubmit)="onSubmit()" #redeemFomr="ngForm">
+        <div class="form-group">
+            <span class="col-xs-2">
+                <input type="number" class="form-control" name="field1" id="field1" placeholder="1234" minlength="4" maxlength="4" [(ngModel)]="model.field1" required #field1="ngModel">
+            </span>
+            <span class="dash-glue">-</span>
+            <span class="col-xs-2">
+                <input type="number" class="form-control" name="field2"  id="field2" placeholder="1234" minlength="4" maxlength="4" [(ngModel)]="model.field2" required #field2="ngModel">
+            </span>
+            <span class="dash-glue">-</span>
+            <span class="col-xs-2">
+                <input type="number" class="form-control" name="field3"  id="field3" placeholder="1234" minlength="4" maxlength="4" [(ngModel)]="model.field3" required #field3="ngModel">
+            </span>
+        </div>
+        <div class="clearfix"></div>
+        <div class="top20 form-group">
+            <button [disabled]="!redeemFomr.valid || processing" type="submit" class="btn btn-default">Redeem Card</button>
+            <simple-spinner [show]="processing"></simple-spinner>
+
+        </div>
+    </form>
+    <div class="alert alert-success" *ngIf="successResponse">{{successResponse}}</div>
+</div>

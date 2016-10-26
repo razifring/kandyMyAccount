@@ -9,12 +9,26 @@
         <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phonenumber.valid }">
                 <label for="phonenumber">Phone number</label>
-                <input id="phonenumber" type="text" class="form-control" name="phonenumber" [(ngModel)]="model.phonenumber" #phonenumber="ngModel" required />
+                <div class="clearfix"></div>
+                <div class="col-xs-3 col-md-3 dropdown" dropdown>
+                    <button type="button" class="btn select-country-btn" dropdown-open>
+                        <span class="caret"></span>
+                        <span class="country-flag flag-icon flag-icon-{{selectedCountry.country|lowercase}}" aria-hidden="true"></span>
+                        +{{selectedCountry.code}}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li *ngFor="let country of countriesArray"><a (click)="selectCountry(country.country)"><span class="country-flag flag-icon flag-icon-{{country.country|lowercase}}" aria-hidden="true"></span>{{country.title}}<span class="country-code">+{{country.code}}</span></a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-9 col-md-7">
+                    <input id="phonenumber" type="text" class="form-control" name="phonenumber" [(ngModel)]="model.phonenumber" #phonenumber="ngModel" required />
+                </div>
                 <div *ngIf="f.submitted && !phonenumber.valid" class="help-block">Phone number is required</div>
             </div>
-            <div class="form-group">
-                <button [disabled]="loading" class="btn btn-primary">Send validation code</button>
-                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <div class="clearfix"></div>
+            <div class="top20 form-group">
+                <button type="submit" [disabled]="loading" class="btn btn-primary">Send validation code</button>
+                <simple-spinner [show]="loading"></simple-spinner>
             </div>
             <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         </form>
@@ -29,18 +43,17 @@
         </div>
         <form name="form" (ngSubmit)="f.form.valid && validateOtp()" #f="ngForm" novalidate>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !otp.valid }">
-                <label for="otp">Enter number from SMS</label>
                 <input id="otp" type="text" class="form-control" name="otp" [(ngModel)]="model.otp" #otp="ngModel" required />
                 <div *ngIf="f.submitted && !otp.valid" class="help-block">Invalid Otp, <a (click)="goTo(1)">Go back</a></div>
             </div>
             <div class="form-group">
                 <button [disabled]="loading" class="btn btn-primary">Validate</button>
-                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <simple-spinner [show]="loading"></simple-spinner>
             </div>
             <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         </form>
         <div>
-            If you did not receive they code,<br>
+            If you did not receive a code,<br>
             <a (click)="goTo(1)">click here to request a new code</a>
         </div>
     </div>

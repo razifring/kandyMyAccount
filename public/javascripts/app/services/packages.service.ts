@@ -26,9 +26,11 @@ export class PackagesService {
         return this._http.get('/api/packages/')
             .map(CommonService.extractData)
     }
-/*
-    claimCard(card: Card){
-        return this._http.post('/api/cards', JSON.stringify(card))
-            .map(res => res.json());
-    }*/
+
+    redeemCard(cardNum: string) {
+        return this._http
+            .addJsonContentType()
+            .post('/api/cards', {cardNumber: cardNum}, {})
+            .map(CommonService.extractData);
+    }
 }

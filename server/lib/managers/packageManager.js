@@ -6,6 +6,10 @@ var packageConfig = require('../../config/packageConfig');
 var packageEnum = require('../enums/packageEnums');
 var _ = require('lodash');
 
+exports.getActivePackages = function(msisdn, successCallback){
+    packageService.getActivePackages(msisdn, successCallback);
+};
+
 /**
  *
  * @param packageId

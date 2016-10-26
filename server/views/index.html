@@ -11,6 +11,7 @@
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="stylesheets/portfolio-item.css" rel="stylesheet">
     <link href="stylesheets/style.css" rel="stylesheet">
+    <link href="stylesheets/flag-icon.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/node_modules/angular2-busy/build/style/busy.css">
     <script>
 
@@ -20,6 +21,10 @@
           defaultExtension: 'js'
         },
         rxjs: {
+          defaultExtension: 'js'
+        },
+        "ng2-dropdown": {
+          main: 'index.js',
           defaultExtension: 'js'
         }
       };
@@ -48,6 +53,7 @@
           'angular2-dynamic-component':    'scripts/angular2-dynamic-component',
           'ts-metadata-helper':    'scripts/ts-metadata-helper',
           'core-js':    'scripts/core-js',
+          'ng2-dropdown': 'scripts/ng2-dropdown'
         },
       });
       System.import('javascripts/app/main')

@@ -27,6 +27,12 @@ var PackagesService = (function () {
         return this._http.get('/api/packages/')
             .map(common_service_1.CommonService.extractData);
     };
+    PackagesService.prototype.redeemCard = function (cardNum) {
+        return this._http
+            .addJsonContentType()
+            .post('/api/cards', { cardNumber: cardNum }, {})
+            .map(common_service_1.CommonService.extractData);
+    };
     PackagesService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_client_1.HttpClient, user_service_1.UserService])
