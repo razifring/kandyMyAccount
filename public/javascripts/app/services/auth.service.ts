@@ -5,7 +5,9 @@ import 'rxjs/add/operator/map';
 import {Router} from "@angular/router";
 import {User} from "../dataObjects/user";
 import {UserService} from "./user.service";
-import {DropdownModule} from "ng2-dropdown";
+import {CookieService} from "angular2-cookie/services/cookies.service";
+import {CommonService} from "./common.service";
+
 
 @Injectable()
 export class AuthService {
@@ -16,7 +18,8 @@ export class AuthService {
     constructor(
         private router: Router,
         private http: Http,
-        private userService: UserService
+        private userService: UserService,
+        private cookieService: CookieService
     ) {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if(currentUser)
@@ -63,17 +66,16 @@ export class AuthService {
             phonenumber: phonenumber
         };
 
-        return this.http.post('/api/authenticate', JSON.stringify(params), options)
+        return this.http.post('/api/auth/login', JSON.stringify(params), options)
             .map((response: Response) => {
                 var result = response.json();
                 let status = result && result.status;
 
                 if (status) {
                     // set token property
-                    this.token = result.token;
                     var msisdn = localStorage.getItem('msisdn');
                     // store username and token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, token: this.token }));
+                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn}));
                     this.userService.setCurrentUser(User.create(msisdn));
                     this.isLoggedIn.next(true);
                     // return true to indicate successful login
@@ -91,6 +93,7 @@ export class AuthService {
         localStorage.removeItem('currentUser');
         localStorage.removeItem('msisdn');
         this.router.navigate(['/login']);
+        this.cookieService.remove('userSession');
         this.isLoggedIn.next(false);
     }
 
@@ -100,6 +103,34 @@ export class AuthService {
 
     getToken():string{
         return this.token;
+    }
+
+    autologin(msisdn, userAccessToken) : Observable<any> {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        var options = {
+            headers: headers
+        };
+        return this.http
+            .post('/api/auth/autologin', {msisdn:msisdn, userAccessToken: userAccessToken}, options)
+            .map((response: Response) => {
+                var result = response.json();
+                let status = result && result.status;
+
+                if (status) {
+                    // set token property
+                    var msisdn = result.body.userId;
+                    // store username and token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn}));
+                    this.userService.setCurrentUser(User.create(msisdn));
+                    this.isLoggedIn.next(true);
+                    // return true to indicate successful login
+                    return result;
+                } else {
+                    // return false to indicate failed login
+                    return result;
+                }
+            });
     }
 
 }

@@ -32,7 +32,7 @@ export class ProcessingComponent implements OnInit{
                         .subscribe(
                             res => {
                                 this.isProcessing = false;
-                                this.router.navigate(['/thankyou', {packageId: 23}]);
+                                this.router.navigate(['/thankyou']);
                             });
                 }
             });

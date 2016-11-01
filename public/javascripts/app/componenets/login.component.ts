@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 import {CountryCodes} from "../utils/countryCodes";
+import {CommonUtils} from "../utils/commonUtils";
 
 @Component({
     templateUrl: 'templates/login.html'
@@ -41,6 +42,13 @@ export class LoginComponent implements OnInit {
 
 
     login() {
+        var phonenumber = CommonUtils.cleanPhonenumber(this.model.phonenumber);
+        console.log(phonenumber);
+        if(!phonenumber.match(/^\d+$/))
+        {
+            this.error = 'Invalid number';
+            return;
+        }
         this.loading = true;
         this.authenticationService.sendOtp(this.selectedCountry.code + this.model.phonenumber)
             .subscribe(result => {
@@ -57,6 +65,11 @@ export class LoginComponent implements OnInit {
     }
 
     validateOtp(){
+        if(!this.model.otp.match(/^\d+$/))
+        {
+            this.error = 'Invalid number';
+            return;
+        }
 
         this.loading = true;
         this.authenticationService.validateOtp(this.model.otp, this.selectedCountry.country, this.model.phonenumber)
@@ -73,5 +86,6 @@ export class LoginComponent implements OnInit {
 
     goTo(step){
         this.step = step;
+        this.error = '';
     }
 }

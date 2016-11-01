@@ -29,11 +29,10 @@ export class RedeemCardFormComponent {
             .subscribe(
                 res => {
                     this.processing = false;
-                    this.successResponse = 'You have redeemed the card successfully.'
+                    this.successResponse = 'You have redeemed the card successfully.';
                     this.model.reset();
                 }
             );
     }
-    // TODO: Remove this when we're done
-    // get diagnostic() { return JSON.stringify(this.model); }
+
 }

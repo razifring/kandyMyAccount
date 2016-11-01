@@ -1,6 +1,6 @@
-<div class="col-md-6 col-md-offset-3">
-    <h2>Login</h2>
-    <div class="page-header text-primary">
+<div class="col-md-6 col-md-offset-3 login-page ">
+    <h1 class="login-title">Login</h1>
+    <div class="subtitle">
         Login to view your account information - transaction history,
         billing, call history and more.
     </div>
@@ -8,20 +8,23 @@
 
         <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phonenumber.valid }">
-                <label for="phonenumber">Phone number</label>
+                <label for="phonenumber">Please enter your number:</label>
                 <div class="clearfix"></div>
-                <div class="col-xs-3 col-md-3 dropdown" dropdown>
-                    <button type="button" class="btn select-country-btn" dropdown-open>
-                        <span class="caret"></span>
+                <div class="numberbox">
+                    <div class="col-xs-3 col-md-3 dropdown country-wrapper" dropdown>
+                        <button type="button" class="btn select-country-btn" dropdown-open>
                         <span class="country-flag flag-icon flag-icon-{{selectedCountry.country|lowercase}}" aria-hidden="true"></span>
                         +{{selectedCountry.code}}
+                        <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
                         <li *ngFor="let country of countriesArray"><a (click)="selectCountry(country.country)"><span class="country-flag flag-icon flag-icon-{{country.country|lowercase}}" aria-hidden="true"></span>{{country.title}}<span class="country-code">+{{country.code}}</span></a></li>
                     </ul>
                 </div>
-                <div class="col-xs-9 col-md-7">
-                    <input id="phonenumber" type="text" class="form-control" name="phonenumber" [(ngModel)]="model.phonenumber" #phonenumber="ngModel" required />
+                    <div class="col-xs-9 col-md-9 phone-input-wrapper">
+                        <input id="phonenumber" type="text" class="form-control" name="phonenumber" [(ngModel)]="model.phonenumber" #phonenumber="ngModel" required />
+                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                    </div>
                 </div>
                 <div *ngIf="f.submitted && !phonenumber.valid" class="help-block">Phone number is required</div>
             </div>
@@ -38,9 +41,7 @@
     </div>
 
     <div *ngIf="step == 2" class="loing-step-2">
-        <div class="small">
-            Enter the 4 digits code you received:
-        </div>
+        <label for="otp"> Enter the 4 digits code you received:</label>
         <form name="form" (ngSubmit)="f.form.valid && validateOtp()" #f="ngForm" novalidate>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !otp.valid }">
                 <input id="otp" type="text" class="form-control" name="otp" [(ngModel)]="model.otp" #otp="ngModel" required />
@@ -52,7 +53,7 @@
             </div>
             <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         </form>
-        <div>
+        <div class="back-message text-left">
             If you did not receive a code,<br>
             <a (click)="goTo(1)">click here to request a new code</a>
         </div>

@@ -6,26 +6,48 @@ var packageConfig = require('../../config/packageConfig');
 var packageEnum = require('../enums/packageEnums');
 var _ = require('lodash');
 
-exports.getActivePackages = function(msisdn, successCallback){
-    packageService.getActivePackages(msisdn, successCallback);
+
+exports.getActivePackages = function(msisdn, successCallback, errorCallback){
+    packageService.getActivePackages(msisdn, successCallback, errorCallback);
 };
 
 /**
  *
  * @param packageId
- * @returns packageDataObject
+ * @returns PackageDataObject
  */
 exports.getPackageById = function(packageId){
     var packages = packageService.getCreatedPackage();
+    if(typeof stringValue){
+        packageId = _.parseInt(packageId);
+    }
     return _.find(packages, {id:packageId});
 };
 
+exports.getCreditPlans = function(){
+    return getPlansByType(packageEnum.type.credit);
+};
+
 exports.getCallPlans = function(){
-   return getPlansByType(packageEnum.type.call)
+   return getPlansByType(packageEnum.type.call);
 };
 
 exports.getDidPlans = function(){
     return getPlansByType(packageEnum.type.did);
+};
+
+exports.redeemCard = function(pinCode){
+    return packageService.redeemCard(pinCode);
+};
+
+exports.applyPackage = function(packageId, userId, successCallback, errorCallback){
+    var packageData = this.getPackageById(packageId);
+    if(packageData)
+    {
+        packageService.applyPackage(userId, packageData.name, successCallback, errorCallback)
+    }
+
+    // TODO: throw exception
 };
 
 
@@ -33,13 +55,11 @@ function getPlansByType(type)
 {
     var packages = packageService.getCreatedPackage();
 
-    var callPlansIds = packageConfig.filter(function(item){
-            if(item.type == type){
-                return item.id;
+    var serverPackageIds = packages.map(item => item.id);
+
+    return packageConfig.filter(function(item){
+            if(item.type == type && serverPackageIds.indexOf(item.id) !==-1){
+                return item;
             }
-        })
-        .map(item => item.id);
-    return packages.filter(function(item){
-        return (callPlansIds.indexOf(item.id) !==-1);
-    });
+        });
 }

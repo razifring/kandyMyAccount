@@ -1,10 +1,10 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Lato', Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #d3262a;
 }
 
 li {
@@ -33,15 +33,154 @@ li {
 .link {
   cursor: pointer;
 }
+
+.btn-primary {
+  border: 0;
+  background: #D2272A;
+  border-radius: 3px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: center;
+  line-height: 29px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 4px 16px;
+}
+.navbar-collapse.in ul{
+  background-color: white;
+  border-bottom: 1px solid black;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.navbar-collapse.in li{
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.navbar-collapse.in .navbar-collapse li:last-child{
+  border-bottom: 0px;
+}
+.navbar-juana {
+  background-color: white;
+}
+.navbar-juana a{
+  text-decoration: none;
+  font-size: 20px;
+  padding: 6px 0px;
+  margin: 20px 30px;
+  color: #333333;
+  border-bottom: 4px solid #FFFFFF;
+}
+
+.navbar-juana a:hover, .navbar-juana .active a{
+  color: #D2272A;
+  border-bottom: 4px solid #D2272A;
+  background-color: transparent !important;
+}
+
+.navbar-juana .active a{
+  font-weight: bold;
+}
+
+.navbar-juana .icon-bar{
+  background-color: white;
+}
+.navbar-juana .navbar-toggle{
+  background-color: #d3262a;
+}
+
+.main-container{
+  margin-top: 50px;
+}
+
+
+.login-page {
+  text-align: center;
+}
+
+h1{
+  font-size: 30px;
+  line-height: 32px;
+  color: #ee020b;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+
+
+}
+
+.login-page  .subtitle{
+  font-size: 14px;
+  border-bottom: solid 1px #e3e3e3;
+  height: 64px;
+  width: 88%;
+  margin: 0 auto;
+  margin-top: 16px;
+  margin-bottom: 25px;
+}
+
+.login-page .numberbox {
+  border: 1px solid #d0d0d0;
+  max-width: 491px;
+  margin: 20px auto;
+  height: 47px;
+}
+.login-page .phone-input-wrapper {
+  padding-right:0px;
+}
+
+.login-page .country-wrapper{
+  padding: 0;
+}
+
+.login-page .select-country-btn{
+  background: white;
+  width: 100%;
+  border-right: 1px solid #ccc;
+  height: 31px;
+  margin: 7px 0;
+  padding: 0;
+}
+.login-page .phone-input-wrapper .glyphicon {
+  right: 0px;
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  color: #d0d0d0;
+  font-size: 20px;
+}
+
+.login-page #phonenumber{
+  border-width: 0;
+  line-height: 40px;
+  height: 45px;
+}
+
+.login-page #otp{
+  height: 40px;
+  margin: 20px;
+}
+
+.login-page .back-message, .login-page .back-message a{
+  color: #717171;
+}
+
+.login-page .back-message a{
+  text-decoration: underline;
+}
+
+
 .select-packages {
   margin: 20px 0;
 }
 
 .select-package-item{
-  height: 40px;
+  height: 60px;
   padding: 12px 0;
   background: #d8d8d8;
-  margin: 2px 0;
+  margin: 5px 0;
+  border-radius: 4px;
 }
 .select-package-item:hover {
   cursor: pointer;
@@ -51,20 +190,22 @@ li {
   color: white;
 }
 
+.select-package-item:hover .text-muted,
+.select-package-item.active .text-muted
+{
+  color: #dcdcdc;
+}
+
 .select-packages .package-price {
 
 
 }
 
 .select-packages .package-name {
-
+  font-weight: 600;
 }
 
-.select-country-btn{
-  background: white;
-  width: 100px;
-  border: 1px solid #ccc;
-}
+
 .dropdown-menu > li > a:hover{
   background-color: red;
   background-image:none !important;
@@ -225,3 +366,47 @@ li {
     -webkit-transform: scale(1);
     transform: scale(1); } }
 /* spinner end */
+
+
+@media (max-width: 1200px){
+  .navbar-juana a {
+    margin: 20px 15px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 991px){
+  .navbar-juana a {
+    margin: 20px 5px;
+    font-size: 18px;
+  }
+
+  .navbar-juana .navbar-brand img {
+    width: 142px;
+  }
+}
+
+@media (max-width: 680px){
+ body {
+   padding: 5px;
+ }
+  ul.select-packages{
+    padding: 0;
+  }
+}
+@media (max-width: 600px){
+
+  .select-package-item {
+    height: 80px;
+  }
+
+  .main-container {
+    margin-top: 70px;
+  }
+}
+@media (max-width: 330px){
+
+  .redeem-input {
+    padding: 0 5px;
+  }
+}

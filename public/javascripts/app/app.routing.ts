@@ -8,9 +8,11 @@ import {AuthGuard} from "./_guards/auth.guard";
 import {ThankyouComponent} from "./componenets/thankyou.component";
 import {ProcessingComponent} from "./componenets/processing.component";
 import {CardsComponent} from "./componenets/cards.component";
+import {AutoLoginComponent} from "./componenets/autoLogin.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
+    { path: 'login/:uat/:msisdn', component: AutoLoginComponent},
     { path: 'myAccount', component: MyAccountComponent, canActivate: [AuthGuard]},
     { path: 'purchase', component: PurchaseComponent, canActivate: [AuthGuard]},
     { path: 'processing/:msisdn', component: ProcessingComponent},

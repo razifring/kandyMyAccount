@@ -25,6 +25,9 @@ import {CardsComponent} from "./componenets/cards.component";
 import {RedeemCardFormComponent} from "./componenets/redeemCardForm.component";
 import {DropdownModule} from "ng2-dropdown";
 import {CountryCodes} from "./utils/countryCodes";
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CollapseModule  } from 'ng2-bootstrap/ng2-bootstrap';
+import { AutoLoginComponent  } from "./componenets/autoLogin.component";
 
 
 @NgModule({
@@ -35,6 +38,7 @@ import {CountryCodes} from "./utils/countryCodes";
         JsonpModule,
         DropdownModule,
         routing,
+        CollapseModule
     ],
     providers: [
         AuthGuard,
@@ -44,6 +48,7 @@ import {CountryCodes} from "./utils/countryCodes";
         PaypalService,
         CommonUtils,
         CountryCodes,
+        CookieService
 
     ],
     declarations: [
@@ -60,8 +65,8 @@ import {CountryCodes} from "./utils/countryCodes";
         SpinnerComponent,
         SimpleSpinnerComponent,
         PaypalButtonComponent,
-        RedeemCardFormComponent
-
+        RedeemCardFormComponent,
+        AutoLoginComponent
     ],
     bootstrap: [ AppComponent ]
 })

@@ -5,7 +5,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
                     Pay via <img class="paypal-btn-logo" src="https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom.svg" />
                </button>
                <span class="paypal-btn-spinner-wrapper"><simple-spinner [show]="isProcessing"></simple-spinner></span>`,
-    inputs: ['disabled']
+    inputs: ['disabled','isProcessing']
 })
 export class PaypalButtonComponent  {
     public disabled: boolean = false;
@@ -16,7 +16,7 @@ export class PaypalButtonComponent  {
 
 
     onClick():void {
-        this.isProcessing = true;
+        //this.isProcessing = true;
         this.disabled = true;
         this.ButtonClicked.emit()
     }

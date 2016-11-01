@@ -3,6 +3,7 @@ var paypal = require('paypal-rest-sdk');
 require('../lib/paypalConfig');
 var packageManager = require('../lib/managers/packageManager');
 var config = require('../config/config');
+var responseDataObject = require('../lib/dataObjects/responseDataObject');
 
 /**
  * Paypal integration
@@ -24,7 +25,7 @@ exports.createPayment = function(req, res) {
                 "payment_method": "paypal",
             },
         "redirect_urls": {
-            "return_url": config.paypal.getPaypalReturnUrl() + '/' + req.body.msisdn,
+            "return_url": config.paypal.getPaypalReturnUrl() + '/' + req.userId,
             "cancel_url": config.paypal.getPaypalCancelUrl()
         },
         "transactions": [{
@@ -45,12 +46,10 @@ exports.createPayment = function(req, res) {
             "description": "You are about to purchase a 30 day subscription to " + packageData.name
         }]
     };
-    console.log('sent params:');
-    console.log(JSON.stringify(create_payment_json));
 
     paypal.payment.create(create_payment_json, function (error, payment) {
         if (error) {
-            throw error;
+            res.json(responseDataObject.create(false, error));
         } else {
             if(payment.payer.payment_method === 'paypal') {
                 req.session.paymentId = payment.id;
@@ -61,7 +60,7 @@ exports.createPayment = function(req, res) {
                         redirectUrl = link.href;
                     }
                 }
-                res.json({redirectUrl:redirectUrl});
+                res.json(responseDataObject.create(true, {redirectUrl:redirectUrl}));
             }
         }
     });
@@ -71,9 +70,9 @@ exports.createPayment = function(req, res) {
 exports.executePayment = function(req, res) {
     var paymentId = req.body.paymentId;
     var payerId = req.body.payerId;
-    var msisdn = req.params.msisdn;
+    var msisdn = req.body.msisdn;
 
-    console.log('msisdn is: '+msisdn);
+    console.log('msisdn is: ' + msisdn);
 
     var execute_payment_json = {
         "payer_id": payerId
@@ -84,12 +83,21 @@ exports.executePayment = function(req, res) {
             console.log(error.response);
             throw error;
         } else {
-            console.log("package id");
-            console.log(payment.transactions[0].item_list.items[0].sku)
-            console.log("Get Payment Response");
-            console.log(JSON.stringify(payment));
-            res.json({status: 'ok'});
+            packageManager.applyPackage(payment.transactions[0].item_list.items[0].sku, msisdn,
+                function(result){
+                    console.log(result);
+                    res.json({status: 'ok'});
+                },
+                function(e){
+                    console.log(e);
+                }
+            );
         }
     });
 };
+
+exports.test = function(req,res) {
+    var d = packageManager.getPackageById('1374');
+    console.log(d.name);
+}
 

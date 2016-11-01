@@ -33,4 +33,5 @@ export class PackagesService {
             .post('/api/cards', {cardNumber: cardNum}, {})
             .map(CommonService.extractData);
     }
+
 }

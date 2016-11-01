@@ -210,6 +210,40 @@ function post(url, payload, headers, successCallback, errorCallback) {
 
 }
 
+/**
+ * @method post
+ * @param {string} url
+ * @param {string} payload
+ * @param {string} headers
+ * @param successCallback
+ * @param errorCallback
+ * @return {error / json}
+ */
+function put(url, payload, headers, successCallback, errorCallback) {
+
+    try {
+        request.put({
+            uri: url,
+            headers: headers,
+            body: payload
+        }, function(error, response, body) {
+
+            if (error || response.statusCode != 200)
+            {
+                var err_msg = (error && error.message ) ? error.message : "(no specific error object, http return code: " + response.statusCode + ")";
+                errorCallback({message: err_msg, code: response.statusCode});
+                return;
+            }
+            console.log('simpleRequestSucees');
+            successCallback(body);
+        });
+    }
+    catch (e) {
+        errorCallback(e);
+    }
+
+}
+
 /*****************************************************************
  /* get
  /*
@@ -313,5 +347,6 @@ exports.postJson = postJson;
 exports.postUrlEncoded = postUrlEncoded;
 exports.postTextHtml = postTextHtml;
 exports.post = post;
+exports.put= put;
 exports.get = get;
 exports.deleteUrlEncoded = deleteUrlEncoded;

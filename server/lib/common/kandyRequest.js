@@ -43,6 +43,24 @@ exports.post = function(url, data, successCallback, errorCallback){
     });
 };
 
+exports.put = function(url, data, successCallback, errorCallback){
+    var self = this;
+    tokenManager.getDomainAccessToken(function(token){
+        var urlWithToken = url + '&key=' + token;
+        console.log(urlWithToken);
+        simpleRequest.put(urlWithToken, JSON.stringify(data), '', successCallback, function(error){
+            console.log('kandyRequest Error');
+            if(error.code === 403){
+                tokenManager.renewDomainAccessToken(function(){
+                    self.put(url, data, successCallback, errorCallback);
+                });
+            }else{
+                errorCallback({message: error.message, code: error.code});
+            }
+        });
+    });
+};
+
 exports.successCallback = function(result, successCallback, errorCallback){
     console.log(result);
     let res = (_.isString(result))?JSON.parse(result):result;

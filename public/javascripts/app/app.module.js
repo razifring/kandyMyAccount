@@ -35,6 +35,9 @@ var cards_component_1 = require("./componenets/cards.component");
 var redeemCardForm_component_1 = require("./componenets/redeemCardForm.component");
 var ng2_dropdown_1 = require("ng2-dropdown");
 var countryCodes_1 = require("./utils/countryCodes");
+var cookies_service_1 = require('angular2-cookie/services/cookies.service');
+var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
+var autoLogin_component_1 = require("./componenets/autoLogin.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -47,6 +50,7 @@ var AppModule = (function () {
                 http_1.JsonpModule,
                 ng2_dropdown_1.DropdownModule,
                 app_routing_1.routing,
+                ng2_bootstrap_1.CollapseModule
             ],
             providers: [
                 auth_guard_1.AuthGuard,
@@ -56,6 +60,7 @@ var AppModule = (function () {
                 paypal_service_1.PaypalService,
                 commonUtils_1.CommonUtils,
                 countryCodes_1.CountryCodes,
+                cookies_service_1.CookieService
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -71,7 +76,8 @@ var AppModule = (function () {
                 spinner_component_1.SpinnerComponent,
                 simpleSpinner_component_1.SimpleSpinnerComponent,
                 paypalButton_1.PaypalButtonComponent,
-                redeemCardForm_component_1.RedeemCardFormComponent
+                redeemCardForm_component_1.RedeemCardFormComponent,
+                autoLogin_component_1.AutoLoginComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

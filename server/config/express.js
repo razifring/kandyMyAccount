@@ -15,7 +15,7 @@ var express = require('express'),
     compressions = require('compression'),
     logger = require('express-logger'),
     bodyParser = require('body-parser'),
-    session = require('express-session'),
+    session = require('client-sessions'),
     cookieParser = require('cookie-parser');
 
 module.exports = function(app) {
@@ -105,22 +105,38 @@ module.exports = function(app) {
 
      // Express session storage
      app.use(session({
-         secret: config.sessionSecret,
-         collection: config.sessionCollection,
-         resave: false,
-         saveUninitialized: false
+         cookieName: 'session',
+         secret: 'mBQ5lHgfz-ACjJdM6olLs2',
+         duration: 30 * 60 * 1000,
+         activeDuration: 5 * 60 * 1000,
+         cookie:{
+             httpOnly: false
+         }
          })
      );
 
+    app.use(session({
+            cookieName: 'userSession',
+            secret: 'mBQ5lHgfz-ACjJdM6olLs2',
+            duration: 30 * 60 * 1000,
+            activeDuration: 5 * 60 * 1000,
+            cookie:{
+                httpOnly: false
+            }
+        })
+    );
+
+    app.use(function(req, res, next) {
+        if (req.userSession && req.userSession.user) {
+            req.userId =  req.userSession.user.userId;
+            next();
+        } else {
+            next();
+        }
+    });
+
     // Dynamic helpers
     app.use(helpers(config.app.name));
-
-    // Use passport session
-    //app.use(passport.initialize());
-    //app.use(passport.session());
-
-    //mean middleware from modules before routes
-    //app.use(mean.chainware.before);
 
     // Connect flash for flash messages
     //app.use(flash());
@@ -128,17 +144,6 @@ module.exports = function(app) {
     // Setting the fav icon and static folder
     //app.use(express.favicon());
     app.use('/public', express.static(config.root + '/public'));
-/*
-    app.get('/modules/aggregated.js', function (req, res) {
-        res.setHeader('content-type', 'text/javascript');
-        res.send(mean.aggregated.js);
-    });
-
-
-    app.get('/modules/aggregated.css', function (req, res) {
-        res.setHeader('content-type', 'text/css');
-        res.send(mean.aggregated.css);
-    });*/
 
     bootstrapRoutes();
 

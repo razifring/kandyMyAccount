@@ -5,4 +5,9 @@ export class CommonService {
         let body = res.json();
         return body || {};
     }
+
+    public static deleteCookie(name)
+    {
+
+    }
 }

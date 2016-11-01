@@ -9,6 +9,7 @@ import {AuthService} from "../services/auth.service";
 export class NavBarComponent {
 
     _isLoggedIn: boolean;
+    public isCollapsed = true;
 
     constructor(
         private authService: AuthService
@@ -17,11 +18,9 @@ export class NavBarComponent {
     }
 
     ngOnInit(): void {
-        //this._isLoggedIn = this.authService.isLoggedIn.getValue();
-        var self = this;
-        this.authService.isLoggedIn.subscribe(function(value){
-            self._isLoggedIn = value;
-        });
+        this.authService.isLoggedIn.subscribe(
+            value => {this._isLoggedIn = value; console.log(value);}
+        );
     }
 
 

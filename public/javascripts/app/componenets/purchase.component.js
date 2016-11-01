@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var _ = require('lodash');
 var core_1 = require('@angular/core');
 var packages_service_1 = require("../services/packages.service");
 var paypal_service_1 = require("../services/paypal.service");
@@ -16,15 +17,18 @@ var PurchaseComponent = (function () {
     function PurchaseComponent(packagesService, paypalService) {
         this.packagesService = packagesService;
         this.paypalService = paypalService;
+        this.creditPlans = [];
         this.callPlans = [];
         this.didPlans = [];
         this.disableBtns = true;
+        this.isProcessing = false;
     }
     PurchaseComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.packagesService.getPurchsablePackages()
             .subscribe(function (res) {
-            _this.callPlans = res.callPlans;
+            _this.creditPlans = res.creditPlans;
+            _this.callPlans = _.groupBy(res.callPlans, 'category');
             _this.didPlans = res.didPlans;
         });
     };
@@ -35,8 +39,20 @@ var PurchaseComponent = (function () {
     PurchaseComponent.prototype.goToPaypal = function () {
         var _this = this;
         this.disableBtns = true;
+        this.isProcessing = true;
         this.paypalService.createPaypalPayment(this.selectedPackageId)
-            .subscribe(function (res) { return commonUtils_1.CommonUtils.redirectTo(res.redirectUrl); }, function (res) { return _this.disableBtns = false; });
+            .subscribe(function (res) {
+            if (res.status) {
+                commonUtils_1.CommonUtils.redirectTo(res.body.redirectUrl);
+            }
+            else {
+                _this.disableBtns = false;
+                _this.isProcessing = false;
+            }
+        }, function (res) {
+            _this.disableBtns = false;
+            _this.isProcessing = false;
+        });
     };
     PurchaseComponent = __decorate([
         core_1.Component({

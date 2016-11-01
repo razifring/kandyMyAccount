@@ -1,40 +1,28 @@
 'use strict';
 
 var packageManager = require('../lib/managers/packageManager');
+var responseDataObject = require('../lib/dataObjects/responseDataObject');
+
 /**
  * List of Pakcages
  */
 exports.getUserPackages = function(req, res) {
-    packageManager.getActivePackages(req.params.msisdn, function(packages){
-        res.json(packages);
-    });
-
-    console.log(req.params);
-    var packages = [{
-        'id': 11,
-        'name': 'Telebabad 30 Days',
-        'usage': '4030 minutes left ',
-        'expire': '2016-09-16'
-    },{
-        'id': 12,
-        'name': 'Telebabad 7 Days',
-        'usage': '1007 minutes left',
-        'expire': '2016-10-16'
-    },
-        {
-            'id': 13,
-            'name': 'Telebabad 5 Days',
-            'usage': '1227 minutes left',
-            'expire': '2016-05-16'
+    packageManager.getActivePackages(req.params.msisdn,
+        function(packages){
+            res.json(responseDataObject.create(true, {
+                packages: packages
+            }));
+        },
+        function(e){
+            res.json(responseDataObject.create(false, e));
         }
-    ];
-
-    //res.json(packages);
+    );
 };
 
 exports.getPurchasable = function(req, res) {
     console.log(req.params);
     var packages = {
+        creditPlans: packageManager.getCreditPlans(),
         callPlans: packageManager.getCallPlans(),
         didPlans: packageManager.getDidPlans()
     };
@@ -43,7 +31,8 @@ exports.getPurchasable = function(req, res) {
 };
 
 exports.redeemCard = function(req, res){
-    var cardNum = req.body.cardNumber;
-    console.log(cardNum);
+    var pinCode = req.body.cardNumber;
+    packageManager.redeemCard(pinCode, req.userId);
+    console.log(pinCode);
     res.json(true);
 };

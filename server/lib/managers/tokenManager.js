@@ -14,7 +14,6 @@ var kandyRequest = require('../common/kandyRequest');
 exports.getDomainAccessToken = function(successCallback){
 
     var accessToken = cacheManager.getDomainToken();
-    console.log('access token is:' + accessToken);
     if(!accessToken)
     {
         this.renewDomainAccessToken(successCallback)
@@ -26,7 +25,6 @@ exports.getDomainAccessToken = function(successCallback){
 };
 
 exports.renewDomainAccessToken = function(successCallback){
-    console.log(config.kandyApi.domainApiKey);
     tokenService.getDomainAccess(
         config.kandyApi.domainApiKey,
         config.kandyApi.domainApiSecret,
@@ -50,3 +48,19 @@ exports.validateOtp = function(phoneNumber, countryCode, validationCode, success
     }, errorCallback);
 };
 
+exports.hasAuthorization = function (req, res, next) {
+    console.log(req.userId);
+    if (!req.userId) {
+        res.status(401).send('User is not authorized');
+    } else {
+        next();
+    }
+};
+
+exports.getUserIdByUserAcceesToken = function (userAccessToken, successCallback, errorCallback) {
+
+    tokenService.getUserDetailsByUserAccessToken(userAccessToken,  function(result){
+        console.log('getUserIdByUserAcceesToken' + result.result.user.user_id);
+        successCallback(result.result.user.user_id)
+    }, errorCallback);
+};

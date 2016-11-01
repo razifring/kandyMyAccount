@@ -23,5 +23,13 @@ app.use(function(req, res) {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-
-module.exports = app;
+try {
+    module.exports = app;
+}
+catch(e)
+{
+    console.log("Caught exception: %j, %s", e, e);
+    logger.warn("Caught exception: %j, %s", e, e);
+    logger.error("Caught exception: %j, %s", e, e);
+    process.exit(1);
+}

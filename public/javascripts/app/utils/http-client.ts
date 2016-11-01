@@ -40,6 +40,23 @@ export class HttpClient {
         return this.http.post(url, data, options);
     }
 
+    put(url, data, options) {
+        if(!options){
+            var options;
+        }
+
+        if(!options.headers) {
+            options.headers = new Headers();
+        }
+
+        this.createAuthorizationHeader(options.headers);
+        if(this.useJsonContentType){
+            options.headers.append('Content-Type', 'application/json');
+            this.useJsonContentType = false;
+        }
+        return this.http.put(url, data, options);
+    }
+
     addJsonContentType(){
         this.useJsonContentType = true;
         return this;

@@ -11,9 +11,7 @@ export class PaypalService {
     constructor(
         private _http: HttpClient,
         private userService: UserService
-    ){
-        this._http = _http;
-    }
+    ){}
 
     createPaypalPayment(packageId): Observable<any> {
         return this._http

@@ -13,13 +13,11 @@ var auth_service_1 = require("../services/auth.service");
 var NavBarComponent = (function () {
     function NavBarComponent(authService) {
         this.authService = authService;
+        this.isCollapsed = true;
     }
     NavBarComponent.prototype.ngOnInit = function () {
-        //this._isLoggedIn = this.authService.isLoggedIn.getValue();
-        var self = this;
-        this.authService.isLoggedIn.subscribe(function (value) {
-            self._isLoggedIn = value;
-        });
+        var _this = this;
+        this.authService.isLoggedIn.subscribe(function (value) { _this._isLoggedIn = value; console.log(value); });
     };
     NavBarComponent = __decorate([
         core_1.Component({

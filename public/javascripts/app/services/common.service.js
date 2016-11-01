@@ -6,6 +6,8 @@ var CommonService = (function () {
         var body = res.json();
         return body || {};
     };
+    CommonService.deleteCookie = function (name) {
+    };
     return CommonService;
 }());
 exports.CommonService = CommonService;

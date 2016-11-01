@@ -2,5 +2,7 @@
 
 exports.type = {
     'call': 'Calling plans',
-    'did': 'DID plans'
+    'did': 'DID plans',
+    'credit': 'Credit plans'
 };
+
