@@ -1,0 +1,34 @@
+<div class="history-page">
+    <h1>History Reports</h1>
+
+    <div class="hisotry-wrapper top20">
+        <div class="top10">
+            <div class="history-form-field">Type:</div>
+            <div class="history-form-radio-field radio">
+                <input type="radio" [(ngModel)]="type" id="calls" value="calls"> <label for="calls">Outgoing calls</label>
+            </div>
+            <div class="history-form-radio-field radio">
+                <input type="radio" [(ngModel)]="type" id="sms" value="sms"> <label for="sms">Outgoing SMS</label>
+            </div>
+            <div class="history-form-radio-field radio">
+                <input type="radio" [(ngModel)]="type" id="payments" value="payments"> <label for="payments">Payments</label>
+            </div>
+        </div>
+        <div class="top10">
+            <div class="history-form-field">Date From:</div>
+            <div class="history-form-radio-field radio">
+                <input required type="date" [value]="startDate" (input)="startDate=$event.target.value" id="start-date" max='{{todayDate}}'>
+            </div>
+        </div>
+        <div class="top10">
+            <div class="history-form-field">Date To:</div>
+            <div class="history-form-radio-field radio">
+                <input required type="date" [value]="endDate" (input)="endDate=$event.target.value" id="end-date" max='{{todayDate}}'>
+            </div>
+        </div>
+        <div class="top10">
+            <button class="btn btn-primary" (click)="searchHistory()">SEARCH</button>
+            <simple-spinner [show]="processing"></simple-spinner>
+        </div>
+    </div>
+</div>

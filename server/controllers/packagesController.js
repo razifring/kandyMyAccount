@@ -2,6 +2,7 @@
 
 var packageManager = require('../lib/managers/packageManager');
 var responseDataObject = require('../lib/dataObjects/responseDataObject');
+var userPackageDataObject = require('../lib/dataObjects/userPackageDataObject');
 
 /**
  * List of Pakcages
@@ -9,8 +10,13 @@ var responseDataObject = require('../lib/dataObjects/responseDataObject');
 exports.getUserPackages = function(req, res) {
     packageManager.getActivePackages(req.params.msisdn,
         function(packages){
+            let finalPackages = [];
+            for(let i =0; i < packages.length; i++){
+                finalPackages.push(userPackageDataObject.createFromKandy(packages[i]));
+            }
+
             res.json(responseDataObject.create(true, {
-                packages: packages
+                packages: finalPackages
             }));
         },
         function(e){

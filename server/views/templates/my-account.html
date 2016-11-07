@@ -1,8 +1,18 @@
 <h1>Active Packages</h1>
 
-<div *ngIf="activePackages.length > 0">
-    <list-packages [packages]=activePackages></list-packages>
+<div *ngIf="activePackages.credit?.length > 0">
+    <h2>Credit</h2>
+    <list-packages [packages]=activePackages.credit></list-packages>
 </div>
-<div *ngIf="activePackages.length == 0">
-    You do not have any packages, please purchase here:
+<div *ngIf="activePackages.minutes?.length > 0">
+    <h2>Philippine Call and Text Plans</h2>
+    <list-packages [packages]=activePackages.minutes></list-packages>
+</div>
+<div *ngIf="activePackages.did?.length > 0">
+    <h2>Philippine Mobile Number</h2>
+    <list-packages [packages]=activePackages.did></list-packages>
+</div>
+<div *ngIf="activePackages?.length === 0">
+    You are not subscribed to any package. <br>
+    <a routerLink="/purchase">Get a plan now.</a>
 </div>

@@ -6,7 +6,6 @@ import {Router} from "@angular/router";
 import {User} from "../dataObjects/user";
 import {UserService} from "./user.service";
 import {CookieService} from "angular2-cookie/services/cookies.service";
-import {CommonService} from "./common.service";
 
 
 @Injectable()
@@ -94,6 +93,7 @@ export class AuthService {
         localStorage.removeItem('msisdn');
         this.router.navigate(['/login']);
         this.cookieService.remove('userSession');
+        this.userService.resetUser();
         this.isLoggedIn.next(false);
     }
 

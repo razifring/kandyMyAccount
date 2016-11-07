@@ -1,0 +1,45 @@
+<div class="rates-page col-md-6 col-md-offset-3">
+    <h1>Rates</h1>
+
+    <div class="rates-tabs-wrapper">
+        <tabset>
+            <tab heading="Calls">
+                <div class="rates-tab-subheader">
+                    <strong>PH – PLDT, SMART, TNT, SUN</strong> US$ 0.13/MIN <br>
+                    <strong>PH – Other Networks</strong> US$ 0.18/MIN
+                </div>
+                <small>
+                    Which country would you like to call:
+                </small>
+                <div class="row">
+                    <div class="rate-select">
+                        <select class="form-control" [(ngModel)]="currentRate">
+                            <option *ngFor="let o of rateList" [ngValue]="o">{{o.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="rate-display">
+                    <span class="blue">US$</span>{{currentRate.value}}/SMS
+                </div>
+            </tab>
+            <tab heading="SMS">
+                <div class="rates-tab-subheader">
+                    <strong>PH – Any Network</strong>US$ 0.05/SMS
+                </div>
+                <small>
+                    Which country would you like to SMS:
+                </small>
+                <div class="row">
+                    <div class="rate-select">
+                        <select class="form-control">
+                            <option value="fixed" selected>all destinations (+Fixed)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="rate-display">
+                    <span class="blue">US$</span>0.05/SMS
+                </div>
+            </tab>
+        </tabset>
+    </div>
+</div>

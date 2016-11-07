@@ -40,7 +40,7 @@ export class AutoLoginComponent implements OnInit {
                                 this.isLoading = false;
                                 this.error = res.message;
                             }
-                );
+                    );
                 }
             });
 

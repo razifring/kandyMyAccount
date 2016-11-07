@@ -17,10 +17,9 @@ var PackagesService = (function () {
     function PackagesService(_http, userService) {
         this._http = _http;
         this.userService = userService;
-        this._http = _http;
     }
     PackagesService.prototype.getActivePackages = function () {
-        return this._http.get('/api/packages/' + this.userService.getCurrentUser().msisdn)
+        return this._http.get('/api/packages/' + this.userService.getCurrentUser().getValue().msisdn)
             .map(common_service_1.CommonService.extractData);
     };
     PackagesService.prototype.getPurchsablePackages = function () {

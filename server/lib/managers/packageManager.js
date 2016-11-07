@@ -6,9 +6,11 @@ var packageConfig = require('../../config/packageConfig');
 var packageEnum = require('../enums/packageEnums');
 var _ = require('lodash');
 
-
 exports.getActivePackages = function(msisdn, successCallback, errorCallback){
-    packageService.getActivePackages(msisdn, successCallback, errorCallback);
+    packageService.getActivePackages(msisdn, function(data){
+        let activePackages = _.get(data,'result.details.packages', []);
+        successCallback(activePackages);
+    }, errorCallback);
 };
 
 /**
@@ -24,12 +26,22 @@ exports.getPackageById = function(packageId){
     return _.find(packages, {id:packageId});
 };
 
+/**
+ *
+ * @param packageName string
+ * @returns PackageDataObject
+ */
+exports.getPackageByName = function(packageName){
+    var packages = packageService.getCreatedPackage();
+    return _.find(packages, {name:packageName});
+};
+
 exports.getCreditPlans = function(){
     return getPlansByType(packageEnum.type.credit);
 };
 
 exports.getCallPlans = function(){
-   return getPlansByType(packageEnum.type.call);
+   return getPlansByType(packageEnum.type.minutes);
 };
 
 exports.getDidPlans = function(){
@@ -48,6 +60,10 @@ exports.applyPackage = function(packageId, userId, successCallback, errorCallbac
     }
 
     // TODO: throw exception
+};
+
+exports.getPackageConfigById = function(packageId) {
+  return _.filter(packageConfig, {'id':packageId})[0];
 };
 
 

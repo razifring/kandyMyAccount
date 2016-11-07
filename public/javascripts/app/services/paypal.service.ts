@@ -16,7 +16,7 @@ export class PaypalService {
     createPaypalPayment(packageId): Observable<any> {
         return this._http
             .addJsonContentType()
-            .post('/api/paypal/', {packageId: packageId, msisdn: this.userService.getCurrentUser().msisdn}, {})
+            .post('/api/paypal/', {packageId: packageId, msisdn: this.userService.getCurrentUser().getValue().msisdn}, {})
             .map(CommonService.extractData);
     }
 

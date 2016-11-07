@@ -1,6 +1,8 @@
+* {
+  font-family: 'Lato', Helvetica, sans-serif;
+}
+
 body {
-  padding: 50px;
-  font: 14px 'Lato', Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -11,6 +13,32 @@ li {
   list-style: none;
 }
 
+
+h1{
+    font-size: 30px;
+    line-height: 32px;
+    color: #ee020b;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+footer {
+  height: 20px;
+  background-color: #D2272A;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+}
+.site-padding {
+  padding: 50px;
+}
+
+.blue {
+  color: #1788ca;
+}
 /* remove up down arrows from input fields */
 .redeem-card-form input[type="number"]::-webkit-outer-spin-button,
 .redeem-card-form input[type="number"]::-webkit-inner-spin-button {
@@ -67,7 +95,7 @@ li {
   text-decoration: none;
   font-size: 20px;
   padding: 6px 0px;
-  margin: 20px 30px;
+  margin: 20px 15px;
   color: #333333;
   border-bottom: 4px solid #FFFFFF;
 }
@@ -89,26 +117,19 @@ li {
   background-color: #d3262a;
 }
 
-.main-container{
-  margin-top: 50px;
+.navbar-phone-display {
+  text-align: center;
+  font-size: 19px;
+  margin-top: 12px;
 }
+
 
 
 .login-page {
   text-align: center;
 }
 
-h1{
-  font-size: 30px;
-  line-height: 32px;
-  color: #ee020b;
-  margin-top: 20px;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  font-weight: bold;
 
-
-}
 
 .login-page  .subtitle{
   font-size: 14px;
@@ -252,6 +273,76 @@ h1{
   margin: 5px;
   font-size: 20px;
 }
+
+.active-package-item div {
+  line-height: 21px;
+}
+
+.active-package-item-field {
+  width: 118px;
+  display: inline-block;
+}
+
+.rates-page .rates-tabs-wrapper {
+    text-align:center;
+    width: 100%;
+}
+
+.rates-page .rates-tabs-wrapper .nav-tabs > li {
+    width: 50%;
+}
+
+.rates-page .rates-tabs-wrapper .nav-tabs > li a{
+  line-height: 30px;
+  font-size: 18px;
+  color: #5a5a5a;
+}
+
+.rates-page .tab-content {
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.rates-page .rates-tab-subheader {
+  padding: 30px 0;
+}
+
+.rates-page .rate-select {
+  margin: 30px;
+}
+
+.rates-tabs-wrapper .nav-tabs > li.active a{
+  border-top: 2px solid #D2272A;
+  border-radius: 0;
+
+}
+
+.rates-page .rate-select select{
+  height: 47px;
+}
+
+.rates-page .rate-display {
+  font-size: 32px;
+  font-weight: bold;
+  color: #474747;
+  margin-top: 20px;
+}
+
+.history-page .history-form-field {
+  width: 200px;
+  float: left;
+}
+
+.history-form-radio-field {
+  margin-right: 35px;
+  display: inline;
+}
+
+.history-form-radio-field label{
+  padding-left: 5px;
+}
+
 /* spinner start */
 .sk-circle {
   margin: 40px auto;
@@ -370,15 +461,25 @@ h1{
 
 @media (max-width: 1200px){
   .navbar-juana a {
-    margin: 20px 15px;
+    margin: 20px 0px;
     font-size: 18px;
   }
 }
 
 @media (max-width: 991px){
   .navbar-juana a {
-    margin: 20px 5px;
-    font-size: 18px;
+    margin: 20px 0px;
+    font-size: 16px;
+  }
+
+  a.navbar-brand:hover{
+    border-bottom: 0px;
+  }
+
+  .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 11px;
   }
 
   .navbar-juana .navbar-brand img {
@@ -387,7 +488,7 @@ h1{
 }
 
 @media (max-width: 680px){
- body {
+ .site-padding {
    padding: 5px;
  }
   ul.select-packages{
@@ -400,9 +501,6 @@ h1{
     height: 80px;
   }
 
-  .main-container {
-    margin-top: 70px;
-  }
 }
 @media (max-width: 330px){
 

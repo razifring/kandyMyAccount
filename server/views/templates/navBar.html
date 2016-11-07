@@ -7,20 +7,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" routerLink="/myAccount"><img src="/images/logo-pldt.png" /></a>
+            <a class="navbar-brand" routerLink="/myAccount"><img src="/images/logo-pldt.png" /><div *ngIf="msisdn" class="navbar-phone-display">+{{msisdn}}</div></a>
+
         </div>
         <div id="navbar" class="navbar-collapse collapse" [collapse]="isCollapsed">
             <ul *ngIf="_isLoggedIn" class="nav navbar-nav">
-                <li [routerLinkActive]="['active']" ><a routerLink="/myAccount">My Account <span class="sr-only">(current)</span></a></li>
-                <li [routerLinkActive]="['active']" ><a routerLink="/purchase">Purchase</a></li>
-                <li [routerLinkActive]="['active']" ><a routerLink="/cards">Reload Cards</a></li>
-                <li [routerLinkActive]="['active']"><a routerLink="/rates">Rates</a></li>
-                <li><a class="link" (click)="authService.logout()">Logout</a></li>
+                <li (click)="isCollapsed = true" [routerLinkActive]="['active']" ><a routerLink="/myAccount">My Account <span class="sr-only">(current)</span></a></li>
+                <li (click)="isCollapsed = true" [routerLinkActive]="['active']" ><a routerLink="/purchase">Purchase</a></li>
+                <li (click)="isCollapsed = true" [routerLinkActive]="['active']" ><a routerLink="/cards">Reload Cards</a></li>
+                <li (click)="isCollapsed = true" [routerLinkActive]="['active']"><a routerLink="/history">Account History</a></li>
+                <li (click)="isCollapsed = true" [routerLinkActive]="['active']"><a routerLink="/rates">Rates</a></li>
+                <li (click)="isCollapsed = true"><a class="link" (click)="authService.logout()">Logout</a></li>
             </ul>
             <ul *ngIf="!_isLoggedIn" class="nav navbar-nav navbar-right">
-                <li><a href="http://www.juanachat.com">JuanaChat Website</a></li>
-                <li [routerLinkActive]="['active']"><a routerLink="/rates">Rates</a></li>
-                <li [routerLinkActive]="['active']"><a routerLink="/login">Login</a></li>
+                <li (click)="isCollapsed = true"><a href="http://www.juanachat.com">JuanaChat Website</a></li>
+                <li (click)="isCollapsed = true" [routerLinkActive]="['active']"><a routerLink="/rates">Rates</a></li>
+                <li (click)="isCollapsed = true" [routerLinkActive]="['active']"><a routerLink="/login">Login</a></li>
             </ul>
         </div>
     </div>

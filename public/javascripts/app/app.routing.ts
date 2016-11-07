@@ -9,6 +9,8 @@ import {ThankyouComponent} from "./componenets/thankyou.component";
 import {ProcessingComponent} from "./componenets/processing.component";
 import {CardsComponent} from "./componenets/cards.component";
 import {AutoLoginComponent} from "./componenets/autoLogin.component";
+import {RatesComponent} from "./componenets/rates.component";
+import {HistoryComponent} from "./componenets/history.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -17,7 +19,9 @@ const appRoutes: Routes = [
     { path: 'purchase', component: PurchaseComponent, canActivate: [AuthGuard]},
     { path: 'processing/:msisdn', component: ProcessingComponent},
     { path: 'thankyou', component: ThankyouComponent},
+    { path: 'rates', component: RatesComponent},
     { path: 'cards', component: CardsComponent, canActivate: [AuthGuard]},
+    { path: 'history', component: HistoryComponent, canActivate: [AuthGuard]},
     { path: '', component: MyAccountComponent, canActivate: [AuthGuard]},
     { path: '**', component: LoginComponent}
 ];

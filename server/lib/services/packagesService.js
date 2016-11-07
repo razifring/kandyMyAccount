@@ -64,8 +64,7 @@ exports.getCreatedPackage = function(){
 exports.getActivePackages = function(userId, successCallback, errorCallback){
     var url = config.kandyApi.apiUrl + 'billing/users/packages/status/active?user_id=' + userId;
     kandyRequest.get(url, function(data){
-        console.log('packages are '+data);
-        successCallback(data);
+        kandyRequest.successCallback(data, successCallback, errorCallback);
     },errorCallback);
 };
 

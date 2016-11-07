@@ -27,7 +27,11 @@ import {DropdownModule} from "ng2-dropdown";
 import {CountryCodes} from "./utils/countryCodes";
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { CollapseModule  } from 'ng2-bootstrap/ng2-bootstrap';
+import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { AutoLoginComponent  } from "./componenets/autoLogin.component";
+import {RatesComponent} from "./componenets/rates.component";
+import {HistoryComponent} from "./componenets/history.component";
+import {HistoryService} from "./services/history.service";
 
 
 @NgModule({
@@ -38,7 +42,8 @@ import { AutoLoginComponent  } from "./componenets/autoLogin.component";
         JsonpModule,
         DropdownModule,
         routing,
-        CollapseModule
+        CollapseModule,
+        TabsModule
     ],
     providers: [
         AuthGuard,
@@ -48,25 +53,28 @@ import { AutoLoginComponent  } from "./componenets/autoLogin.component";
         PaypalService,
         CommonUtils,
         CountryCodes,
-        CookieService
+        CookieService,
+        HistoryService
 
     ],
     declarations: [
         AppComponent,
+        AutoLoginComponent,
+        CardsComponent,
+        HistoryComponent,
+        ListPackagesComponent,
         LoginComponent,
         MyAccountComponent,
         NavBarComponent,
-        PurchaseComponent,
-        ListPackagesComponent,
-        SelectPackagesComponent,
-        ThankyouComponent,
-        CardsComponent,
-        ProcessingComponent,
-        SpinnerComponent,
-        SimpleSpinnerComponent,
         PaypalButtonComponent,
+        ProcessingComponent,
+        PurchaseComponent,
+        RatesComponent,
         RedeemCardFormComponent,
-        AutoLoginComponent
+        SelectPackagesComponent,
+        SimpleSpinnerComponent,
+        SpinnerComponent,
+        ThankyouComponent,
     ],
     bootstrap: [ AppComponent ]
 })

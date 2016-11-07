@@ -1,7 +1,7 @@
 'use strict';
 
 exports.type = {
-    'call': 'Calling plans',
+    'minutes': 'Calling plans',
     'did': 'DID plans',
     'credit': 'Credit plans'
 };

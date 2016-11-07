@@ -35,7 +35,7 @@ module.exports = [
 		title: 'Telebabad Pinas 7 Days ',
 		description: '1,000 minutes to call PLDT, Smart and Sun numbers, 7 minutes to call other Philippine networks and a Philippine number for 7 days.',
 		cost: 'US$7.99',
-		type: packageEnum.type.call,
+		type: packageEnum.type.minutes,
 		category: categories.telebabad
 	},
 	{
@@ -43,7 +43,7 @@ module.exports = [
 		title: 'Telebabad Pinas 30 Days',
 		description: '4,000 minutes to call PLDT, Smart and Sun numbers, 30 minutes to call other Philippine networks and a Philippine number for 30 days.',
 		cost: 'US$24.99',
-		type: packageEnum.type.call,
+		type: packageEnum.type.minutes,
 		category: categories.telebabad,
 
 	},
@@ -52,7 +52,7 @@ module.exports = [
 		title: 'Philippines Call and Text 30',
 		description: '30 Minutes to any Philippine Number, 30 SMS to Smart, Talk N Text or Sun Cellular Numbers',
 		cost: 'US$4.99',
-		type: packageEnum.type.call,
+		type: packageEnum.type.minutes,
 		category: categories.phil,
 	},
 	{
@@ -60,7 +60,7 @@ module.exports = [
 		title: 'Philippines Call and Text 65',
 		description: '65 Minutes to any Philippine Number, 65 SMS to Smart, Talk N Text or Sun Cellular Numbers',
 		cost: 'US$9.99',
-		type: packageEnum.type.call,
+		type: packageEnum.type.minutes,
 		category: categories.phil,
 	},
 	{
@@ -68,7 +68,7 @@ module.exports = [
 		title: 'Philippines Call and Text 100',
 		description: '100 Minutes to any Philippine Number, 100 SMS to Smart, Talk N Text or Sun Cellular Numbers',
 		cost: 'US$14.99',
-		type: packageEnum.type.call,
+		type: packageEnum.type.minutes,
 		category: categories.phil,
 	},
 	{

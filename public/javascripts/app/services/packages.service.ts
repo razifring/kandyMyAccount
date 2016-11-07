@@ -10,16 +10,18 @@ import {UserService} from "./user.service";
 @Injectable()
 export class PackagesService {
 
+    public activePackages;
+
     constructor(
         private _http: HttpClient,
         private userService: UserService
-    ){
-        this._http = _http;
-    }
+    ){}
 
-    getActivePackages(): Observable<Package[]> {
-        return this._http.get('/api/packages/'+this.userService.getCurrentUser().msisdn)
-            .map(CommonService.extractData);
+    getActivePackages() {
+
+        return this._http.get('/api/packages/'+this.userService.getCurrentUser().getValue().msisdn)
+                .map(CommonService.extractData);
+
     }
 
     getPurchsablePackages(): Observable<any>{

@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import {Component, OnInit} from '@angular/core';
 import {PackagesService} from '../services/packages.service';
 
@@ -8,14 +9,17 @@ import {PackagesService} from '../services/packages.service';
 
 export class MyAccountComponent implements OnInit{
 
-
-    balance = 0.0;
     activePackages = [];
 
     constructor(private packagesService: PackagesService){}
 
     ngOnInit(): void {
         this.packagesService.getActivePackages()
-            .subscribe(res => this.activePackages = res);
+            .subscribe(
+                res => {
+                    console.log(_.groupBy(res.body.packages, 'type'));
+                    this.activePackages = _.groupBy(res.body.packages, 'type');
+                }
+            );
     }
 }

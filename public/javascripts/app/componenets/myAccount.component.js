@@ -8,18 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var _ = require('lodash');
 var core_1 = require('@angular/core');
 var packages_service_1 = require('../services/packages.service');
 var MyAccountComponent = (function () {
     function MyAccountComponent(packagesService) {
         this.packagesService = packagesService;
-        this.balance = 0.0;
         this.activePackages = [];
     }
     MyAccountComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.packagesService.getActivePackages()
-            .subscribe(function (res) { return _this.activePackages = res; });
+            .subscribe(function (res) {
+            console.log(_.groupBy(res.body.packages, 'type'));
+            _this.activePackages = _.groupBy(res.body.packages, 'type');
+        });
     };
     MyAccountComponent = __decorate([
         core_1.Component({

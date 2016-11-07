@@ -10,21 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var auth_service_1 = require("../services/auth.service");
+var user_service_1 = require("../services/user.service");
 var NavBarComponent = (function () {
-    function NavBarComponent(authService) {
+    function NavBarComponent(authService, userService) {
+        var _this = this;
         this.authService = authService;
+        this.userService = userService;
         this.isCollapsed = true;
+        var userObservable = userService.getCurrentUser();
+        if (userObservable) {
+            userObservable.subscribe(function (value) { return _this.msisdn = value.msisdn; });
+        }
     }
     NavBarComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.authService.isLoggedIn.subscribe(function (value) { _this._isLoggedIn = value; console.log(value); });
+        this.authService.isLoggedIn.subscribe(function (value) { _this._isLoggedIn = value; });
     };
     NavBarComponent = __decorate([
         core_1.Component({
             selector: 'navbar',
             templateUrl: 'templates/navbar.html',
         }), 
-        __metadata('design:paramtypes', [auth_service_1.AuthService])
+        __metadata('design:paramtypes', [auth_service_1.AuthService, user_service_1.UserService])
     ], NavBarComponent);
     return NavBarComponent;
 }());
