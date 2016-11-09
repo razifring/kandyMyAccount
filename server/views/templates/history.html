@@ -11,7 +11,7 @@
                 <input type="radio" [(ngModel)]="type" id="sms" value="sms"> <label for="sms">Outgoing SMS</label>
             </div>
             <div class="history-form-radio-field radio">
-                <input type="radio" [(ngModel)]="type" id="payments" value="payments"> <label for="payments">Payments</label>
+                <input type="radio" [(ngModel)]="type" id="packages" value="packages"> <label for="packages">Packages</label>
             </div>
         </div>
         <div class="top10">
@@ -27,8 +27,76 @@
             </div>
         </div>
         <div class="top10">
-            <button class="btn btn-primary" (click)="searchHistory()">SEARCH</button>
+            <button class="btn btn-primary" (click)="searchHistory()" [disabled]="processing">SEARCH</button>
             <simple-spinner [show]="processing"></simple-spinner>
         </div>
+    </div>
+
+    <div *ngIf="callHistory" class="history-container top20">
+        <h3>Calls History</h3>
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                <tr>
+                    <th class="hidden-xs">#</th>
+                    <th>Start date</th>
+                    <th>Called number</th>
+                    <th>Duration</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of callHistory; let i = index">
+                    <td class="hidden-xs">{{i}}</td>
+                    <td>{{row.call_start_time}}</td>
+                    <td>{{row.destination}}</td>
+                    <td>{{row.duration}}</td>
+                    <td>{{row.call_cost}} USD</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="smsHistory" class="history-container top20">
+        <h3>SMS History</h3>
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+            <tr>
+                <th class="hidden-xs">#</th>
+                <th>Date</th>
+                <th>Destination</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let row of smsHistory; let i = index">
+                <td class="hidden-xs">{{i}}</td>
+                <td>{{row.sent_time}}</td>
+                <td>{{row.destination}}</td>
+                <td>{{row.call_cost}} USD</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="packagesHistory" class="history-container top20">
+        <h3>Package History</h3>
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+            <tr>
+                <th class="hidden-xs">#</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let row of packagesHistory; let i = index">
+                <td class="hidden-xs">{{i}}</td>
+                <td>{{row.transaction_time}}</td>
+                <td>{{row.name}}</td>
+                <td>{{row.cost}} USD</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>

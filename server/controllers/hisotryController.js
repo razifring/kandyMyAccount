@@ -9,6 +9,7 @@ var responseDataObject = require('../lib/dataObjects/responseDataObject');
 exports.getHistory = function(req, res) {
 
     console.log(req.params);
+    console.log(req.userId);
     if(req.params.msisdn !== req.userId) {
         res.json(responseDataObject.create(false, {}));
         return;
@@ -25,6 +26,7 @@ exports.getHistory = function(req, res) {
             }));
         },
         function(e){
+            console.log(e.toString());
             res.json(responseDataObject.create(false, e));
         }
     );

@@ -10,12 +10,14 @@ import {HistoryService} from "../services/history.service";
 
 export class HistoryComponent implements OnInit{
 
-    public type = 'payments';
+    public type = 'packages';
     public startDate;
     public endDate;
     public todayDate;
     public processing:boolean = false;
-    public history;
+    public callHistory;
+    public smsHistory;
+    public packagesHistory;
 
     constructor( private historyService: HistoryService){
         let todayDate = new Date();
@@ -31,27 +33,25 @@ export class HistoryComponent implements OnInit{
 
     searchHistory() {
         this.processing = true;
-        console.log(this.startDate);
-        console.log(this.endDate);
-        console.log(this.type);
 
         let start = this.startDate;
-        let end = this.endDate;
-
-        if(_.isObject(start)){
-            start = start.toISOString().substring(0,10);
-        }
-
-        if(_.isObject(end)){
-            end = end.toISOString().substring(0,10);
-        }
+        let end = this.endDate + ' 23:59:59';
 
 
         this.historyService.getHistory(this.type, start, end)
             .subscribe(
                 res => {
+                    this.packagesHistory = this.callHistory = this.smsHistory = '';
+                    
+                    if(this.type === 'calls') {
+                        this.callHistory = res.body.history;
+                    } else if( this.type === 'sms'){
+                        this.smsHistory = res.body.history;
+                    } else if(this.type === 'packages'){
+                        this.packagesHistory = res.body.history;
+                    }
+
                     this.processing = false;
-                    this.history = res;
                     console.log(res);
                 }
             );

@@ -63,6 +63,7 @@ exports.applyPackage = function(packageId, userId, successCallback, errorCallbac
 };
 
 exports.getPackageConfigById = function(packageId) {
+    packageId = _.parseInt(packageId);
   return _.filter(packageConfig, {'id':packageId})[0];
 };
 

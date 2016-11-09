@@ -5,7 +5,7 @@ var config = require('../../config/config');
 var kandyRequest = require('../common/kandyRequest') ;
 
 exports.getCallHistory = function(userId, start, end, successCallback, errorCallback){
-    var url = config.kandyApi.apiUrl + 'billing/users/hisotry/calls/?user_id=' + userId +
+    var url = config.kandyApi.apiUrl + 'billing/users/history/calls/?user_id=' + userId +
         '&start_time=' + start +
         '&end_time=' + end;
     kandyRequest.get(url, function(data){
@@ -13,3 +13,21 @@ exports.getCallHistory = function(userId, start, end, successCallback, errorCall
     },errorCallback);
 };
 
+exports.getSmsHistory = function(userId, start, end, successCallback, errorCallback){
+    var url = config.kandyApi.apiUrl + 'billing/users/history/smss/?user_id=' + userId +
+        '&start_time=' + start +
+        '&end_time=' + end;
+    kandyRequest.get(url, function(data){
+        kandyRequest.successCallback(data, successCallback, errorCallback);
+    },errorCallback);
+};
+
+
+exports.getPackagesHistory = function(userId, start, end, successCallback, errorCallback){
+    var url = config.kandyApi.apiUrl + 'billing/users/history/packages/?user_id=' + userId +
+        '&start_time=' + start +
+        '&end_time=' + end;
+    kandyRequest.get(url, function(data){
+        kandyRequest.successCallback(data, successCallback, errorCallback);
+    },errorCallback);
+};

@@ -19,6 +19,7 @@ exports.get = function(url, successCallback, errorCallback){
                     self.get(url, successCallback, errorCallback);
                 });
             }else{
+                console.log(error.message);
                 errorCallback({message: error.message, code: error.code});
             }
         });

@@ -7,10 +7,13 @@ module.exports = {
 	root: rootPath,
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
+	app: {
+		name: 'JuanaChat - My Account'
+	},
 
 	// The secret should be set to a non-guessable string that
 	// is used to compute a session hash
-	sessionSecret: 'MEAN',
+	sessionSecret: 'KH86_klTW2064MMD',
 	// The name of the MongoDB collection to store sessions in
 	sessionCollection: 'sessions',
 
