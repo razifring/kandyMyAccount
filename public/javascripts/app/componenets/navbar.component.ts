@@ -5,7 +5,7 @@ import {UserService} from "../services/user.service";
 
 @Component({
     selector: 'navbar',
-    templateUrl: 'templates/navBar.html',
+    templateUrl: 'templates/navbar.html',
 })
 
 export class NavBarComponent {
