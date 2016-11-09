@@ -1,5 +1,5 @@
 'use strict';
-var baseUrl =  'http://pldt.myaccount.kandy.io/';
+var baseUrl =  'http://pldt-myaccount.kandy.io/';
 
 module.exports = {
     port: 9001,
