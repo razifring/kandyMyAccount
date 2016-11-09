@@ -37,7 +37,7 @@ module.exports = function(app) {
         // no compression and 9 is best compression, but slowest
         level: 9
     }));
-
+    process.env.NODE_ENV = 'production';
     // Only use logger for development environment
     if (process.env.NODE_ENV === 'development') {
         app.use(logger({path: config.root + '/server/logs/debug.log'}));
