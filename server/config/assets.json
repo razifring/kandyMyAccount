@@ -1,1 +1,16 @@
-{}
+{
+  "main": {
+    "css": {
+      "public/build/css/dist.min.css": [
+        "public/stylesheets/*.css",
+        "public/stylesheets/bootstrap.css"
+      ]
+    },
+    "js": {
+      "public/build/js/dist.min.js": [
+        "public/javascripts/*.js",
+        "public/javascripts/*/*.js"
+      ]
+    }
+  }
+}

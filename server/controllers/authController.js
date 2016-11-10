@@ -2,6 +2,7 @@
 
 var tokenManager = require('../lib/managers/tokenManager');
 var countryCodes = require('../lib/common/countryCodes');
+var sha256 = require('sha256');
 
 var responseDataObject = require('../lib/dataObjects/responseDataObject');
 /**
@@ -60,15 +61,12 @@ exports.sendOtp = function(req, res){
 };
 
 exports.autologin = function(req, res) {
-    console.log(req.body.userAccessToken);
-    console.log(req.body.msisdn);
     var msisdn = req.body.msisdn;
 
     tokenManager.getUserIdByUserAcceesToken(req.body.userAccessToken,
         function(userId){
-            console.log('recieved user id: ' + userId);
-            console.log('url user id: ' + msisdn);
-            if(msisdn === userId) {
+            let encriptUserId = sha256(userId);
+            if(msisdn === encriptUserId) {
                 req.userSession.user = {
                     userId: userId
                 };
