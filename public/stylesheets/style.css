@@ -3,6 +3,10 @@
 }
 
 body {
+  background-image: url("../images/jc_bg.png");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  height:100%;
 }
 
 a {
@@ -34,7 +38,7 @@ h3 {
 }
 
 footer {
-  height: 20px;
+  height: 10px;
   background-color: #D2272A;
   position: fixed;
   bottom: 0;
@@ -65,7 +69,7 @@ footer {
 .top20 { margin-top:20px; }
 .top30 { margin-top:30px; }
 
-.left5 {maring-left:5px;}
+.left5 {margin-left:5px;}
 
 .link {
   cursor: pointer;
@@ -82,7 +86,7 @@ footer {
   line-height: 29px;
   cursor: pointer;
   display: inline-block;
-  padding: 4px 16px;
+  padding: 10px 30px;
 }
 .navbar-collapse.in ul{
   background-color: white;
@@ -104,12 +108,12 @@ footer {
   text-decoration: none;
   font-size: 20px;
   padding: 6px 0px;
-  margin: 20px 15px;
+  margin: 20px 5px;
   color: #333333;
   border-bottom: 4px solid #FFFFFF;
 }
 
-.navbar-juana a:hover, .navbar-juana .active a{
+.navbar-juana .active a{
   color: #D2272A;
   border-bottom: 4px solid #D2272A;
   background-color: transparent !important;
@@ -203,41 +207,44 @@ footer {
 
 .select-packages {
   margin: 20px 0;
+  padding: 0;
 }
 
 .select-package-item{
-  height: 60px;
-  padding: 12px 0;
-  background: #d8d8d8;
-  margin: 5px 0;
+  padding: 0 0 12px;
+  background: #666;
+  margin: 10px 0;
   border-radius: 4px;
+  color: #fff;
 }
 .select-package-item:hover {
   cursor: pointer;
 }
 .select-package-item:hover, .select-package-item.active{
-  background: #a0a0a0;
+  background: #B11F24;
   color: white;
 }
 
 .select-package-item:hover .text-muted,
 .select-package-item.active .text-muted
 {
-  color: #dcdcdc;
+  color: #fff;
 }
 
 .select-packages .package-price {
-
-
+  font-size:30px;
 }
 
 .select-packages .package-name {
   font-weight: 600;
+  background-color: #d2272a;
+  padding: 5px 20px;
+  margin-bottom: 12px;
+  border-radius: 4px 4px 0 0;
 }
 
-
 .dropdown-menu > li > a:hover{
-  background-color: red;
+  background-color: #D2272A;
   background-image:none !important;
   color: white !important;
 }
@@ -354,6 +361,18 @@ footer {
 
 .history-page .history-result-table {
 
+}
+
+.navbar-header {
+  padding-bottom: 20px;
+}
+
+.purchase-page h2{
+  text-align: center;
+}
+
+.purchase-package-description{
+  text-align: justify;
 }
 
 /* spinner start */
@@ -496,13 +515,13 @@ footer {
   }
 
   .navbar-juana .navbar-brand img {
-    width: 142px;
+    width: 210px;
   }
 }
 
 @media (max-width: 680px){
  .site-padding {
-   padding: 5px;
+   padding: 50px 5px;
  }
   ul.select-packages{
     padding: 0;
@@ -511,7 +530,6 @@ footer {
 @media (max-width: 600px){
 
   .select-package-item {
-    height: 80px;
   }
 
 }

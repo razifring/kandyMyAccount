@@ -4,11 +4,11 @@
         Login to view your account information - transaction history,
         billing, call history and more.
     </div>
-    <div *ngIf="step == 1"class="loing-step-1">
+    <div *ngIf="step == 1" class="loing-step-1">
 
         <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phonenumber.valid }">
-                <label for="phonenumber">Please enter your number:</label>
+                <label for="phonenumber">Please enter your number</label>
                 <div class="clearfix"></div>
                 <div class="numberbox">
                     <div class="col-xs-3 col-md-3 dropdown country-wrapper" dropdown>
