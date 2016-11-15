@@ -31,7 +31,7 @@ var LoginComponent = (function () {
         for (var i = 0, len = this.countriesArray.length; i < len; i++) {
             this.lookupCoutnries[this.countriesArray[i].country] = this.countriesArray[i];
         }
-        this.selectedCountry = this.lookupCoutnries['IL'];
+        this.selectedCountry = this.lookupCoutnries['PH'];
     };
     LoginComponent.prototype.selectCountry = function (countryCode) {
         this.selectedCountry = this.lookupCoutnries[countryCode];

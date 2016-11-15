@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
             this.lookupCoutnries[this.countriesArray[i].country] = this.countriesArray[i];
         }
 
-        this.selectedCountry = this.lookupCoutnries['IL'];
+        this.selectedCountry = this.lookupCoutnries['PH'];
 
     }
 
