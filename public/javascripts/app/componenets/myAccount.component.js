@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var _ = require('lodash');
 var core_1 = require('@angular/core');
 var packages_service_1 = require('../services/packages.service');
+var user_service_1 = require("../services/user.service");
 var MyAccountComponent = (function () {
-    function MyAccountComponent(packagesService) {
+    function MyAccountComponent(packagesService, userService) {
         this.packagesService = packagesService;
         this.activePackages = [];
+        console.log(userService.getCurrentUser().getValue().isPremium);
     }
     MyAccountComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -29,7 +31,7 @@ var MyAccountComponent = (function () {
             templateUrl: 'templates/my-account.html',
             providers: [packages_service_1.PackagesService]
         }), 
-        __metadata('design:paramtypes', [packages_service_1.PackagesService])
+        __metadata('design:paramtypes', [packages_service_1.PackagesService, user_service_1.UserService])
     ], MyAccountComponent);
     return MyAccountComponent;
 }());

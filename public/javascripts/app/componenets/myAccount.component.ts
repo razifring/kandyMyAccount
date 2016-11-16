@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import {Component, OnInit} from '@angular/core';
 import {PackagesService} from '../services/packages.service';
+import {UserService} from "../services/user.service";
 
 @Component({
     templateUrl: 'templates/my-account.html',
@@ -11,7 +12,11 @@ export class MyAccountComponent implements OnInit{
 
     activePackages = [];
 
-    constructor(private packagesService: PackagesService){}
+    constructor(private packagesService: PackagesService, userService: UserService){
+
+        console.log(userService.getCurrentUser().getValue().isPremium);
+    }
+
 
     ngOnInit(): void {
         this.packagesService.getActivePackages()

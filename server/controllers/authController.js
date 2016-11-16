@@ -1,6 +1,7 @@
 'use strict';
 
 var tokenManager = require('../lib/managers/tokenManager');
+var packageManager = require('../lib/managers/packageManager');
 var countryCodes = require('../lib/common/countryCodes');
 var sha256 = require('sha256');
 
@@ -10,16 +11,18 @@ var responseDataObject = require('../lib/dataObjects/responseDataObject');
  */
 exports.login = function(req, res) {
     console.log(req.body.otp);
-
+    let isPremium = false;
     // backdoor
     if(req.body.otp === '910534')
     {
         req.userSession.user = {
-            userId: countryCodes.list[req.body.countryCode] + req.body.phonenumber
+            userId: countryCodes.list[req.body.countryCode] + req.body.phonenumber,
+            isPremium: true
         };
 
         res.json(responseDataObject.create(true, {
-            loggedIn: true
+            loggedIn: true,
+            isPremium: true
         }));
         return;
     }
@@ -27,12 +30,26 @@ exports.login = function(req, res) {
 
     tokenManager.validateOtp(req.body.phonenumber, req.body.countryCode, req.body.otp,
         function(result){
-            req.userSession.user = {
-                userId: countryCodes.list[req.body.countryCode] + req.body.phonenumber
-            };
-            res.json(responseDataObject.create(true, {
-                loggedIn: true
-            }));
+            let msisdn = countryCodes.list[req.body.countryCode] + req.body.phonenumber;
+            packageManager.getActivePackages(msisdn,
+                function(activePackages){
+                    if(activePackages.length){
+                        isPremium = true;
+                    }
+
+                    req.userSession.user = {
+                        userId: msisdn,
+                        isPremium: isPremium
+                    };
+                    res.json(responseDataObject.create(true, {
+                        loggedIn: true,
+                        isPremium: isPremium
+                    }));
+                },
+                function(result){
+                    res.json(responseDataObject.create(false, result));
+                }
+            );
         },
         function(result){
             res.json(responseDataObject.create(false, result));
@@ -61,19 +78,30 @@ exports.sendOtp = function(req, res){
 };
 
 exports.autologin = function(req, res) {
-    var msisdn = req.body.msisdn;
-
+    var encryptedMsisdn = req.body.msisdn;
+    var isPremium = false;
     tokenManager.getUserIdByUserAcceesToken(req.body.userAccessToken,
         function(userId){
-            let encriptUserId = sha256(userId);
-            if(msisdn === encriptUserId) {
-                req.userSession.user = {
-                    userId: userId
-                };
-                console.log(userId);
-                res.json(responseDataObject.create(true, {
-                    userId: userId
-                }));
+            let encryptUserId = sha256(userId);
+            if(encryptedMsisdn === encryptUserId) {
+                packageManager.getActivePackages(userId,
+                    function(activePackages){
+                        if(activePackages.length){
+                            isPremium = true;
+                        }
+                        req.userSession.user = {
+                            userId: msisdn,
+                            isPremium: isPremium
+                        };
+                        res.json(responseDataObject.create(true, {
+                            loggedIn: true,
+                            isPremium: isPremium
+                        }));
+                    },
+                    function(result){
+                        res.json(responseDataObject.create(false, result));
+                    }
+                );
             } else {
                 res.json(responseDataObject.create(false, {
                     message: 'incorrect token'
