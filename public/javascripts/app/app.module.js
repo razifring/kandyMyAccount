@@ -34,6 +34,7 @@ var paypalButton_1 = require("./componenets/common/paypalButton");
 var cards_component_1 = require("./componenets/cards.component");
 var redeemCardForm_component_1 = require("./componenets/redeemCardForm.component");
 var ng2_dropdown_1 = require("ng2-dropdown");
+//import {Ng2DeviceDetector} from 'ng2-device-detector';
 var countryCodes_1 = require("./utils/countryCodes");
 var cookies_service_1 = require('angular2-cookie/services/cookies.service');
 var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
@@ -55,7 +56,7 @@ var AppModule = (function () {
                 ng2_dropdown_1.DropdownModule,
                 app_routing_1.routing,
                 ng2_bootstrap_1.CollapseModule,
-                ng2_bootstrap_2.TabsModule
+                ng2_bootstrap_2.TabsModule,
             ],
             providers: [
                 auth_guard_1.AuthGuard,

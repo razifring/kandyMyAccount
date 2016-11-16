@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var auth_service_1 = require("../services/auth.service");
 var user_service_1 = require("../services/user.service");
+//import {Device} from "ng2-device-detector";
 var NavBarComponent = (function () {
     function NavBarComponent(authService, userService) {
         var _this = this;
@@ -24,6 +25,7 @@ var NavBarComponent = (function () {
     }
     NavBarComponent.prototype.ngOnInit = function () {
         var _this = this;
+        //console.log(this.device);
         this.authService.isLoggedIn.subscribe(function (value) { _this._isLoggedIn = value; });
     };
     NavBarComponent = __decorate([
