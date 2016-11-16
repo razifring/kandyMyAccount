@@ -15,12 +15,9 @@ function PackageDataObject(id, name, balance, remainingMinutes, startTime, endTi
     this.currency = 'USD';
 }
 
-exports.createFromKandy = function (data){
-
-    let packageExtra = packageManager.getPackageByName(data.meta_package);
-    let name = packageManager.getPackageConfigById(packageExtra.id).title;
-    let id = packageExtra.id;
-    return new PackageDataObject(id, name, data.balance, data.remaining_minutes, data.start_timestamp, data.end_timestamp, data.package_type);
+exports.createFromKandy = function (data, packageId){
+    let name = packageManager.getPackageConfigById(packageId).title;
+    return new PackageDataObject(packageId, name, data.balance, data.remaining_minutes, data.start_timestamp, data.end_timestamp, data.package_type);
 };
 
 exports = PackageDataObject;

@@ -4,15 +4,22 @@
 
 
 
-function PackageDataObject(id, name, cost){
+function PackageDataObject(id, name, title, cost){
     this.id = id;
+    this.title = title;
     this.name = name;
     this.cost = cost;
     this.currency = 'USD';
 }
 
-exports.createFromKandy = function (data){
-    return new PackageDataObject(data.package_id, data.package_name, data.cost);
+/**
+ *
+ * @param data - data from packageConfig
+ * @param name - package name
+ * @returns {PackageDataObject}
+ */
+exports.createFromPackagesConfig = function (data, name){
+    return new PackageDataObject(data.id, name, data.title, data.cost);
 };
 
 exports = PackageDataObject;

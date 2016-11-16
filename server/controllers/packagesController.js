@@ -10,13 +10,8 @@ var userPackageDataObject = require('../lib/dataObjects/userPackageDataObject');
 exports.getUserPackages = function(req, res) {
     packageManager.getActivePackages(req.params.msisdn,
         function(packages){
-            let finalPackages = [];
-            for(let i =0; i < packages.length; i++){
-                finalPackages.push(userPackageDataObject.createFromKandy(packages[i]));
-            }
-
             res.json(responseDataObject.create(true, {
-                packages: finalPackages
+                packages: packages
             }));
         },
         function(e){
@@ -26,14 +21,17 @@ exports.getUserPackages = function(req, res) {
 };
 
 exports.getPurchasable = function(req, res) {
-    console.log(req.params);
-    var packages = {
-        creditPlans: packageManager.getCreditPlans(),
-        callPlans: packageManager.getCallPlans(),
-        didPlans: packageManager.getDidPlans()
-    };
-
-    res.json(packages);
+    packageManager.getAllPackages(function(allPackages){
+        var packages = {
+            creditPlans: packageManager.getCreditPlans(allPackages),
+            callPlans: packageManager.getCallPlans(allPackages),
+            didPlans: packageManager.getDidPlans(allPackages)
+        };
+        res.json(packages);
+    },
+    function(){
+        res.json(responseDataObject.create(false, e));
+    });
 };
 
 exports.redeemCard = function(req, res){
