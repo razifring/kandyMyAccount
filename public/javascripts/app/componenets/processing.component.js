@@ -25,6 +25,7 @@ var ProcessingComponent = (function () {
             var paymentId = param.paymentId;
             var payerId = param.PayerID;
             if (paymentId) {
+                // TODO stickerservice.executeAssignSticker
                 _this.paypalService.executePayment(msisdn, paymentId, payerId)
                     .subscribe(function (res) {
                     _this.isProcessing = false;

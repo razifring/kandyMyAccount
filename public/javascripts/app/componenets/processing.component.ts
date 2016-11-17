@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {PackagesService} from "../services/packages.service";
 import {Router, ActivatedRoute} from '@angular/router';
 import {PaypalService} from "../services/paypal.service";
 import {Subscription} from "rxjs";
-import {SpinnerComponent} from "./common/spinner.component";
 
 @Component({
     templateUrl: 'templates/processing.html'
@@ -28,6 +26,7 @@ export class ProcessingComponent implements OnInit{
                 let payerId = param.PayerID;
                 if(paymentId)
                 {
+                    // TODO stickerservice.executeAssignSticker
                     this.paypalService.executePayment(msisdn, paymentId, payerId)
                         .subscribe(
                             res => {

@@ -6,6 +6,7 @@ import { routing } from './app.routing';
 import {NavBarComponent} from "./componenets/navbar.component";
 import {MyAccountComponent} from "./componenets/myAccount.component";
 import {PurchaseComponent} from "./componenets/purchase.component";
+import {StickershopComponent} from "./componenets/stickershop.component";
 import {ListPackagesComponent} from "./componenets/listPackages.component";
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./componenets/login.component";
@@ -33,6 +34,8 @@ import { AutoLoginComponent  } from "./componenets/autoLogin.component";
 import {RatesComponent} from "./componenets/rates.component";
 import {HistoryComponent} from "./componenets/history.component";
 import {HistoryService} from "./services/history.service";
+import {StickerService} from "./services/sticker.service";
+import {StickerCodes} from "./utils/stickerPackageCode";
 
 
 @NgModule({
@@ -56,7 +59,9 @@ import {HistoryService} from "./services/history.service";
         CommonUtils,
         CountryCodes,
         CookieService,
-        HistoryService
+        HistoryService,
+        StickerService,
+        StickerCodes
 
     ],
     declarations: [
@@ -71,6 +76,7 @@ import {HistoryService} from "./services/history.service";
         PaypalButtonComponent,
         ProcessingComponent,
         PurchaseComponent,
+        StickershopComponent,
         RatesComponent,
         RedeemCardFormComponent,
         SelectPackagesComponent,

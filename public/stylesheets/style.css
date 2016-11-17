@@ -3,10 +3,12 @@
 }
 
 body {
+  /*
   background-image: url("../images/jc_bg.png");
-  background-position: right bottom;
+  background-position: bottom;
   background-repeat: no-repeat;
   height:100%;
+  */
 }
 
 a {
@@ -374,7 +376,11 @@ footer {
 .purchase-package-description{
   text-align: justify;
 }
-
+/* STICKER */
+.sticker_panel_img{
+  width: 100px;
+  min-height: 50px;
+}
 /* spinner start */
 .sk-circle {
   margin: 40px auto;

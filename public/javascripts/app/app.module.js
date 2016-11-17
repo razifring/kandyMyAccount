@@ -16,6 +16,7 @@ var app_routing_1 = require('./app.routing');
 var navbar_component_1 = require("./componenets/navbar.component");
 var myAccount_component_1 = require("./componenets/myAccount.component");
 var purchase_component_1 = require("./componenets/purchase.component");
+var stickershop_component_1 = require("./componenets/stickershop.component");
 var listPackages_component_1 = require("./componenets/listPackages.component");
 var forms_1 = require("@angular/forms");
 var login_component_1 = require("./componenets/login.component");
@@ -43,6 +44,8 @@ var autoLogin_component_1 = require("./componenets/autoLogin.component");
 var rates_component_1 = require("./componenets/rates.component");
 var history_component_1 = require("./componenets/history.component");
 var history_service_1 = require("./services/history.service");
+var sticker_service_1 = require("./services/sticker.service");
+var stickerPackageCode_1 = require("./utils/stickerPackageCode");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -68,7 +71,9 @@ var AppModule = (function () {
                 commonUtils_1.CommonUtils,
                 countryCodes_1.CountryCodes,
                 cookies_service_1.CookieService,
-                history_service_1.HistoryService
+                history_service_1.HistoryService,
+                sticker_service_1.StickerService,
+                stickerPackageCode_1.StickerCodes
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -82,6 +87,7 @@ var AppModule = (function () {
                 paypalButton_1.PaypalButtonComponent,
                 processing_component_1.ProcessingComponent,
                 purchase_component_1.PurchaseComponent,
+                stickershop_component_1.StickershopComponent,
                 rates_component_1.RatesComponent,
                 redeemCardForm_component_1.RedeemCardFormComponent,
                 selectPackages_component_1.SelectPackagesComponent,
