@@ -119,7 +119,9 @@ exports.applyPackage = function(packageId, userId, successCallback, errorCallbac
     this.getPackageById(packageId, function(packageData){
         if(packageData)
         {
-            packageService.applyPackage(userId, packageData.name, successCallback, errorCallback)
+            packageService.applyPackage(userId, packageData.name, successCallback, errorCallback);
+
+            // if sticker package then apply stickers here:
         }
     }, errorCallback);
 
