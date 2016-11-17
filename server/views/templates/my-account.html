@@ -16,3 +16,33 @@
     You are not subscribed to any package. <br>
     <a routerLink="/purchase">Get a plan now.</a>
 </div>
+
+
+
+
+
+
+<!--sample packages only-->
+
+<div>
+    <h2>Credit</h2>
+    <list-packages [packages]=activePackages.credit></list-packages>
+</div>
+<div>
+    <h2>Philippine Call and Text Plans</h2>
+    <list-packages [packages]=activePackages.minutes></list-packages>
+</div>
+<div>
+    <h2>Philippine Mobile Number</h2>
+    <list-packages [packages]=activePackages.did></list-packages>
+</div>
+<div>
+    You are not subscribed to any package. <br>
+    <a routerLink="/purchase">Get a plan now.</a>
+</div>
+
+<div class="myaccount_shortcuts row">
+    <div class="shortcut col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/purchase">Button 1</a></div>
+    <div class="shortcut col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/purchase">Button 2</a></div>
+    <div class="shortcut col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/purchase">Button 3</a></div>
+</div>
