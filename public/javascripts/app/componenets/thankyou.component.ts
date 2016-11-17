@@ -1,12 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {PackagesService} from "../services/packages.service";
-import {Router, ActivatedRoute} from '@angular/router';
-import {PaypalService} from "../services/paypal.service";
-import {Subscription} from "rxjs";
+import {Component} from '@angular/core';
 
 @Component({
-    templateUrl: 'templates/thankyou.html',
-    providers: [PackagesService]
+    templateUrl: 'templates/thankyou.html'
 })
 
 export class ThankyouComponent {
