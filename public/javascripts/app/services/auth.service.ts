@@ -23,7 +23,7 @@ export class AuthService {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if(currentUser)
         {
-            this.userService.setCurrentUser(User.create(currentUser.msisdn));
+            this.userService.setCurrentUser(User.create(currentUser.msisdn, currentUser.isPremium));
         }
         // set token if saved in local storage
         this.token = currentUser && currentUser.token;
@@ -74,8 +74,8 @@ export class AuthService {
                     // set token property
                     var msisdn = localStorage.getItem('msisdn');
                     // store username and token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn}));
-                    this.userService.setCurrentUser(User.create(msisdn));
+                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremiuim:result.body.isPremium}));
+                    this.userService.setCurrentUser(User.create(msisdn, result.body.isPremium));
                     this.isLoggedIn.next(true);
                     // return true to indicate successful login
                     return true;
@@ -121,8 +121,8 @@ export class AuthService {
                     // set token property
                     var msisdn = result.body.userId;
                     // store username and token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn}));
-                    this.userService.setCurrentUser(User.create(msisdn));
+                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremiuim:result.body.isPremium}));
+                    this.userService.setCurrentUser(User.create(msisdn, result.body.isPremium));
                     this.isLoggedIn.next(true);
                     // return true to indicate successful login
                     return result;
