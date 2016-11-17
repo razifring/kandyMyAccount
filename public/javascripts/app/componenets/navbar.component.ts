@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import {Component} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {UserService} from "../services/user.service";
-//import {Device} from "ng2-device-detector";
+import {Device} from "ng2-device-detector";
 
 @Component({
     selector: 'navbar',
@@ -18,7 +18,7 @@ export class NavBarComponent {
     constructor(
         private authService: AuthService,
         private userService: UserService,
-        //private device: Device
+        public device: Device
     ) {
         let userObservable = userService.getCurrentUser();
         if(userObservable){
@@ -27,7 +27,7 @@ export class NavBarComponent {
     }
 
     ngOnInit(): void {
-        //console.log(this.device);
+        console.log(this.device.device);
         this.authService.isLoggedIn.subscribe(
             value => {this._isLoggedIn = value;}
         );
