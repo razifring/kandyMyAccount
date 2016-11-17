@@ -24,6 +24,7 @@ import {PaypalButtonComponent} from "./componenets/common/paypalButton";
 import {CardsComponent} from "./componenets/cards.component";
 import {RedeemCardFormComponent} from "./componenets/redeemCardForm.component";
 import {DropdownModule} from "ng2-dropdown";
+import {Ng2DeviceDetector} from 'ng2-device-detector';
 import {CountryCodes} from "./utils/countryCodes";
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { CollapseModule  } from 'ng2-bootstrap/ng2-bootstrap';
@@ -43,7 +44,8 @@ import {HistoryService} from "./services/history.service";
         DropdownModule,
         routing,
         CollapseModule,
-        TabsModule
+        TabsModule,
+        Ng2DeviceDetector
     ],
     providers: [
         AuthGuard,

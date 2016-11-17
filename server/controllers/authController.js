@@ -90,11 +90,11 @@ exports.autologin = function(req, res) {
                             isPremium = true;
                         }
                         req.userSession.user = {
-                            userId: msisdn,
+                            userId: userId,
                             isPremium: isPremium
                         };
                         res.json(responseDataObject.create(true, {
-                            loggedIn: true,
+                            userId: userId,
                             isPremium: isPremium
                         }));
                     },
