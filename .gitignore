@@ -53,3 +53,12 @@ Temporary Items
 /public/javascripts/**/*.js.map
 /public/javascripts/app/componenets/*.js
 /public/javascripts/app/componenets/app.component.js
+/public/javascripts/app/componenets/myAccount.component.js
+/public/javascripts/app/componenets/myAccount.component.js.map
+/public/javascripts/app/componenets/history.component.js.map
+/public/javascripts/app/componenets/history.component.js
+/public/javascripts/app/componenets/cards.component.js.map
+/public/javascripts/app/componenets/cards.component.js
+/public/javascripts/app/componenets/autoLogin.component.js.map
+/public/javascripts/app/componenets/autoLogin.component.js
+/public/javascripts/app/componenets/app.component.js.map

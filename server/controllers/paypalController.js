@@ -85,7 +85,7 @@ exports.executePayment = function(req, res) {
     paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
         if (error) {
             console.log(error.response);
-            throw error;
+            res.json({status: false, message: 'Purchase failed, please try again'});
         } else {
             packageManager.applyPackage(payment.transactions[0].item_list.items[0].sku, msisdn,
                 function(result){
@@ -94,7 +94,7 @@ exports.executePayment = function(req, res) {
                 },
                 function(e){
                     console.log(e);
-                    res.json({status: false});
+                    res.json({status: false, message: 'Purchase failed, please contact customer support. payment id: ' + paymentId});
                 }
             );
         }

@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import {Component, OnInit} from '@angular/core';
 import {PackagesService} from '../services/packages.service';
 import {UserService} from "../services/user.service";
+import Dictionary = _.Dictionary;
 
 @Component({
     templateUrl: 'templates/my-account.html',
@@ -10,10 +11,10 @@ import {UserService} from "../services/user.service";
 
 export class MyAccountComponent implements OnInit{
 
-    activePackages = [];
+    public activePackages;
 
     constructor(private packagesService: PackagesService, userService: UserService){
-
+        //this.activePackages = new Dictionary();
         console.log(userService.getCurrentUser().getValue().isPremium);
     }
 
