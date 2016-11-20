@@ -13,9 +13,11 @@ require('rxjs/add/operator/map');
 var core_1 = require("@angular/core");
 var common_service_1 = require("./common.service");
 var user_service_1 = require("./user.service");
+var http_1 = require("@angular/http");
 var PackagesService = (function () {
-    function PackagesService(_http, userService) {
+    function PackagesService(_http, http, userService) {
         this._http = _http;
+        this.http = http;
         this.userService = userService;
     }
     PackagesService.prototype.getActivePackages = function () {
@@ -34,7 +36,7 @@ var PackagesService = (function () {
     };
     PackagesService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_client_1.HttpClient, user_service_1.UserService])
+        __metadata('design:paramtypes', [http_client_1.HttpClient, http_1.Http, user_service_1.UserService])
     ], PackagesService);
     return PackagesService;
 }());
