@@ -111,8 +111,8 @@ exports.getDidPlans = function(allKandyPackages){
     return getPlansByType(packageEnum.type.did, allKandyPackages);
 };
 
-exports.redeemCard = function(pinCode){
-    return packageService.redeemCard(pinCode);
+exports.redeemCard = function(pinCode, userId, successCallback, errorCallback){
+    return packageService.redeemCard(pinCode, userId, successCallback, errorCallback);
 };
 
 exports.applyPackage = function(packageId, userId, successCallback, errorCallback){

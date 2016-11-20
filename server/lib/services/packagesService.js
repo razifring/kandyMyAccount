@@ -20,10 +20,14 @@ exports.getActivePackages = function(userId, successCallback, errorCallback){
 };
 
 exports.redeemCard = function(pinCode, userId, successCallback, errorCallback){
-    var url = config.kandyApi.apiUrl + 'billing/topup/card?user_id=' + userId;
-    kandyRequest.put(url, function(data){
+    let url = config.kandyApi.apiUrl + 'users/billing/topup/card';
+    let params = {
+        'user_id': userId,
+        'pin_code': pinCode
+    };
+    kandyRequest.put(url, params, function(data){
         console.log('packages are '+data);
-        successCallback(data);
+        kandyRequest.successCallback(data, successCallback, errorCallback);
     },errorCallback);
 };
 

@@ -52,3 +52,4 @@ Temporary Items
 /public/javascripts/**/*.js
 /public/javascripts/**/*.js.map
 /public/javascripts/app/componenets/*.js
+/public/javascripts/app/componenets/app.component.js

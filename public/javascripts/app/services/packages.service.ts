@@ -27,8 +27,6 @@ export class PackagesService {
     }
 
     getPurchsablePackages(): Observable<any>{
-        let options = {withCredentials: true};
-        return this.http.get('https://stickers.juanachat.com/?brand=juanachat', options).map(CommonService.extractData);
         return this._http.get('/api/packages/')
             .map(CommonService.extractData)
     }

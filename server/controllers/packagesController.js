@@ -36,7 +36,12 @@ exports.getPurchasable = function(req, res) {
 
 exports.redeemCard = function(req, res){
     var pinCode = req.body.cardNumber;
-    packageManager.redeemCard(pinCode, req.userId);
-    console.log(pinCode);
-    res.json(true);
+    packageManager.redeemCard(pinCode, req.userId,
+        function(data){
+            res.json(responseDataObject.create(true, {}));
+        },
+        function(e) {
+            res.json(responseDataObject.create(false, e));
+        }
+    );
 };
