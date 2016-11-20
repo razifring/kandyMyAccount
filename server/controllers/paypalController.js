@@ -90,10 +90,11 @@ exports.executePayment = function(req, res) {
             packageManager.applyPackage(payment.transactions[0].item_list.items[0].sku, msisdn,
                 function(result){
                     console.log(result);
-                    res.json({status: 'ok'});
+                    res.json({status: true});
                 },
                 function(e){
                     console.log(e);
+                    res.json({status: false});
                 }
             );
         }

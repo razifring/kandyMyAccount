@@ -28,7 +28,11 @@ var ProcessingComponent = (function () {
                 _this.paypalService.executePayment(msisdn, paymentId, payerId)
                     .subscribe(function (res) {
                     _this.isProcessing = false;
-                    _this.router.navigate(['/thankyou']);
+                    if (res.status) {
+                        _this.router.navigate(['/thankyou']);
+                    }
+                    else {
+                    }
                 });
             }
         });

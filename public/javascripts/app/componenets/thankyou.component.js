@@ -9,14 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var packages_service_1 = require("../services/packages.service");
 var ThankyouComponent = (function () {
     function ThankyouComponent() {
     }
     ThankyouComponent = __decorate([
         core_1.Component({
-            templateUrl: 'templates/thankyou.html',
-            providers: [packages_service_1.PackagesService]
+            templateUrl: 'templates/thankyou.html'
         }), 
         __metadata('design:paramtypes', [])
     ], ThankyouComponent);

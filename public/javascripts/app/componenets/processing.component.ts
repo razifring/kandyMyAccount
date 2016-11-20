@@ -32,7 +32,13 @@ export class ProcessingComponent implements OnInit{
                         .subscribe(
                             res => {
                                 this.isProcessing = false;
-                                this.router.navigate(['/thankyou']);
+                                if(res.status){
+                                    this.router.navigate(['/thankyou']);
+                                } else {
+                                    // TODO: display error message
+                                }
+
+
                             });
                 }
             });

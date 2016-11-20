@@ -29,7 +29,7 @@ exports.getPurchasable = function(req, res) {
         };
         res.json(packages);
     },
-    function(){
+    function(e){
         res.json(responseDataObject.create(false, e));
     });
 };
