@@ -1,1 +1,0 @@
-{"version":3,"file":"listPackages.component.js","sourceRoot":"","sources":["listPackages.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA+B,eAAe,CAAC,CAAA;AAiB/C;IAAA;QACI,aAAQ,GAAG,EAAE,CAAC;IAClB,CAAC;IAhBD;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,eAAe;YACzB,QAAQ,EAAE,s2BAQQ;YAClB,MAAM,EAAE,CAAC,UAAU,CAAC;SACvB,CAAC;;6BAAA;IAIF,4BAAC;AAAD,CAAC,AAFD,IAEC;AAFY,6BAAqB,wBAEjC,CAAA"}
