@@ -12,6 +12,7 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 export class AuthService {
     public token: string = '';
     public isLoggedIn = new BehaviorSubject<boolean>(false);
+    public webview = false;
 
 
     constructor(
@@ -115,6 +116,7 @@ export class AuthService {
             .post('/api/auth/autologin', {msisdn:msisdn, userAccessToken: userAccessToken}, options)
             .map((response: Response) => {
                 var result = response.json();
+                this.webview = true;
                 let status = result && result.status;
 
                 if (status) {
