@@ -14,8 +14,7 @@ export class MyAccountComponent implements OnInit{
     public activePackages;
 
     constructor(private packagesService: PackagesService, userService: UserService){
-        //this.activePackages = new Dictionary();
-        console.log(userService.getCurrentUser().getValue().isPremium);
+        console.log('is premium: ' + userService.getCurrentUser().getValue().isPremium);
     }
 
 
@@ -23,7 +22,6 @@ export class MyAccountComponent implements OnInit{
         this.packagesService.getActivePackages()
             .subscribe(
                 res => {
-                    console.log(_.groupBy(res.body.packages, 'type'));
                     this.activePackages = _.groupBy(res.body.packages, 'type');
                 }
             );

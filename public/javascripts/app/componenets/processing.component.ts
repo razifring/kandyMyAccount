@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {PackagesService} from "../services/packages.service";
 import {Router, ActivatedRoute} from '@angular/router';
 import {PaypalService} from "../services/paypal.service";
-import {Subscription} from "rxjs";
-import {SpinnerComponent} from "./common/spinner.component";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     templateUrl: 'templates/processing.html'

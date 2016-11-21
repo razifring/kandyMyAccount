@@ -75,7 +75,7 @@ export class AuthService {
                     // set token property
                     var msisdn = localStorage.getItem('msisdn');
                     // store username and token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremiuim:result.body.isPremium}));
+                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremium:result.body.isPremium}));
                     this.userService.setCurrentUser(User.create(msisdn, result.body.isPremium));
                     this.isLoggedIn.next(true);
                     // return true to indicate successful login
@@ -123,7 +123,7 @@ export class AuthService {
                     // set token property
                     var msisdn = result.body.userId;
                     // store username and token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremiuim:result.body.isPremium}));
+                    localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremium:result.body.isPremium}));
                     this.userService.setCurrentUser(User.create(msisdn, result.body.isPremium));
                     this.isLoggedIn.next(true);
                     // return true to indicate successful login
