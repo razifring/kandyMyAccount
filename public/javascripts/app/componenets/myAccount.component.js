@@ -15,7 +15,7 @@ var user_service_1 = require("../services/user.service");
 var MyAccountComponent = (function () {
     function MyAccountComponent(packagesService, userService) {
         this.packagesService = packagesService;
-        this.activePackages = [];
+        //this.activePackages = new Dictionary();
         console.log(userService.getCurrentUser().getValue().isPremium);
     }
     MyAccountComponent.prototype.ngOnInit = function () {
