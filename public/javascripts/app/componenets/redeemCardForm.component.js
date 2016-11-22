@@ -26,8 +26,13 @@ var RedeemCardFormComponent = (function () {
         this.packagesService.redeemCard(cardNum)
             .subscribe(function (res) {
             _this.processing = false;
-            _this.successResponse = 'You have redeemed the card successfully.';
-            _this.model.reset();
+            if (res.status) {
+                _this.successResponse = 'You have redeemed the card successfully.';
+                _this.model.reset();
+            }
+            else {
+                _this.errorResponse = res.body.message;
+            }
         });
     };
     RedeemCardFormComponent = __decorate([

@@ -12,9 +12,9 @@ import {CommonUtils} from "../utils/commonUtils";
 })
 
 export class PurchaseComponent implements OnInit{
-    creditPlans = [];
-    callPlans = [];
-    didPlans = [];
+    creditPlans;
+    callPlans;
+    didPlans;
     selectedPackageId;
     disableBtns = true;
     isProcessing = false;

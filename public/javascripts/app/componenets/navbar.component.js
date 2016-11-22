@@ -19,14 +19,13 @@ var NavBarComponent = (function () {
         this.userService = userService;
         this.device = device;
         this.isCollapsed = true;
-        var userObservable = userService.getCurrentUser();
+        var userObservable = this.userService.getCurrentUser();
         if (userObservable) {
             userObservable.subscribe(function (value) { return _this.msisdn = value.msisdn; });
         }
     }
     NavBarComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log(this.device.device);
         this.authService.isLoggedIn.subscribe(function (value) { _this._isLoggedIn = value; });
     };
     NavBarComponent = __decorate([

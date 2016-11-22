@@ -15,14 +15,12 @@ var user_service_1 = require("../services/user.service");
 var MyAccountComponent = (function () {
     function MyAccountComponent(packagesService, userService) {
         this.packagesService = packagesService;
-        this.activePackages = [];
-        console.log(userService.getCurrentUser().getValue().isPremium);
+        console.log('is premium: ' + userService.getCurrentUser().getValue().isPremium);
     }
     MyAccountComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.packagesService.getActivePackages()
             .subscribe(function (res) {
-            console.log(_.groupBy(res.body.packages, 'type'));
             _this.activePackages = _.groupBy(res.body.packages, 'type');
         });
     };

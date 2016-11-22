@@ -17,9 +17,6 @@ var PurchaseComponent = (function () {
     function PurchaseComponent(packagesService, paypalService) {
         this.packagesService = packagesService;
         this.paypalService = paypalService;
-        this.creditPlans = [];
-        this.callPlans = [];
-        this.didPlans = [];
         this.disableBtns = true;
         this.isProcessing = false;
     }

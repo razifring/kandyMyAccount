@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {PaypalService} from "../services/paypal.service";
 import {Subscription} from "rxjs";
+import {Subscription} from "rxjs/Subscription";
+
 
 @Component({
     templateUrl: 'templates/processing.html'
@@ -31,7 +33,13 @@ export class ProcessingComponent implements OnInit{
                         .subscribe(
                             res => {
                                 this.isProcessing = false;
-                                this.router.navigate(['/thankyou']);
+                                if(res.status){
+                                    this.router.navigate(['/thankyou']);
+                                } else {
+                                    // TODO: display error message
+                                }
+
+
                             });
                 }
             });

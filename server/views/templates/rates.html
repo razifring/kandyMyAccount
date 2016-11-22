@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="rate-select">
                         <select class="form-control" [(ngModel)]="currentRate">
-                            <option *ngFor="let o of rateList" [ngValue]="o">{{o.name}}</option>
+                            <option *ngFor="let o of rateList" [ngValue]="o">{{o.name | slice:0:50}}</option>
                         </select>
                     </div>
                 </div>

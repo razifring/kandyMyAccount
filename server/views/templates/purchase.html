@@ -11,15 +11,15 @@
     <paypal-button (ButtonClicked)=goToPaypal($event) [disabled]=disableBtns [isProcessing]=isProcessing></paypal-button>
     <div>&nbsp;</div>
     <h2>Philippine Call and Text Plans</h2>
-    <div class="purchase-package-description">Plan with minutes to call any number in the Philippines and SMS to call Smart, Talk N Text or Sun Cellular Numbers. Choose between {{callPlans.philipene?.length}} plans that best suit your budget and your long distance calling needs.</div>
+    <div class="purchase-package-description">Plan with minutes to call any number in the Philippines and SMS to call Smart, Talk N Text or Sun Cellular Numbers. Choose between {{callPlans?.philipene?.length}} plans that best suit your budget and your long distance calling needs.</div>
     <div class="top20">
-        <select-package [selected]=selectedPackageId [packages]=callPlans.philipene (onSelect)="packageSelected($event)"></select-package>
+        <select-package [selected]=selectedPackageId [packages]=callPlans?.philipene (onSelect)="packageSelected($event)"></select-package>
     </div>
     <div>&nbsp;</div>
     <h2>Telebabad Pinas Offers</h2>
-    <div class="purchase-package-description">Call all you want to the Philippines with Telebabad Pinas. Choose between {{callPlans.telebabad?.length}} plans that best suit your telebabad needs.</div>
+    <div class="purchase-package-description">Call all you want to the Philippines with Telebabad Pinas. Choose between {{callPlans?.telebabad?.length}} plans that best suit your telebabad needs.</div>
     <div class="top20">
-        <select-package [selected]=selectedPackageId [packages]=callPlans.telebabad (onSelect)="packageSelected($event)"></select-package>
+        <select-package [selected]=selectedPackageId [packages]=callPlans?.telebabad (onSelect)="packageSelected($event)"></select-package>
     </div>
     <div class="clearfix"></div>
     <paypal-button (ButtonClicked)=goToPaypal($event) [disabled]=disableBtns [isProcessing]=isProcessing></paypal-button>

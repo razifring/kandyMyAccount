@@ -70,6 +70,7 @@ var AppModule = (function () {
                 paypal_service_1.PaypalService,
                 commonUtils_1.CommonUtils,
                 countryCodes_1.CountryCodes,
+                Rates,
                 cookies_service_1.CookieService,
                 history_service_1.HistoryService,
                 sticker_service_1.StickerService,

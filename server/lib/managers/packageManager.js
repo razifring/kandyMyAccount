@@ -111,15 +111,17 @@ exports.getDidPlans = function(allKandyPackages){
     return getPlansByType(packageEnum.type.did, allKandyPackages);
 };
 
-exports.redeemCard = function(pinCode){
-    return packageService.redeemCard(pinCode);
+exports.redeemCard = function(pinCode, userId, successCallback, errorCallback){
+    return packageService.redeemCard(pinCode, userId, successCallback, errorCallback);
 };
 
 exports.applyPackage = function(packageId, userId, successCallback, errorCallback){
     this.getPackageById(packageId, function(packageData){
         if(packageData)
         {
-            packageService.applyPackage(userId, packageData.name, successCallback, errorCallback)
+            packageService.applyPackage(userId, packageData.name, successCallback, errorCallback);
+
+            // if sticker package then apply stickers here:
         }
     }, errorCallback);
 

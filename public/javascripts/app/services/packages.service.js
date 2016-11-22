@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var http_client_1 = require('../utils/http-client');
-require('rxjs/add/operator/map');
 var core_1 = require("@angular/core");
 var common_service_1 = require("./common.service");
 var user_service_1 = require("./user.service");

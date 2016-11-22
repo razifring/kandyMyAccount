@@ -10,19 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var packages_service_1 = require('../services/packages.service');
+var rates_1 = require("../utils/rates");
 var RatesComponent = (function () {
-    function RatesComponent() {
-        this.rateList = [{ name: 'alaska', value: '5.99' }, { name: 'teman', value: '2.99' }];
-        this.currentRate = this.rateList[0];
+    function RatesComponent(rates) {
+        this.rates = rates;
+        this.rateList = [];
     }
     RatesComponent.prototype.ngOnInit = function () {
+        this.rateList = this.rates.getRates();
+        this.currentRate = this.rateList[0];
     };
     RatesComponent = __decorate([
         core_1.Component({
             templateUrl: 'templates/rates.html',
             providers: [packages_service_1.PackagesService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [rates_1.Rates])
     ], RatesComponent);
     return RatesComponent;
 }());

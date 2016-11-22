@@ -1,9 +1,30 @@
 <h1>Active Packages</h1>
 
-<div *ngIf="activePackages.credit?.length > 0">
-    <h2>Credit</h2>
-    <list-packages [packages]=activePackages.credit></list-packages>
+<div class="row">
+    <div *ngIf="activePackages.credit?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="package-box">
+            <h2>Credit</h2>
+            <list-packages [packages]=activePackages.credit></list-packages>
+        </div>
+    </div>
+    <div *ngIf="activePackages.minutes?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="package-box">
+            <h2>Philippine Call and Text Plans</h2>
+            <list-packages [packages]=activePackages.minutes></list-packages>
+        </div>
+    </div>
+    <div *ngIf="activePackages.did?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="package-box">
+            <h2>Philippine Mobile Number</h2>
+            <list-packages [packages]=activePackages.did></list-packages>
+        </div>
+    </div>
+    <div *ngIf="activePackages?.length === 0">
+        You are not subscribed to any package. <br>
+        <a routerLink="/purchase">Get a plan now.</a>
+    </div>
 </div>
+
 <div *ngIf="activePackages.minutes?.length > 0">
     <h2>Philippine Call and Text Plans</h2>
     <list-packages [packages]=activePackages.minutes></list-packages>
@@ -17,47 +38,65 @@
     <a routerLink="/purchase">Get a plan now.</a>
 </div>
 
-<<<<<<< HEAD
-<!-- SAMPLE -->
-<div>
-    <ul>
-        <li class="active-package-item top15" *ngFor="let package of packages">
-            <div><span class="active-package-item-field">Name:</span>{{package.name}}</div>
-            <div *ngIf="package.balance > 0"><span class="active-package-item-field">Balance:</span>&#36;{{package.balance}}</div>
-            <div *ngIf="package.remainingMinutes > 0"><span class="active-package-item-field">Remaining Time:</span>{{package.remainingMinutes}} minutes</div>
-            <div><span class="active-package-item-field">Start Time:</span>{{package.startTime | date: 'dd/MM/yyyy HH:mm'}}</div>
-            <div><span class="active-package-item-field">End Time:</span>{{package.endTime | date: 'dd/MM/yyyy HH:mm'}}</div>
-        </li>
-    </ul>
+
+
+<!--sample packages only... for theming and testing... remove before deployment-->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="package-box">
+            <h3>Philippine Mobile Number</h3>
+            <ul class="package_list">
+                <li class="active-package-item top15" >
+                    <div><span class="active-package-item-field">Name:</span>package name</div>
+                    <div><span class="active-package-item-field">Balance:</span>891.00</div>
+                    <div><span class="active-package-item-field">Remaining Time:</span>20 minutes</div>
+                    <div><span class="active-package-item-field">Start Time:</span>date: dd/MM/yyyy HH:mm</div>
+                    <div><span class="active-package-item-field">End Time:</span>date: dd/MM/yyyy HH:mm</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="package-box">
+            <h3>Credit</h3>
+            <ul class="package_list">
+                <li class="active-package-item top15" >
+                    <div><span class="active-package-item-field">Name:</span>package name</div>
+                    <div><span class="active-package-item-field">Balance:</span>891.00</div>
+                    <div><span class="active-package-item-field">Remaining Time:</span>20 minutes</div>
+                    <div><span class="active-package-item-field">Start Time:</span>date: dd/MM/yyyy HH:mm</div>
+                    <div><span class="active-package-item-field">End Time:</span>date: dd/MM/yyyy HH:mm</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="package-box ">
+            <h3>Philippine Call and Text Plans</h3>
+            <ul class="package_list">
+                <li class="active-package-item top15" >
+                    <div><span class="active-package-item-field">Name:</span>package name</div>
+                    <div><span class="active-package-item-field">Balance:</span>891.00</div>
+                    <div><span class="active-package-item-field">Remaining Time:</span>20 minutes</div>
+                    <div><span class="active-package-item-field">Start Time:</span>date: dd/MM/yyyy HH:mm</div>
+                    <div><span class="active-package-item-field">End Time:</span>date: dd/MM/yyyy HH:mm</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        You are not subscribed to any package. <br>
+        <a routerLink="/purchase">Get a plan now.</a>
+    </div>
 </div>
-=======
 
-
-
-
-
-<!--sample packages only-->
-
-<div>
-    <h2>Credit</h2>
-    <list-packages [packages]=activePackages.credit></list-packages>
-</div>
-<div>
-    <h2>Philippine Call and Text Plans</h2>
-    <list-packages [packages]=activePackages.minutes></list-packages>
-</div>
-<div>
-    <h2>Philippine Mobile Number</h2>
-    <list-packages [packages]=activePackages.did></list-packages>
-</div>
-<div>
-    You are not subscribed to any package. <br>
-    <a routerLink="/purchase">Get a plan now.</a>
-</div>
+<!--shortcut buttons-->
 
 <div class="myaccount_shortcuts row">
-    <div class="shortcut col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/purchase">Button 1</a></div>
-    <div class="shortcut col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/purchase">Button 2</a></div>
-    <div class="shortcut col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/purchase">Button 3</a></div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/purchase"><div class="shortcut btn-purchase"></div><div>Purchase</div></a></div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/cards"><div class="shortcut btn-reload"></div><div>Reload Cards</div></a></div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/sticker"><div class="shortcut btn-sticker"></div><div>Sticker Shop</div></a></div>
 </div>
->>>>>>> f0e737fd6879b01e3bb7a3944bb82a1e5241adc1
+

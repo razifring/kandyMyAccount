@@ -24,6 +24,7 @@ var AuthService = (function () {
         this.cookieService = cookieService;
         this.token = '';
         this.isLoggedIn = new Rx_1.BehaviorSubject(false);
+        this.webview = false;
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser) {
             this.userService.setCurrentUser(user_1.User.create(currentUser.msisdn, currentUser.isPremium));
@@ -71,7 +72,7 @@ var AuthService = (function () {
                 // set token property
                 var msisdn = localStorage.getItem('msisdn');
                 // store username and token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremiuim: result.body.isPremium }));
+                localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremium: result.body.isPremium }));
                 _this.userService.setCurrentUser(user_1.User.create(msisdn, result.body.isPremium));
                 _this.isLoggedIn.next(true);
                 // return true to indicate successful login
@@ -110,12 +111,13 @@ var AuthService = (function () {
             .post('/api/auth/autologin', { msisdn: msisdn, userAccessToken: userAccessToken }, options)
             .map(function (response) {
             var result = response.json();
+            _this.webview = true;
             var status = result && result.status;
             if (status) {
                 // set token property
                 var msisdn = result.body.userId;
                 // store username and token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremiuim: result.body.isPremium }));
+                localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremium: result.body.isPremium }));
                 _this.userService.setCurrentUser(user_1.User.create(msisdn, result.body.isPremium));
                 _this.isLoggedIn.next(true);
                 // return true to indicate successful login
