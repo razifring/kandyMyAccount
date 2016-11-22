@@ -11,4 +11,4 @@ exports.create = function (status, body){
     return new ResponseDataObject(status, body);
 };
 
-exports = ResponseDataObject;
+exports = ResponseDataObject
