@@ -213,7 +213,6 @@ footer {
 .select-package-item{
   padding: 0 0 12px;
   background: #666;
-  margin: 10px 0;
   border-radius: 4px;
   color: #fff;
 }
@@ -224,7 +223,7 @@ footer {
   background: #B11F24;
   background-image: url("../images/jc_redbg.png");
   background-position: center;
-  color: white;
+  color: #fff;
 }
 
 .select-package-item:hover .text-muted,
@@ -233,11 +232,11 @@ footer {
   color: #fff;
 }
 
-.select-packages .package-price {
+.package-price {
   font-size:30px;
 }
 
-.select-packages .package-name {
+.package-name {
   font-weight: 600;
   background-color: #d2272a;
   padding: 5px 20px;
@@ -293,11 +292,11 @@ footer {
 }
 
 .active-package-item div {
-  line-height: 21px;
+  line-height: 14px;
 }
 
 .active-package-item-field {
-  width: 118px;
+  width: 80px;
   display: inline-block;
 }
 
@@ -386,8 +385,45 @@ footer {
   background: url("../images/jc_redbg.png") center no-repeat;
 }
 
+.myaccount_shortcuts{
+  margin-top:40px;
+}
+
 .shortcut {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.shortcut + div{
   text-align: center;
+}
+
+.btn-purchase {
+  background: url("../images/purchase.png") center no-repeat;
+}
+
+.btn-reload {
+  background: url("../images/reload.png") center no-repeat;
+}
+
+.btn-sticker {
+  background: url("../images/sticker.png") center no-repeat;
+}
+
+.package-box{
+  background-color:#ddd;
+  padding:10px;
+  margin:5px;
+  border-radius: 5px;
+}
+
+.package_list {
+  padding:0;
+}
+
+.package_list li{
+  font-size: 10px;
 }
 
 /* spinner start */

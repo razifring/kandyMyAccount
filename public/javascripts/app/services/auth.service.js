@@ -71,7 +71,6 @@ var AuthService = (function () {
                 // set token property
                 var msisdn = localStorage.getItem('msisdn');
                 // store username and token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify({ msisdn: msisdn, isPremiuim: result.body.isPremium }));
                 _this.userService.setCurrentUser(user_1.User.create(msisdn, result.body.isPremium));
                 _this.isLoggedIn.next(true);
                 // return true to indicate successful login
