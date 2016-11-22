@@ -1,22 +1,22 @@
 <h1>Active Packages</h1>
 
 <div class="row">
-    <div *ngIf="activePackages.credit?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div *ngIf="activePackages?.credit?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
         <div class="package-box">
             <h2>Credit</h2>
-            <list-packages [packages]=activePackages.credit></list-packages>
+            <list-packages [packages]=activePackages?.credit></list-packages>
         </div>
     </div>
-    <div *ngIf="activePackages.minutes?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div *ngIf="activePackages?.minutes?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
         <div class="package-box">
             <h2>Philippine Call and Text Plans</h2>
-            <list-packages [packages]=activePackages.minutes></list-packages>
+            <list-packages [packages]=activePackages?.minutes></list-packages>
         </div>
     </div>
-    <div *ngIf="activePackages.did?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div *ngIf="activePackages?.did?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
         <div class="package-box">
             <h2>Philippine Mobile Number</h2>
-            <list-packages [packages]=activePackages.did></list-packages>
+            <list-packages [packages]=activePackages?.did></list-packages>
         </div>
     </div>
     <div *ngIf="activePackages?.length === 0">
@@ -25,13 +25,13 @@
     </div>
 </div>
 
-<div *ngIf="activePackages.minutes?.length > 0">
+<div *ngIf="activePackages?.minutes?.length > 0">
     <h2>Philippine Call and Text Plans</h2>
-    <list-packages [packages]=activePackages.minutes></list-packages>
+    <list-packages [packages]=activePackages?.minutes></list-packages>
 </div>
-<div *ngIf="activePackages.did?.length > 0">
+<div *ngIf="activePackages?.did?.length > 0">
     <h2>Philippine Mobile Number</h2>
-    <list-packages [packages]=activePackages.did></list-packages>
+    <list-packages [packages]=activePackages?.did></list-packages>
 </div>
 <div *ngIf="activePackages?.length === 0">
     You are not subscribed to any package. <br>

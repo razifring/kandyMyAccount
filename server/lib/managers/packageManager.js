@@ -8,6 +8,7 @@ var _ = require('lodash');
 var packageDataObject = require('../dataObjects/packageDataObject') ;
 var userPackageDataObject = require('../dataObjects/userPackageDataObject');
 var allPackages = [];
+var apiCache = require('apicache');
 
 exports.getAllPackages = function(successCallback, errorCallback){
 
@@ -120,6 +121,7 @@ exports.applyPackage = function(packageId, userId, successCallback, errorCallbac
         if(packageData)
         {
             packageService.applyPackage(userId, packageData.name, successCallback, errorCallback);
+            apiCache.clear('/api/packages/:msisdn');
 
             // if sticker package then apply stickers here:
         }

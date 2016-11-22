@@ -34,12 +34,10 @@ import { AutoLoginComponent  } from "./componenets/autoLogin.component";
 import {RatesComponent} from "./componenets/rates.component";
 import {HistoryComponent} from "./componenets/history.component";
 import {HistoryService} from "./services/history.service";
-<<<<<<< HEAD
 import {StickerService} from "./services/sticker.service";
 import {StickerCodes} from "./utils/stickerPackageCode";
-=======
 import {Rates} from "./utils/rates";
->>>>>>> b8f6505e7912e8dbb91e9da4d21741c6f72b5da4
+
 
 
 @NgModule({

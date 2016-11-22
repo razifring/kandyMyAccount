@@ -46,6 +46,7 @@ var history_component_1 = require("./componenets/history.component");
 var history_service_1 = require("./services/history.service");
 var sticker_service_1 = require("./services/sticker.service");
 var stickerPackageCode_1 = require("./utils/stickerPackageCode");
+var rates_1 = require("./utils/rates");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -70,7 +71,7 @@ var AppModule = (function () {
                 paypal_service_1.PaypalService,
                 commonUtils_1.CommonUtils,
                 countryCodes_1.CountryCodes,
-                Rates,
+                rates_1.Rates,
                 cookies_service_1.CookieService,
                 history_service_1.HistoryService,
                 sticker_service_1.StickerService,

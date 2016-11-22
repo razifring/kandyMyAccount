@@ -13,12 +13,8 @@
         <div id="navbar" class="navbar-collapse collapse" [collapse]="isCollapsed">
             <ul *ngIf="_isLoggedIn" class="nav navbar-nav">
                 <li (click)="isCollapsed = true" [routerLinkActive]="['active']" ><a routerLink="/myAccount">My Account <span class="sr-only">(current)</span></a></li>
-<<<<<<< HEAD
-                <li *ngIf="device.device != 'iphone' && device.device != 'ipad'" (click)="isCollapsed = true" [routerLinkActive]="['active']" ><a routerLink="/purchase">Purchase</a></li>
-                <li (click)="isCollapsed = true" [routerLinkActive]="['active']" ><a routerLink="/stickershop">Sticker Shop</a></li>
-=======
                 <li *ngIf="(device.device != 'iphone' && device.device != 'ipad') || !authService.webview" (click)="isCollapsed = true" [routerLinkActive]="['active']" ><a routerLink="/purchase">Purchase</a></li>
->>>>>>> b8f6505e7912e8dbb91e9da4d21741c6f72b5da4
+                <li (click)="isCollapsed = true" [routerLinkActive]="['active']" ><a routerLink="/stickershop">Sticker Shop</a></li>
                 <li (click)="isCollapsed = true" [routerLinkActive]="['active']" ><a routerLink="/cards">Reload Cards</a></li>
                 <li (click)="isCollapsed = true" [routerLinkActive]="['active']"><a routerLink="/history">Account History</a></li>
                 <li (click)="isCollapsed = true" [routerLinkActive]="['active']"><a routerLink="/rates">Rates</a></li>

@@ -25,6 +25,7 @@
     "angular-in-memory-web-api": "~0.1.1",
     "angular2-busy": "^1.0.2",
     "angular2-cookie": "^1.2.5",
+    "apicache": "^0.7.0",
     "assetmanager": "^0.1.1",
     "body-parser": "~1.13.2",
     "client-sessions": "^0.7.0",

@@ -3,12 +3,15 @@
 // Packages routes use packages controller
 var packages = require('../controllers/packagesController');
 var tokenManager = require('../lib/managers/tokenManager');
+var apiCache = require('apicache');
 
 module.exports = function(app) {
 
-    app.get('/api/packages', tokenManager.hasAuthorization, packages.getPurchasable);
+    let cache = apiCache.middleware;
 
-    app.get('/api/packages/:msisdn', tokenManager.hasAuthorization, packages.getUserPackages);
+    app.get('/api/packages', tokenManager.hasAuthorization, cache('20 minutes'), packages.getPurchasable);
+
+    app.get('/api/packages/:msisdn', tokenManager.hasAuthorization, cache('10 minutes'), packages.getUserPackages);
 
     app.post('/api/cards', tokenManager.hasAuthorization, packages.redeemCard)
 
