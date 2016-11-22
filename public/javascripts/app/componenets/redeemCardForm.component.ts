@@ -12,6 +12,7 @@ export class RedeemCardFormComponent {
     submitted:boolean = false;
     processing:boolean = false;
     successResponse:string;
+    errorResponse:string;
 
 
     constructor(
@@ -29,8 +30,12 @@ export class RedeemCardFormComponent {
             .subscribe(
                 res => {
                     this.processing = false;
-                    this.successResponse = 'You have redeemed the card successfully.';
-                    this.model.reset();
+                    if(res.status) {
+                        this.successResponse = 'You have redeemed the card successfully.';
+                        this.model.reset();
+                    } else {
+                        this.errorResponse = res.body.message;
+                    }
                 }
             );
     }

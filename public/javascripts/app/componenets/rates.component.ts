@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PackagesService} from '../services/packages.service';
+import {Rates} from "../utils/rates";
 
 @Component({
     templateUrl: 'templates/rates.html',
@@ -8,12 +9,16 @@ import {PackagesService} from '../services/packages.service';
 
 export class RatesComponent implements OnInit{
 
-    rateList = [{name: 'alaska', value: '5.99'},{name: 'teman', value: '2.99'}];
-    currentRate = this.rateList[0];
+    rateList = [];
+    currentRate;
 
-    constructor(){}
+    constructor(
+        private rates: Rates
+    ){}
 
     ngOnInit(): void {
+        this.rateList = this.rates.getRates();
+        this.currentRate = this.rateList[0];
 
     }
 

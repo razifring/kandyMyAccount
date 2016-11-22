@@ -11,7 +11,12 @@ var _ = require('lodash');
 exports.get = function(url, successCallback, errorCallback){
     var self = this;
     tokenManager.getDomainAccessToken(function(token){
-        var urlWithToken = url + '&key=' + token;
+        if(url.indexOf('?') > -1){
+            url = url + '&';
+        } else if(url.indexOf()) {
+            url = url + '?';
+        }
+        var urlWithToken = url + 'key=' + token;
         console.log(urlWithToken);
         simpleRequest.get(urlWithToken, successCallback, function(error){
             if(error.code === 403){
@@ -47,9 +52,15 @@ exports.post = function(url, data, successCallback, errorCallback){
 exports.put = function(url, data, successCallback, errorCallback){
     var self = this;
     tokenManager.getDomainAccessToken(function(token){
-        var urlWithToken = url + '&key=' + token;
+        if(url.indexOf('?') > -1){
+            url = url + '&';
+        } else if(url.indexOf()) {
+            url = url + '?';
+        }
+
+        var urlWithToken = url + 'key=' + token;
         console.log(urlWithToken);
-        simpleRequest.put(urlWithToken, JSON.stringify(data), '', successCallback, function(error){
+        simpleRequest.put(urlWithToken, JSON.stringify(data), { 'content-type': 'application/json' }, successCallback, function(error){
             console.log('kandyRequest Error');
             if(error.code === 403){
                 tokenManager.renewDomainAccessToken(function(){

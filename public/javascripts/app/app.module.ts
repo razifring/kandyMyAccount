@@ -33,6 +33,7 @@ import { AutoLoginComponent  } from "./componenets/autoLogin.component";
 import {RatesComponent} from "./componenets/rates.component";
 import {HistoryComponent} from "./componenets/history.component";
 import {HistoryService} from "./services/history.service";
+import {Rates} from "./utils/rates";
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {HistoryService} from "./services/history.service";
         PaypalService,
         CommonUtils,
         CountryCodes,
+        Rates,
         CookieService,
         HistoryService
 

@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import {Component} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {UserService} from "../services/user.service";
@@ -20,14 +19,13 @@ export class NavBarComponent {
         private userService: UserService,
         public device: Device
     ) {
-        let userObservable = userService.getCurrentUser();
+        let userObservable = this.userService.getCurrentUser();
         if(userObservable){
             userObservable.subscribe(value => this.msisdn = value.msisdn);
         }
     }
 
     ngOnInit(): void {
-        console.log(this.device.device);
         this.authService.isLoggedIn.subscribe(
             value => {this._isLoggedIn = value;}
         );

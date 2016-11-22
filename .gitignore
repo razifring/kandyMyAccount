@@ -49,5 +49,6 @@ Temporary Items
 /typings/
 .idea/
 /.idea/jsLibraryMappings.xml
-/public/javascripts/**/*.js
-/public/javascripts/**/*.js.map
+/public/javascripts/app/**/*.js
+/public/javascripts/app/**/*.js.map
+
