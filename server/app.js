@@ -20,7 +20,11 @@ app.use(express.static(path.join(__dirname, '/../public')));
 // let angular handle all other requests
 app.use(function(req, res) {
    console.log('404 page:' + req.url);
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+    if (process.env.NODE_ENV === 'development') {
+        res.sendFile(path.join(__dirname, 'views', 'index.html'));
+    } else {
+        res.sendFile(path.join(__dirname, '../public', 'index.html'));
+    }
 });
 
 try {

@@ -5,10 +5,6 @@
 (function (global) {
 
     var packages = {
-        app: {
-            main: './main.js',
-            defaultExtension: 'js'
-        },
         rxjs: {
             defaultExtension: 'js'
         },
@@ -56,32 +52,37 @@
     System.config({
         defaultJSExtensions: true,
         packages: packages,
+        paths: {
+            // paths serve as alias
+            'npm:': 'scripts/',
+            'public:': ''
+        },
         map: {
             // our app is within the app folder
-            app: 'javascripts/app',
+            app: 'public:javascripts/app/main.js',
             // angular bundles
-            '@angular/core': 'scripts/@angular/core/bundles/core.umd.js',
-            '@angular/common': 'scripts/@angular/common/bundles/common.umd.js',
-            '@angular/compiler': 'scripts/@angular/compiler/bundles/compiler.umd.js',
-            '@angular/platform-browser': 'scripts/@angular/platform-browser/bundles/platform-browser.umd.js',
-            '@angular/platform-browser-dynamic': 'scripts/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-            '@angular/http': 'scripts/@angular/http/bundles/http.umd.js',
-            '@angular/router': 'scripts/@angular/router/bundles/router.umd.js',
-            '@angular/forms': 'scripts/@angular/forms/bundles/forms.umd.js',
-            '@angular/upgrade': 'scripts/@angular/upgrade/bundles/upgrade.umd.js',
+            '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+            '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+            '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+            '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+            '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+            '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+            '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
+            '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+            '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
             // other libraries
-            'rxjs':                      'scripts/rxjs',
-            'angular2-busy':             'scripts/angular2-busy/index.js',
-            'angular2-dynamic-component':    'scripts/angular2-dynamic-component',
-            'ts-metadata-helper':    'scripts/ts-metadata-helper',
-            'core-js':    'scripts/core-js',
-            'ng2-dropdown': 'scripts/ng2-dropdown',
-            'ng2-device-detector': 'scripts/ng2-device-detector/dist',
-            'angular2-in-memory-web-api': 'scripts/angular2-in-memory-web-api',
-            'angular2-cookie':            'scripts/angular2-cookie',
-            'lodash':            'scripts/lodash',
-            'ng2-bootstrap/ng2-bootstrap': 'scripts/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
-            'moment': 'scripts/moment/moment.js'
+            'rxjs':                      'npm:rxjs',
+            'angular2-busy':             'npm:angular2-busy/index.js',
+            'angular2-dynamic-component':    'npm:angular2-dynamic-component',
+            'ts-metadata-helper':    'npm:ts-metadata-helper',
+            'core-js':    'npm:core-js',
+            'ng2-dropdown': 'npm:ng2-dropdown',
+            'ng2-device-detector': 'npm:ng2-device-detector/dist',
+            'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
+            'angular2-cookie':            'npm:angular2-cookie',
+            'lodash':            'npm:lodash',
+            'ng2-bootstrap/ng2-bootstrap': 'npm:ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
+            'moment': 'npm:moment/moment.js'
         },
     });
 })(this);
