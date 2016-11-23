@@ -431,6 +431,11 @@ footer {
   font-size: 10px;
 }
 
+.sticker_panel_img{
+  width: 100px;
+  height:100px;
+}
+
 /* spinner start */
 .sk-circle {
   margin: 40px auto;
