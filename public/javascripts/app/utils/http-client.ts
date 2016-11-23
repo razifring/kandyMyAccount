@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {AuthService} from "../services/auth.service";
+import {CommonUtils} from "./commonUtils";
 
 @Injectable()
 export class HttpClient {
@@ -20,6 +21,10 @@ export class HttpClient {
         this.createAuthorizationHeader(headers);
         return this.http.get(url, {
             headers: headers
+        }).catch(e => {
+            if(e.status === 401){
+                CommonUtils.redirectTo('/login');
+            }
         });
     }
 
@@ -37,7 +42,12 @@ export class HttpClient {
             options.headers.append('Content-Type', 'application/json');
             this.useJsonContentType = false;
         }
-        return this.http.post(url, data, options);
+        return this.http.post(url, data, options)
+            .catch(e => {
+                if(e.status === 401){
+                    CommonUtils.redirectTo('/login');
+                }
+            });
     }
 
     put(url, data, options) {
@@ -54,7 +64,11 @@ export class HttpClient {
             options.headers.append('Content-Type', 'application/json');
             this.useJsonContentType = false;
         }
-        return this.http.put(url, data, options);
+        return this.http.put(url, data, options).catch(e => {
+            if(e.status === 401){
+                CommonUtils.redirectTo('/login');
+            }
+        });
     }
 
     addJsonContentType(){
