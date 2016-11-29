@@ -1,29 +1,45 @@
 <div class="history-page">
-    <h1>History Reports</h1>
+    <h1 class="page-title">History Reports</h1>
 
     <div class="hisotry-wrapper top20">
+        <br/>
+        <div class="txt-left">
         <div class="top10">
-            <div class="history-form-field">Type:</div>
-            <div class="history-form-radio-field radio">
-                <input type="radio" [(ngModel)]="type" id="calls" value="calls"> <label for="calls">Outgoing calls</label>
+            <div class="row">
+                <div class="col-sm-6 history-form-field">Type:</div>
+                <div class="col-sm-6 history-form-radio-field radio">
+                    <input type="radio" [(ngModel)]="type" id="calls" value="calls"> <label for="calls">Outgoing calls</label>
+                </div>
+
             </div>
-            <div class="history-form-radio-field radio">
-                <input type="radio" [(ngModel)]="type" id="sms" value="sms"> <label for="sms">Outgoing SMS</label>
+            <div class="row">
+                <div class="col-sm-6 history-form-field"></div>
+                <div class="col-sm-6 history-form-radio-field radio">
+                    <input type="radio" [(ngModel)]="type" id="sms" value="sms"> <label for="sms">Outgoing SMS</label>
+                </div>
+
             </div>
-            <div class="history-form-radio-field radio">
-                <input type="radio" [(ngModel)]="type" id="packages" value="packages"> <label for="packages">Packages</label>
+            <div class="row">
+                <div class="col-sm-6 history-form-field"></div>
+                <div class="col-sm-6 history-form-radio-field radio">
+                    <input type="radio" [(ngModel)]="type" id="packages" value="packages"> <label for="packages">Packages</label>
+                </div>
             </div>
         </div>
         <div class="top10">
-            <div class="history-form-field">Date From:</div>
-            <div class="history-form-radio-field radio">
-                <input required type="date" [value]="startDate" (input)="startDate=$event.target.value" id="start-date" max='{{todayDate}}'>
+            <div class="row">
+                 <div class="col-sm-6 history-form-field">Date From:</div>
+                <div class="col-sm-6 history-form-radio-field radio">
+                    <input required type="date" [value]="startDate" (input)="startDate=$event.target.value" id="start-date" max='{{todayDate}}'>
+                </div>
             </div>
         </div>
         <div class="top10">
-            <div class="history-form-field">Date To:</div>
-            <div class="history-form-radio-field radio">
-                <input required type="date" [value]="endDate" (input)="endDate=$event.target.value" id="end-date" max='{{todayDate}}'>
+            <div class="row">
+                <div class="col-sm-6 history-form-field">Date To:</div>
+                <div class="col-sm-6 history-form-radio-field radio">
+                    <input required type="date" [value]="endDate" (input)="endDate=$event.target.value" id="end-date" max='{{todayDate}}'>
+                </div>
             </div>
         </div>
         <div class="top10">
