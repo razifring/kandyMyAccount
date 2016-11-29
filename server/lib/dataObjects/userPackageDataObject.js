@@ -15,9 +15,19 @@ function PackageDataObject(id, name, balance, remainingMinutes, startTime, endTi
     this.currency = 'USD';
 }
 
+/**
+ *
+ * @param data
+ * @param packageId
+ * @returns PackageDataObject | null
+ */
 exports.createFromKandy = function (data, packageId){
-    let name = packageManager.getPackageConfigById(packageId).title;
-    return new PackageDataObject(packageId, name, data.balance, data.remaining_minutes, data.start_timestamp, data.end_timestamp, data.package_type);
+    let packageConfigData = packageManager.getPackageConfigById(packageId);
+    if(packageConfigData) {
+        return new PackageDataObject(packageId, packageConfigData.title, data.balance, data.remaining_minutes, data.start_timestamp, data.end_timestamp, data.package_type);
+    } else {
+        return null;
+    }
 };
 
 exports = PackageDataObject;

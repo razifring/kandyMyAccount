@@ -21,7 +21,7 @@ exports.getUserPackages = function(req, res) {
 };
 
 exports.getPurchasable = function(req, res) {
-    packageManager.getAllPackages(function(allPackages){
+    packageManager.getAllPackages(true, function(allPackages){
         var packages = {
             creditPlans: packageManager.getCreditPlans(allPackages),
             callPlans: packageManager.getCallPlans(allPackages),

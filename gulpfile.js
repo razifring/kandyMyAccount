@@ -3,12 +3,13 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var typescript = require('gulp-typescript');
 var systemjsBuilder = require('systemjs-builder');
+var uglify = require('gulp-uglify');
 
 // Compile TypeScript app to JS
 gulp.task('compile:ts', function () {
     return gulp
         .src([
-            "src/**/*.ts",
+            "public/javascripts/**/*.ts",
             "typings/*.d.ts"
         ])
         .pipe(sourcemaps.init())
@@ -24,7 +25,14 @@ gulp.task('compile:ts', function () {
 
 // Generate systemjs-based bundle (app/app.js)
 gulp.task('bundle:app', function() {
-    var builder = new systemjsBuilder('/home/vagrant/mean', './public/javascripts/systemjs.config.js');
+    let bsaeUrl;
+    if(process.env.NODE_ENV==='development'){
+        baseUrl = '/home/vagrant/mean';
+    } else {
+        baseUrl = '/nodes/node_Kandy-Stage_nodeMyAccount_pm2/origin/develop';
+    }
+
+    var builder = new systemjsBuilder(baseUrl, './public/javascripts/systemjs.config.js');
     builder.config({
         packages:{
             rxjs: {
@@ -95,6 +103,7 @@ gulp.task('bundle', ['vendor', 'app'], function () {
         'vendor/vendors.js'
     ])
         .pipe(concat('app.bundle.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('./javascripts/app'));
 });
 
