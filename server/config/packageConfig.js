@@ -15,6 +15,7 @@ module.exports = [
 		description: 'Valid for 30 days',
 		cost: 4.99,
 		type: packageEnum.type.credit,
+		purchasable: true
 	},
 	{
 		id: 1375,
@@ -22,13 +23,15 @@ module.exports = [
 		description: 'Valid for 30 days',
 		cost: 9.99,
 		type: packageEnum.type.credit,
+		purchasable: true
 	},
 	{
 		id: 1376,
 		title: 'Get US$15 Credit',
 		description: 'Valid for 30 days',
 		cost: 14.99,
-		type: packageEnum.type.credit
+		type: packageEnum.type.credit,
+		purchasable: true
 	},
 	{
 		id: 1377,
@@ -36,7 +39,8 @@ module.exports = [
 		description: '1,000 minutes to call PLDT, Smart and Sun numbers, 7 minutes to call other Philippine networks and a Philippine number for 7 days.',
 		cost: 7.99,
 		type: packageEnum.type.minutes,
-		category: categories.telebabad
+		category: categories.telebabad,
+		purchasable: true
 	},
 	{
 		id: 1378,
@@ -45,6 +49,7 @@ module.exports = [
 		cost: 24.99,
 		type: packageEnum.type.minutes,
 		category: categories.telebabad,
+		purchasable: true
 
 	},
 	{
@@ -54,6 +59,7 @@ module.exports = [
 		cost: 'US$4.99',
 		type: packageEnum.type.minutes,
 		category: categories.phil,
+		purchasable: true
 	},
 	{
 		id: 1380,
@@ -62,6 +68,7 @@ module.exports = [
 		cost: 9.99,
 		type: packageEnum.type.minutes,
 		category: categories.phil,
+		purchasable: true
 	},
 	{
 		id: 1381,
@@ -70,6 +77,7 @@ module.exports = [
 		cost: 14.99,
 		type: packageEnum.type.minutes,
 		category: categories.phil,
+		purchasable: true
 	},
 	{
 		id: 1456,
@@ -77,6 +85,15 @@ module.exports = [
 		description: '',
 		cost: 0.99,
 		type: packageEnum.type.did,
+		purchasable: true
+	},
+	{
+		id: 1456,
+		title: 'Philippines Call and Text 6',
+		description: '6 Minutes 24 hours package',
+		cost: 0,
+		type: packageEnum.type.phil,
+		purchasable: false
 	},
 
 

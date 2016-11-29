@@ -32,7 +32,7 @@ gulp.task('bundle:app', function() {
         baseUrl = '/nodes/node_Kandy-Stage_nodeMyAccount_pm2/origin/develop';
     }
 
-    var builder = new systemjsBuilder(, './public/javascripts/systemjs.config.js');
+    var builder = new systemjsBuilder(baseUrl, './public/javascripts/systemjs.config.js');
     builder.config({
         packages:{
             rxjs: {

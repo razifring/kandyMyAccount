@@ -10,22 +10,28 @@ var userPackageDataObject = require('../dataObjects/userPackageDataObject');
 var allPackages = [];
 var apiCache = require('apicache');
 
-exports.getAllPackages = function(successCallback, errorCallback){
+exports.getAllPackages = function(onlyPurchasable, successCallback, errorCallback){
 
     this.getAllKandyPackages(function(allPackages){
 
+        // create a map of package id to names for all packages
         let mapPackageIdsNames = allPackages.reduce(function(total, current){
             total[current.package_id] = current.package_name;
             return total;
         });
 
 
+        // filter packageConfig to only return packages that came from Kandy
         let serverPackageIds = _.keys(mapPackageIdsNames);
         let packageDataAndMetaData = packageConfig.filter(function(item){
             if(serverPackageIds.indexOf(item.id.toString()) !== -1){
-                return item;
+                if(!onlyPurchasable ||  (onlyPurchasable && _.get(item, 'purchasbale', true))){
+                    return item;
+                }else
             }
         });
+
+        // create data objects
         let kandyPackages = packageDataAndMetaData.map(function(item){
             return packageDataObject.createFromPackagesConfig(item, mapPackageIdsNames[item.id]);
         });
@@ -56,7 +62,10 @@ exports.getActivePackages = function(msisdn, successCallback, errorCallback){
         self.getAllKandyPackages(function(allPackagesKandyData){
             for(let i =0; i < activePackages.length; i++){
                 let kandyPackageData = _.find(allPackagesKandyData, {package_name:activePackages[i].meta_package});
-                userActivePackages.push(userPackageDataObject.createFromKandy(activePackages[i], kandyPackageData.package_id));
+                let dataObject = userPackageDataObject.createFromKandy(activePackages[i], kandyPackageData.package_id);
+                if(dataObject) {
+                    userActivePackages.push(dataObject);
+                }
             }
             successCallback(userActivePackages);
         }, errorCallback);

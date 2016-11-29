@@ -52,3 +52,4 @@ Temporary Items
 /public/javascripts/app/**/*.js
 /public/javascripts/app/**/*.js.map
 
+!/public/javascripts/app/app.js
