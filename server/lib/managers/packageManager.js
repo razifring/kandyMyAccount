@@ -27,7 +27,7 @@ exports.getAllPackages = function(onlyPurchasable, successCallback, errorCallbac
             if(serverPackageIds.indexOf(item.id.toString()) !== -1){
                 if(!onlyPurchasable ||  (onlyPurchasable && _.get(item, 'purchasbale', true))){
                     return item;
-                }else
+                }
             }
         });
 
