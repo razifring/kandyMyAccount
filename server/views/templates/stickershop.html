@@ -4,7 +4,7 @@
         <li *ngFor="let sticker of stickerpackages">
             <div>Name: {{sticker.name}}</div>
             <div>Description: {{sticker.description}}</div>
-            <div class="sticker_panel_img"><img src="{{sticker.panel_image}}"></div>
+            <div ><img src="{{sticker.panel_image}}" class="sticker_panel_img"></div>
             <paypal-button (ButtonClicked)=goToPaypal(sticker.package_id) [disabled]=disableBtns [isProcessing]=isProcessing></paypal-button>
 
         </li>
