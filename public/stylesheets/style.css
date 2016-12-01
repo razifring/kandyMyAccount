@@ -89,7 +89,7 @@ footer {
   cursor: pointer;
   display: inline-block;
   padding: 5px 0px;
-  width: 200px;
+  width: 240px;
   font-size: 20px;
 }
 .navbar-collapse.in ul{
@@ -544,8 +544,20 @@ input[type=date]{
 }
 .txt-left{
   padding-left:10px;
+  padding-right:10px;
 }
 
+
+.footer-image {
+  height: 200px;
+  background-image: url("../images/jc_bg.png");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+}
 /* spinner start */
 .sk-circle {
   margin: 40px auto;
