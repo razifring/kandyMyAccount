@@ -83,7 +83,7 @@ footer {
   border-radius: 25px;
   color: #fff;
   text-transform: uppercase;
-  font-size: 13px;
+ /* font-size: 13px;*/
   text-align: center;
   line-height: 29px;
   cursor: pointer;
@@ -91,6 +91,11 @@ footer {
   padding: 5px 0px;
   width: 240px;
   font-size: 20px;
+}
+.btn-width{
+  width: 180px;
+  font-size: 16px;
+  padding: 0px;
 }
 .navbar-collapse.in ul{
   background-color: white;
@@ -370,7 +375,7 @@ footer {
 }
 
 .history-page .history-form-field {
-  width: 200px;
+  width: 150px;
   float: left;
 }
 
@@ -424,7 +429,7 @@ footer {
 }
 
 .btn-purchase {
-  background: url("../images/purchase.png") center no-repeat;
+  background: url("../images/dollar.png") center no-repeat;
 }
 
 .btn-reload {
@@ -432,7 +437,13 @@ footer {
 }
 
 .btn-sticker {
-  background: url("../images/sticker.png") center no-repeat;
+  background: url("../images/shop.png") center no-repeat;
+}
+.btn-phcall {
+  background: url("../images/phcall.png") center no-repeat;
+}
+.btn-myaccount {
+  background: url("../images/myaccount.png") center no-repeat;
 }
 
 .package-box{
@@ -547,6 +558,49 @@ input[type=date]{
   padding-right:10px;
 }
 
+.enrolled{
+  background-color: #969696;
+  opacity: 1;
+  font-size: 18px;
+  color: #fff;
+  text-transform: capitalize;
+
+}
+.package-enrolled{
+  background-color: #757373;
+  font-size: 12px;
+  margin:5px;
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
+
+.package-enrolled .call-icon{
+  background: url("../images/call-icon.png") center no-repeat;
+  width: 80px;
+  height: 30px;
+  float: left;
+}
+.package-enrolled .call-num{
+  background: url("../images/call-number2.png") center no-repeat;
+  width: 80px;
+  height: 30px;
+  float: left;
+}
+.enrolled-package-name{
+  font-size: 12px;
+  display: inline-block;
+  color: #fff;
+  text-transform: capitalize;
+}
+.enrolled-package-date{
+  font-size: 10px;
+  color: #fff;
+}
+.enrolled-package-dateph{
+  font-size: 10px;
+  color: #fff;
+  padding-left: 65px;
+}
 
 .footer-image {
   height: 200px;
@@ -694,7 +748,7 @@ input[type=date]{
   .nav>li>a {
     position: relative;
     display: block;
-    padding: 10px 11px;
+    padding: 5px 11px;
   }
 
   .navbar-juana .navbar-brand img {

@@ -12,6 +12,7 @@ import {AutoLoginComponent} from "./componenets/autoLogin.component";
 import {RatesComponent} from "./componenets/rates.component";
 import {HistoryComponent} from "./componenets/history.component";
 import {StickershopComponent} from "./componenets/stickershop.component";
+import {ManageAccountComponent} from "./componenets/manageAccount.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     { path: 'myAccount', component: MyAccountComponent, canActivate: [AuthGuard]},
     { path: 'purchase', component: PurchaseComponent, canActivate: [AuthGuard]},
     { path: 'stickershop', component: StickershopComponent, canActivate: [AuthGuard]},
+    { path: 'manageAccount', component: ManageAccountComponent, canActivate: [AuthGuard]},
     { path: 'processing/:msisdn', component: ProcessingComponent},
     { path: 'thankyou', component: ThankyouComponent},
     { path: 'rates', component: RatesComponent},

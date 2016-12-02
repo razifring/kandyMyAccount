@@ -2,6 +2,13 @@
 <div class="purchase-page">
     <h1 class="page-title">Purchase</h1>
     <div>&nbsp;</div>
+    <h2>Philippine Mobile Number</h2>
+    <div class="purchase-package-description">Give this Phlippine Mobile Number out to friends and family in the Philippines.
+        PLDT, Smart and Sun numbers in the Philippines may call you at this number and pay local rates. They can call you at PHP 6.50/min or text you at PHP 1.00/text.</div>
+    <select-package [selected]=selectedPackageId [packages]=didPlans (onSelect)="packageSelected($event)"></select-package>
+    <div class="clearfix"></div>
+    <paypal-button (ButtonClicked)=goToPaypal($event) [disabled]=disableBtns [isProcessing]=isProcessing></paypal-button>
+    <div>&nbsp;</div>
     <h2>Credits</h2>
     <div class="purchase-package-description">Use credits to call any number in the world – even if those numbers are not connected to the internet. </div>
     <div class="top20">
@@ -10,11 +17,13 @@
     <div class="clearfix"></div>
     <paypal-button (ButtonClicked)=goToPaypal($event) [disabled]=disableBtns [isProcessing]=isProcessing></paypal-button>
     <div>&nbsp;</div>
+    <!-- TO BE REMOVED AS PER PGC
     <h2>Philippine Call and Text Plans</h2>
     <div class="purchase-package-description">Plan with minutes to call any number in the Philippines and SMS to call Smart, Talk N Text or Sun Cellular Numbers. Choose between {{callPlans?.philipene?.length}} plans that best suit your budget and your long distance calling needs.</div>
     <div class="top20">
         <select-package [selected]=selectedPackageId [packages]=callPlans?.philipene (onSelect)="packageSelected($event)"></select-package>
     </div>
+    -->
     <div>&nbsp;</div>
     <h2>Telebabad Pinas Offers</h2>
     <div class="purchase-package-description">Call all you want to the Philippines with Telebabad Pinas. Choose between {{callPlans?.telebabad?.length}} plans that best suit your telebabad needs.</div>
@@ -23,11 +32,5 @@
     </div>
     <div class="clearfix"></div>
     <paypal-button (ButtonClicked)=goToPaypal($event) [disabled]=disableBtns [isProcessing]=isProcessing></paypal-button>
-    <div>&nbsp;</div>
-    <h2>Philippine Mobile Number</h2>
-    <div class="purchase-package-description">Give this Phlippine Mobile Number out to friends and family in the Philippines.
-        PLDT, Smart and Sun numbers in the Philippines may call you at this number and pay local rates. They can call you at PHP 6.50/min or text you at PHP 1.00/text.</div>
-    <select-package [selected]=selectedPackageId [packages]=didPlans (onSelect)="packageSelected($event)"></select-package>
-    <div class="clearfix"></div>
-    <paypal-button (ButtonClicked)=goToPaypal($event) [disabled]=disableBtns [isProcessing]=isProcessing></paypal-button>
+
 </div>

@@ -1,4 +1,5 @@
-<h1>Active Packages</h1>
+<!--h1>Active Packages</h1-->
+
 
 <div class="row">
     <div *ngIf="activePackages?.credit?.length > 0" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
@@ -39,13 +40,57 @@
 </div>
 
 
+<!--sample packages only... for theming and testing...remove before deployment-->
+<div class="row">
 
-<!--shortcut buttons-->
+    <div class="package-enrolled">
+        <div class="enrolled">&nbsp;&nbsp;&nbsp;Enrolled Promos</div>
+        <div class="row top10">
+            <div class="col-sm-3 call-num"></div>
+            <div class="col-sm-9">
+                <div class="enrolled-package-name">Philippine Number</div>
+                <div class="enrolled-package-date">09399998765</div>
+                <div class="enrolled-package-dateph">Expiry:&nbsp;dd/MM/yyyy</div>
+            </div>
+        </div>
 
-<div class="myaccount_shortcuts row">
+        <ul class="package_list">
+            <li class="active-package-item top15" >
+                <div class="row">
+                    <div class="col-sm-3 call-icon"></div>
+                    <div class="col-sm-9">
+                        <div class="enrolled-package-name">Telebabad for 7 days</div>
+                        <div class="enrolled-package-date">Expiry:&nbsp;dd/MM/yyyy</div>
+                    </div>
 
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/purchase"><div class="shortcut btn-purchase"></div><div>Purchase</div></a></div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/cards"><div class="shortcut btn-reload"></div><div>Reload Cards</div></a></div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><a routerLink="/stickershop"><div class="shortcut btn-sticker"></div><div>Sticker Shop</div></a></div>
+                </div>
+
+            </li>
+            <li class="active-package-item top15" >
+                <div class="row">
+                    <div class="col-sm-3 call-icon"></div>
+                    <div class="col-sm-9">
+                        <div class="enrolled-package-name">US$ 0.99 Variant</div>
+                        <div class="enrolled-package-date">Expiry:&nbsp;dd/MM/yyyy</div>
+                    </div>
+
+                </div>
+
+            </li>
+            <li class="active-package-item top15" >
+                <div class="row">
+                    <div class="col-sm-3 call-icon"></div>
+                    <div class="col-sm-9">
+                        <div class="enrolled-package-name">package name</div>
+                        <div class="enrolled-package-date">Expiry:&nbsp;dd/MM/yyyy</div>
+                    </div>
+
+                </div>
+
+            </li>
+        </ul>
+
+    </div>
 </div>
+
 

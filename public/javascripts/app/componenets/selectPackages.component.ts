@@ -7,7 +7,7 @@ import {Component, EventEmitter, Output, Input} from '@angular/core';
                 <div class="select-packages row">
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" (click)="packageSelected(package.id)" *ngFor="let package of packages">
                         <div class="select-package-item" [class.active]="selected==package.id">
-                            <div class="row">
+                            <div class="row"  style="margin-top:5px;">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="package-name">{{package.title}}</div>       
                                 </div>

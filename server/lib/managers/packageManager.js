@@ -25,7 +25,7 @@ exports.getAllPackages = function(onlyPurchasable, successCallback, errorCallbac
         let serverPackageIds = _.keys(mapPackageIdsNames);
         let packageDataAndMetaData = packageConfig.filter(function(item){
             if(serverPackageIds.indexOf(item.id.toString()) !== -1){
-                if(!onlyPurchasable ||  (onlyPurchasable && _.get(item, 'purchasbale', true))){
+                if(!onlyPurchasable ||  (onlyPurchasable && _.get(item, 'purchasable', true))){
                     return item;
                 }
             }

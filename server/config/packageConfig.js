@@ -23,7 +23,7 @@ module.exports = [
 		description: 'Valid for 30 days',
 		cost: 9.99,
 		type: packageEnum.type.credit,
-		purchasable: true
+		purchasable: false
 	},
 	{
 		id: 1376,
@@ -31,7 +31,7 @@ module.exports = [
 		description: 'Valid for 30 days',
 		cost: 14.99,
 		type: packageEnum.type.credit,
-		purchasable: true
+		purchasable: false
 	},
 	{
 		id: 1377,
@@ -59,7 +59,7 @@ module.exports = [
 		cost: 'US$4.99',
 		type: packageEnum.type.minutes,
 		category: categories.phil,
-		purchasable: true
+		purchasable: false
 	},
 	{
 		id: 1380,
@@ -68,7 +68,7 @@ module.exports = [
 		cost: 9.99,
 		type: packageEnum.type.minutes,
 		category: categories.phil,
-		purchasable: true
+		purchasable: false
 	},
 	{
 		id: 1381,
@@ -77,7 +77,7 @@ module.exports = [
 		cost: 14.99,
 		type: packageEnum.type.minutes,
 		category: categories.phil,
-		purchasable: true
+		purchasable: false
 	},
 	{
 		id: 1456,
