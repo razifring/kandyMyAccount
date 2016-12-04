@@ -7,7 +7,6 @@ import {NavBarComponent} from "./componenets/navbar.component";
 import {MyAccountComponent} from "./componenets/myAccount.component";
 import {PurchaseComponent} from "./componenets/purchase.component";
 import {StickershopComponent} from "./componenets/stickershop.component";
-import {ManageAccountComponent} from "./componenets/manageAccount.component";
 import {ListPackagesComponent} from "./componenets/listPackages.component";
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./componenets/login.component";
@@ -38,7 +37,6 @@ import {HistoryService} from "./services/history.service";
 import {StickerService} from "./services/sticker.service";
 import {StickerCodes} from "./utils/stickerPackageCode";
 import {Rates} from "./utils/rates";
-import {ManageAccountComponent} from "./componenets/manageAccount.component";
 
 
 
@@ -79,10 +77,11 @@ import {ManageAccountComponent} from "./componenets/manageAccount.component";
         MyAccountComponent,
         NavBarComponent,
         PaypalButtonComponent,
+
+
         ProcessingComponent,
         PurchaseComponent,
         StickershopComponent,
-        ManageAccountComponent,
         RatesComponent,
         RedeemCardFormComponent,
         SelectPackagesComponent,
