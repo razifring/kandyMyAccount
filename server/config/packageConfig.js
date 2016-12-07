@@ -88,11 +88,19 @@ module.exports = [
 		purchasable: true
 	},
 	{
-		id: 1456,
+		id: 1455,
 		title: 'Philippines Call and Text 6',
 		description: '6 Minutes 24 hours package',
 		cost: 0,
 		type: packageEnum.type.phil,
+		purchasable: false
+	},
+	{
+		id: 1801,
+		title: '7 Days VOIP',
+		description: 'Free 7 days Phillipne number',
+		cost: 0,
+		type: packageEnum.type.did,
 		purchasable: false
 	},
 
