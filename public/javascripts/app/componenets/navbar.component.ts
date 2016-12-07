@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {UserService} from "../services/user.service";
-import {StickerService} from "../services/sticker.service";
 import {Device} from "ng2-device-detector";
+
 
 @Component({
     selector: 'navbar',
     templateUrl: 'templates/navbar.html',
+    providers: [UserService]
 })
 
 export class NavBarComponent {
@@ -19,7 +20,6 @@ export class NavBarComponent {
     constructor(
         private authService: AuthService,
         private userService: UserService,
-        private stickerService: StickerService,
         public device: Device
     ) {
         let userObservable = this.userService.getCurrentUser();
@@ -27,10 +27,9 @@ export class NavBarComponent {
             userObservable.subscribe(value => this.msisdn = value.msisdn);
         }
 
-        this.userAccessToken = this.stickerService.getUserAccessToken().subscribe(
+        this.userAccessToken = this.userService.getUserAccessToken().subscribe(
             value => this.userAccessToken = value.userAccessToken
-
-        )
+        );
 
          /*
         let userAccessTokenObservable = this.userService.getUserAccessToken();

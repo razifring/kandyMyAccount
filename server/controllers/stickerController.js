@@ -32,8 +32,8 @@ exports.assignSticker = function(req, res) {
 
 
 exports.getStickerUAT = function(req, res) {
-    var userId = req.params.msisdn;
-    console.log('getting user access token'+userId);
+    var userId = req.userId;
+    console.log('getting user access token stickerController.js '+userId);
     tokenManager.getStickerUserAccessToken(userId,
         function(data){
             res.json(responseDataObject.create(true, data));

@@ -11,6 +11,7 @@ export class PackagesService {
     constructor(
         private _http: HttpClient,
         private userService: UserService
+
     ){}
 
     getActivePackages() {

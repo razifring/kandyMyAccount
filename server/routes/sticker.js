@@ -8,6 +8,6 @@ module.exports = function(app) {
     let cache = apiCache.middleware;
 
     app.put('/api/stickers', tokenManager.hasAuthorization, stickerController.assignSticker);
-    app.get('/api/authentication/uat/:msisdn', tokenManager.hasAuthorization, cache('10 minutes'), stickerController.getStickerUAT);
+    app.get('/api/authentication/uat/', tokenManager.hasAuthorization, cache('10 minutes'), stickerController.getStickerUAT);
 
 };

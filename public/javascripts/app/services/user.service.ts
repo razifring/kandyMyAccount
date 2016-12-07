@@ -1,22 +1,18 @@
+import {HttpClient} from '../utils/http-client';
 import {User} from "../dataObjects/user";
 import {BehaviorSubject} from "rxjs/Rx";
-import {HttpClient} from '../utils/http-client';
+import {Injectable} from "@angular/core";
 import {CommonService} from "./common.service";
-
 /**
  * Created by razih on 10/6/2016.
  */
-
+@Injectable()
 export class UserService {
 
     private currentUser;
-    private userAccessToken;
-
     constructor(
-        private _http: HttpClient,
-
+        private _http: HttpClient
     ){}
-
     public setCurrentUser(user: User) {
         if(!this.currentUser){
             this.currentUser = new BehaviorSubject<User>(user);
@@ -27,70 +23,23 @@ export class UserService {
         return this;
     }
 
-    public getUserAccessToken(){
-
-            return this.userAccessToken = this._http.get('/api/authentication/uat/'+ this.getCurrentUser().getValue().msisdn)
-                .map(CommonService.extractData);
-
+    getUserAccessToken(){
+        return this._http.get('/api/authentication/uat/')
+            .map(CommonService.extractData);
     }
 
     /**
      *
-    * @returns boolean | BehaviorSubject<User>
+     * @returns boolean | BehaviorSubject<User>
      */
     getCurrentUser() : BehaviorSubject<User>{
         return this.currentUser;
-
     }
 
     resetUser() : void {
         if(this.currentUser){
             this.currentUser.next(false);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
+
 }

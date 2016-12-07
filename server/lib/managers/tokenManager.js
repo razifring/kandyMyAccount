@@ -70,8 +70,8 @@ exports.getStickerUserAccessToken = function (userId,successCallback,errorCallba
         config.kandyApi.domainApiKey,
         config.kandyApi.domainApiSecret,
         userId,
-        function(uat){
-            console.log("USER ACCESS TOKEN: "+uat);
-            successCallback(uat);
+        function(data){
+            console.log("USER ACCESS TOKEN: "+data);
+            successCallback(data);
         },errorCallback);
 };
