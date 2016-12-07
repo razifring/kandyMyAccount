@@ -80,6 +80,15 @@ module.exports = [
 		purchasable: false
 	},
 	{
+		id: 1455,
+		title: 'Philippines Call 6 minutes package',
+		description: '6 Minutes to any Philippine Number.',
+		cost: 0.99,
+		type: packageEnum.type.minutes,
+		category: categories.phil,
+		purchasable: false
+	},
+	{
 		id: 1456,
 		title: 'Add VOIP number package, $0.99 USD',
 		description: '',
@@ -93,6 +102,14 @@ module.exports = [
 		description: '6 Minutes 24 hours package',
 		cost: 0,
 		type: packageEnum.type.phil,
+		purchasable: false
+	},
+	{
+		id: 1801,
+		title: '7 Days VOIP',
+		description: 'Free 7 days Phillipne number',
+		cost: 0,
+		type: packageEnum.type.did,
 		purchasable: false
 	},
 
