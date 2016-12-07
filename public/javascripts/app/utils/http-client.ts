@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {AuthService} from "../services/auth.service";
 import {CommonUtils} from "./commonUtils";
+import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class HttpClient {
@@ -21,10 +22,11 @@ export class HttpClient {
         this.createAuthorizationHeader(headers);
         return this.http.get(url, {
             headers: headers
-        }).catch(e => {
-            if(e.status === 401){
+        }).catch((err:any) => {
+            if(err.status === 401){
                 CommonUtils.redirectTo('/login');
             }
+            return Observable.of(undefined);
         });
     }
 
@@ -43,10 +45,11 @@ export class HttpClient {
             this.useJsonContentType = false;
         }
         return this.http.post(url, data, options)
-            .catch(e => {
-                if(e.status === 401){
+            .catch((err:any) => {
+                if(err.status === 401){
                     CommonUtils.redirectTo('/login');
                 }
+                return Observable.of(undefined);
             });
     }
 
@@ -64,10 +67,13 @@ export class HttpClient {
             options.headers.append('Content-Type', 'application/json');
             this.useJsonContentType = false;
         }
-        return this.http.put(url, data, options).catch(e => {
-            if(e.status === 401){
-                CommonUtils.redirectTo('/login');
-            }
+        return this.http
+            .put(url, data, options)
+            .catch((err:any) => {
+                if(err.status === 401){
+                    CommonUtils.redirectTo('/login');
+                }
+                return Observable.of(undefined);
         });
     }
 
