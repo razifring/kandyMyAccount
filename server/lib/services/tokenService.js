@@ -45,4 +45,16 @@ exports.getUserDetailsByUserAccessToken = function(userAccessToken, successCallb
         function(result){
             errorCallback(result);
         });
+};
+
+exports.getUserAccessToken = function(key, secret, userId, successCallback, errorCallback){
+    var url = config.kandyApi.apiUrl + 'users/accessTokens?key=' + key +
+        '&domain_api_secret=' + secret +
+        '&user_id=' + userId;
+    console.log(url);
+    simpleRequest.get(url, function(data){
+        successCallback(data.result.user_access_token);
+    },function(data){
+            errorCallback(data);
+    });
 }

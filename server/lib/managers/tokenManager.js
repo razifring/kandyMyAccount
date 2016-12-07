@@ -57,10 +57,21 @@ exports.hasAuthorization = function (req, res, next) {
     }
 };
 
-exports.getUserIdByUserAcceesToken = function (userAccessToken, successCallback, errorCallback) {
+exports.getUserIdByUserAccessToken = function (userAccessToken, successCallback, errorCallback) {
 
     tokenService.getUserDetailsByUserAccessToken(userAccessToken,  function(result){
-        console.log('getUserIdByUserAcceesToken' + result.result.user.user_id);
+        console.log('getUserIdByUserAccessToken' + result.result.user.user_id);
         successCallback(result.result.user.user_id)
     }, errorCallback);
+};
+
+exports.getStickerUserAccessToken = function (userId,successCallback,errorCallback){
+    tokenService.getUserAccessToken(
+        config.kandyApi.domainApiKey,
+        config.kandyApi.domainApiSecret,
+        userId,
+        function(uat){
+            console.log("USER ACCESS TOKEN: "+uat);
+            successCallback(uat);
+        },errorCallback);
 };

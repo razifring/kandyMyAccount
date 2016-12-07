@@ -9,10 +9,12 @@ import {UserService} from "./user.service";
 export class StickerService {
 
     public stickerPackages;
+    private userAccessToken;
 
     constructor(
         private _http: HttpClient,
         private userService: UserService
+
     ){}
 
     getActiveStickers() {
@@ -45,7 +47,17 @@ export class StickerService {
             .put('/api/stickers/', {stickerId: stickerid, msisdn: this.userService.getCurrentUser().getValue().msisdn}, {})
             .map(CommonService.extractData);
     }
+/*
+    public getUserAccessToken(){
+       return  this._http.get('/api/stickersUat/')+this.userService.getCurrentUser().getValue().msisdn)
+                .map(CommonService.extractData);
 
+    } */
+
+    public getUserAccessToken() {
+        return this._http.get('/api/authentication/uat/'+this.userService.getCurrentUser().getValue().msisdn)
+            .map(CommonService.extractData);
+    }
 
 
 }

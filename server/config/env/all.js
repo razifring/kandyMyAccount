@@ -24,4 +24,5 @@ module.exports = {
 		domainApiSecret: "DAS84e18ce6660640f288d50a1ddee235fc"
 	}
 
+
 };
