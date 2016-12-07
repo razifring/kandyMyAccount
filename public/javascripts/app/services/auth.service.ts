@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {User} from "../dataObjects/user";
 import {UserService} from "./user.service";
 import {CookieService} from "angular2-cookie/services/cookies.service";
+import {CommonService} from "./common.service";
 
 
 @Injectable()
@@ -13,6 +14,7 @@ export class AuthService {
     public token: string = '';
     public isLoggedIn = new BehaviorSubject<boolean>(false);
     public webview = false;
+    public userAccessToken;
 
 
     constructor(
@@ -133,6 +135,14 @@ export class AuthService {
                     return result;
                 }
             });
+    }
+
+    getUserAccessToken(userId){
+        if(!this.userAccessToken){
+            this.userAccessToken = this.http.get('/api/authentication/uat/' + userId)
+                .map(CommonService.extractData);
+        }
+        return this.userAccessToken;
     }
 
 }

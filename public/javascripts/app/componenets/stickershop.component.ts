@@ -9,8 +9,7 @@ import {StickerCodes} from "../utils/stickerPackageCode";
 
 
 @Component({
-    templateUrl: 'templates/stickershop.html',
-    providers: [PackagesService,StickerService]
+    templateUrl: 'templates/stickershop.html'
 })
 
 export class StickershopComponent implements OnInit{

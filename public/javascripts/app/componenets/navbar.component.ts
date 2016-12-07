@@ -6,8 +6,7 @@ import {Device} from "ng2-device-detector";
 
 @Component({
     selector: 'navbar',
-    templateUrl: 'templates/navbar.html',
-    providers: [UserService]
+    templateUrl: 'templates/navbar.html'
 })
 
 export class NavBarComponent {
@@ -24,12 +23,15 @@ export class NavBarComponent {
     ) {
         let userObservable = this.userService.getCurrentUser();
         if(userObservable){
-            userObservable.subscribe(value => this.msisdn = value.msisdn);
+            userObservable.subscribe(value => {
+                this.msisdn = value.msisdn;
+                this.userAccessToken = this.authService.getUserAccessToken(this.msisdn).subscribe(
+                    userAccessToken => this.userAccessToken = userAccessToken
+                );
+            });
         }
 
-        this.userAccessToken = this.userService.getUserAccessToken().subscribe(
-            value => this.userAccessToken = value.userAccessToken
-        );
+
 
          /*
         let userAccessTokenObservable = this.userService.getUserAccessToken();
