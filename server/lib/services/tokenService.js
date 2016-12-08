@@ -51,10 +51,13 @@ exports.getUserAccessToken = function(key, secret, userId, successCallback, erro
     var url = config.kandyApi.apiUrl + 'users/accessTokens?key=' + key +
         '&domain_api_secret=' + secret +
         '&user_id=' + userId;
-    console.log(url);
-    simpleRequest.get(url, function(data){
-        successCallback(data.result.user_access_token);
-    },function(data){
+    console.log("TOKEN SERVICE FOR UAT: "+url);
+        simpleRequest.get(url, function(data){
+            successCallback(data.result.user_access_token);
+        },
+        function(data){
             errorCallback(data);
-    });
-}
+        });
+};
+
+

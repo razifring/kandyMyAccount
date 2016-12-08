@@ -32,11 +32,12 @@ exports.assignSticker = function(req, res) {
 
 
 exports.getStickerUAT = function(req, res) {
-    var userId = req.userId;
-    console.log('getting user access token stickerController.js '+userId);
-    tokenManager.getStickerUserAccessToken(userId,
+    var msisdn = req.params.msisdn;
+    console.log('getting user access token stickerController.js '+msisdn);
+    tokenManager.getStickerUserAccessToken(msisdn,
         function(data){
-            res.json(responseDataObject.create(true, data));
+            res.json(data);
+            console.log("I AM IN STICKER CONTROLLER:"+data);
         },
         function(e){
             res.json(responseDataObject.create(false, e));

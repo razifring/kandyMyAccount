@@ -65,13 +65,14 @@ exports.getUserIdByUserAccessToken = function (userAccessToken, successCallback,
     }, errorCallback);
 };
 
-exports.getStickerUserAccessToken = function (userId,successCallback,errorCallback){
+exports.getStickerUserAccessToken = function(msisdn,successCallback, errorCallback){
     tokenService.getUserAccessToken(
         config.kandyApi.domainApiKey,
         config.kandyApi.domainApiSecret,
-        userId,
-        function(data){
-            console.log("USER ACCESS TOKEN: "+data);
-            successCallback(data);
-        },errorCallback);
+        msisdn,
+        function(result){
+            console.log("USER ACCESS TOKEN: "+result);
+            successCallback(result);
+        },
+        errorCallback);
 };
