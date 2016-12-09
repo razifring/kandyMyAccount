@@ -57,10 +57,10 @@ exports.hasAuthorization = function (req, res, next) {
     }
 };
 
-exports.getUserIdByUserAccessToken = function (userAccessToken, successCallback, errorCallback) {
+exports.getUserIdByUserAcceesToken = function (userAccessToken, successCallback, errorCallback) {
 
     tokenService.getUserDetailsByUserAccessToken(userAccessToken,  function(result){
-        console.log('getUserIdByUserAccessToken' + result.result.user.user_id);
+        console.log('getUserIdByUserAcceesToken' + result.result.user.user_id);
         successCallback(result.result.user.user_id)
     }, errorCallback);
 };
