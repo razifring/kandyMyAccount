@@ -10,7 +10,9 @@ export class UserService {
     private currentUser;
     constructor(
 
-    ){}
+    ){
+        this.currentUser = new BehaviorSubject<User>(User.create("", false));
+    }
     public setCurrentUser(user: User) {
         if(!this.currentUser){
             this.currentUser = new BehaviorSubject<User>(user);
