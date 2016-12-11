@@ -80,7 +80,7 @@ exports.sendOtp = function(req, res){
 exports.autologin = function(req, res) {
     var encryptedMsisdn = req.body.msisdn;
     var isPremium = false;
-    tokenManager.getUserIdByUserAcceesToken(req.body.userAccessToken,
+    tokenManager.getUserIdByUserAccessToken(req.body.userAccessToken,
         function(userId){
             let encryptUserId = sha256(userId);
             if(encryptedMsisdn === encryptUserId) {
