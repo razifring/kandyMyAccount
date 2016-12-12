@@ -80,7 +80,7 @@ exports.getActivePackages = function(msisdn, successCallback, errorCallback){
  * @returns PackageDataObject
  */
 exports.getPackageById = function(packageId, successCallback, errorCallback){
-    this.getAllPackages(function(packages){
+    this.getAllPackages(false, function(packages){
         console.log('inside getPackageById');
         console.log(packages);
         if(typeof stringValue){
