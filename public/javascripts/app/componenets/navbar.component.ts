@@ -25,9 +25,11 @@ export class NavBarComponent {
         if(userObservable){
             userObservable.subscribe(value => {
                 this.msisdn = value.msisdn;
-                this.userAccessToken = this.authService.getUserAccessToken(this.msisdn).subscribe(
-                    userAccessToken => this.userAccessToken = userAccessToken
-                );
+                if(this.msisdn) {
+                    this.userAccessToken = this.authService.getUserAccessToken(this.msisdn).subscribe(
+                        userAccessToken => this.userAccessToken = userAccessToken
+                    );
+                }
             });
         }
 
