@@ -100,7 +100,7 @@ exports.getPackageById = function(packageId, successCallback, errorCallback){
  * @returns PackageDataObject
  */
 exports.getPackageByName = function(packageName, successCallback, errorCallback){
-    this.getAllPackages(function(packages){
+    this.getAllPackages(false, function(packages){
         let myPackage = _.find(packages, {name:packageName});
         console.log('this is packages');
         console.log(packages);
