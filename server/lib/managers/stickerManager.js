@@ -7,7 +7,7 @@ var _ = require('lodash');
 
 exports.assignSticker = function(stickerid, userId, successCallback, errorCallback){
     if(true /* if sticker costs money */) {
-        let paymentName = 'my temp paymnet'; // TODO get this informatino from http://pldt.sticker....
+        let paymentName = 'my temp paymnet'; // TODO get this informatino from http://pldt-sticker....
         let cost = 9.99; // TODO get real cost from json
         paypalManager.createPayment(paymentName, stickerid, cost, userId, successCallback,errorCallback);
     } else {
