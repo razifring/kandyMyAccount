@@ -43,3 +43,13 @@ exports.applyPackage = function(userId, packageName, successCallback, errorCallb
     };
     kandyRequest.put(url, params, successCallback, errorCallback);
 };
+
+exports.associateDid = function(userId, packageClientId, successCallback, errorCallback){
+  let url = config.kandyApi.apiUrl + 'billing/dids/associate';
+  let params = {
+    "user_id": userId,
+    "client_package_id": packageClientId,
+    "provider": "kandy"
+  };
+  kandyRequest.put(url, params, successCallback, errorCallback);
+};

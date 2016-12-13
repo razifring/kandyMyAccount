@@ -60,6 +60,7 @@ exports.put = function(url, data, successCallback, errorCallback){
 
         var urlWithToken = url + 'key=' + token;
         console.log(urlWithToken);
+        console.log('params: ' + JSON.stringify(data));
         simpleRequest.put(urlWithToken, JSON.stringify(data), { 'content-type': 'application/json' }, successCallback, function(error){
             console.log('kandyRequest Error');
             if(error.code === 403){

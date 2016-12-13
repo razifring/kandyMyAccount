@@ -1,6 +1,6 @@
 {
-  "name": "auction",
-  "version": "0.0.0",
+  "name": "my-account",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "postinstall": "npm run typings install",

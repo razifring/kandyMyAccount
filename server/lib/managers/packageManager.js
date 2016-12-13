@@ -9,6 +9,7 @@ var packageDataObject = require('../dataObjects/packageDataObject') ;
 var userPackageDataObject = require('../dataObjects/userPackageDataObject');
 var allPackages = [];
 var apiCache = require('apicache');
+var topupConfig = require('../../config/topupConfig');
 
 exports.getAllPackages = function(onlyPurchasable, successCallback, errorCallback){
 
@@ -122,14 +123,48 @@ exports.getDidPlans = function(allKandyPackages){
 };
 
 exports.redeemCard = function(pinCode, userId, successCallback, errorCallback){
-    return packageService.redeemCard(pinCode, userId, successCallback, errorCallback);
+    packageService.redeemCard(pinCode, userId, function(){
+        let topupPrefix = pinCode.substr(0,5);
+        let prefixConfig = _.get(topupConfig, topupPrefix);
+        if(prefixConfig){
+            for(let i = 0, len = prefixConfig.packages.length; i < len; i++ ){
+                this.applyPackage(prefixConfig.packages[i], userId, function(){}, errorCallback)
+            }
+        }
+        apiCache.clear('/api/packages/:msisdn');
+    }, errorCallback);
+
 };
 
+/**
+ * Add a package to a user.
+ * If package is of type DID, also attach a did number.
+ *
+ * @param packageId
+ * @param userId
+ * @param successCallback
+ * @param errorCallback
+ */
 exports.applyPackage = function(packageId, userId, successCallback, errorCallback){
     this.getPackageById(packageId, function(packageData){
-        if(packageData)
-        {
-            packageService.applyPackage(userId, packageData.name, successCallback, errorCallback);
+        if(packageData){
+            if(packageData.type === packageEnum.type.did){
+                // after applying package, associate a did.
+                packageService.applyPackage(userId, packageData.name, function(applyResult){
+                    applyResult = JSON.parse(applyResult);
+                    let packageClientId = _.get(applyResult, 'result.assignmentId');
+                    if(packageClientId)  {
+                      packageService.associateDid(userId, packageClientId, function(didNumber){
+                          successCallback(packageData)
+                      }, errorCallback);
+                    } else {
+                      successCallback(packageData)
+                    }
+                }, errorCallback);
+            } else {
+                packageService.applyPackage(userId, packageData.name, successCallback, errorCallback);
+            }
+
             apiCache.clear('/api/packages/:msisdn');
 
             // if sticker package then apply stickers here:
@@ -144,6 +179,12 @@ exports.getPackageConfigById = function(packageId) {
   return _.filter(packageConfig, {'id':packageId})[0];
 };
 
+exports.hasDidPackage = function(userId, successCallback, errorCallback){
+  this.getActivePackages(userId, function(userPackages){
+      let didPackage = _.find(userPackages, {'type': packageEnum.type.did});
+      return _.get(didPackage, '0', false);
+  }, errorCallback);
+};
 
 function getPlansByType(type, allKandyPackages)
 {
