@@ -12,7 +12,7 @@ module.exports = [
 	{
 		id: 1374,
 		title: 'Get US$5 Credit',
-		description: 'Valid for 30 days',
+		description: 'Call or text any phone worldwide.',
 		cost: 4.99,
 		type: packageEnum.type.credit,
 		purchasable: true
@@ -82,7 +82,7 @@ module.exports = [
 	{
 		id: 1456,
 		title: 'Add VOIP number package, $0.99 USD',
-		description: '',
+		description: '6 mins. to call the Philippines. Valid for 24Hours.',
 		cost: 0.99,
 		type: packageEnum.type.did,
 		purchasable: true

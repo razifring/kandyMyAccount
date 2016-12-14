@@ -222,7 +222,7 @@ footer {
 .select-package-item{
   padding: 0 0 12px;
   background: #666;
-  border-radius: 4px;
+  border-radius: 15px;
   color: #fff;
 }
 
@@ -252,7 +252,7 @@ footer {
   background-color: #d2272a;
   padding: 5px 20px;
   margin-bottom: 12px;
-  border-radius: 4px 4px 0 0;
+  border-radius: 15px 15px 0 0;
 }
 
 .dropdown-menu > li > a:hover{
@@ -284,6 +284,7 @@ footer {
   font-size: 13px;
   font-weight: bold;
   margin-top: 10px;
+  float: right;
 }
 
 .paypal-btn-logo {
@@ -294,6 +295,7 @@ footer {
 .paypal-btn-spinner-wrapper{
   height: 33px;
   margin-left: 10px;
+  float:right;
 }
 
 .dash-glue  {
@@ -611,6 +613,15 @@ input[type=date]{
   bottom: 0;
   width: 100%;
   margin: 0;
+}
+.buy-button{
+  background: url("../images/buy.png") center no-repeat;
+  width: 90px;
+  height: 50px;
+  float: right;
+}
+.package-cost{
+  margin-left:15px;
 }
 /* spinner start */
 .sk-circle {
