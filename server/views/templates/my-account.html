@@ -1,4 +1,29 @@
-<!--h1>Active Packages</h1-->
+<div class="row">
+
+    <div class="package-enrolled">
+        <div class="enrolled">&nbsp;&nbsp;&nbsp;Enrolled Promos</div>
+        <ul class="package_list top10" *ngIf="activePackages?.did?.length > 0">
+            <list-packages [packages]=activePackages?.did></list-packages>
+        </ul>
+        <ul class="package_list" *ngIf="activePackages?.credit?.length > 0">
+            <list-packages [packages]=activePackages?.credit></list-packages>
+        </ul>
+
+        <ul class="package_list" *ngIf="activePackages?.minutes?.length > 0">
+            <list-packages [packages]=activePackages?.minutes></list-packages>
+        </ul>
+
+
+
+        <div *ngIf="activePackages?.length === 0">
+            You are not subscribed to any package. <br>
+            <a routerLink="/purchase">Get a plan now.</a>
+        </div>
+    </div>
+</div>
+
+<!-- PREVIOUS DESIGN
+<h1>Active Packages</h1
 
 
 <div class="row">
@@ -25,19 +50,7 @@
         <a routerLink="/purchase">Get a plan now.</a>
     </div>
 </div>
-
-<div *ngIf="activePackages?.minutes?.length > 0">
-    <h2>Philippine Call and Text Plans</h2>
-    <list-packages [packages]=activePackages?.minutes></list-packages>
-</div>
-<div *ngIf="activePackages?.did?.length > 0">
-    <h2>Philippine Mobile Number</h2>
-    <list-packages [packages]=activePackages?.did></list-packages>
-</div>
-<div *ngIf="activePackages?.length === 0">
-    You are not subscribed to any package. <br>
-    <a routerLink="/purchase">Get a plan now.</a>
-</div>
+-->
 
 
 <!--sample packages only... for theming and testing...remove before deployment
@@ -92,4 +105,3 @@
     </div>
 </div>
 -->
-
