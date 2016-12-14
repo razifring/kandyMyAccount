@@ -29,7 +29,7 @@ import {Component, EventEmitter, Output, Input} from '@angular/core';
 
 export class SelectPackagesComponent {
     packages = [];
-    @Output() onSelect = new EventEmitter();ios
+    @Output() onSelect = new EventEmitter();
     selected;
 
     constructor() {}
