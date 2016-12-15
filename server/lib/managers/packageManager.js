@@ -155,10 +155,10 @@ exports.applyPackage = function(packageId, userId, successCallback, errorCallbac
                     let packageClientId = _.get(applyResult, 'result.assignmentId');
                     if(packageClientId)  {
                       packageService.associateDid(userId, packageClientId, function(didNumber){
-                          successCallback(packageData)
+                          successCallback(packageData);
                       }, errorCallback);
                     } else {
-                      successCallback(packageData)
+                      successCallback(packageData);
                     }
                 }, errorCallback);
             } else {
