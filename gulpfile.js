@@ -4,7 +4,8 @@ var concat = require('gulp-concat');
 var typescript = require('gulp-typescript');
 var systemjsBuilder = require('systemjs-builder');
 var uglify = require('gulp-uglify');
-
+var gutil = require('gulp-util');
+console.log(gutil.env);
 // Compile TypeScript app to JS
 gulp.task('compile:ts', function () {
     return gulp
@@ -26,7 +27,7 @@ gulp.task('compile:ts', function () {
 // Generate systemjs-based bundle (app/app.js)
 gulp.task('bundle:app', function() {
     let bsaeUrl;
-    if(process.env.NODE_ENV==='development'){
+    if(gutil.env.env==='dev'){
         baseUrl = '/home/vagrant/mean';
     } else {
         baseUrl = '/nodes/node_Kandy-Stage_nodeMyAccount_pm2/origin/develop';
