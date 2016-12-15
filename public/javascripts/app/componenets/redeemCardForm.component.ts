@@ -20,6 +20,17 @@ export class RedeemCardFormComponent {
     ){}
 
 
+    _keyPress(event: any) {
+        const pattern = /[0-9\+\-\ ]/;
+        let inputChar = String.fromCharCode(event.charCode);
+        // console.log(inputChar, e.charCode);
+        if (!pattern.test(inputChar)) {
+            // invalid character, prevent input
+            event.preventDefault();
+        }
+    }
+
+
     onSubmit() {
         this.submitted = true;
         this.processing = true;
