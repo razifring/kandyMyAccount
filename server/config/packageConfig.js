@@ -94,7 +94,7 @@ module.exports = [
 		cost: 0.99,
 		type: packageEnum.type.did,
 		purchasable: true,
-		voip:1455
+		voip:0
 	},
 	{
 		id: 1455,

@@ -120,7 +120,7 @@ exports.executePayment = function(req, res) {
                         },
                         function(e){
                             console.log("INSIDE APPLY PACKAGE IN PAYPAL FOR GET PACKAGE ID(ERROR):"+e);
-                           // res.json({status: false, message: 'Purchase failed, please contact customer support. payment id: ' + paymentId});
+                            res.json({status: false, message: 'Getting packaged detail failed, please contact customer support. package id: ' + payment.transactions[0].item_list.items[0].sku});
                         }
                     );
                 },
