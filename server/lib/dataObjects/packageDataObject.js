@@ -4,13 +4,14 @@
 
 
 
-function PackageDataObject(id, name, title, cost, type){
+function PackageDataObject(id, name, title, cost, type, voip){
     this.id = id;
     this.title = title;
     this.name = name;
     this.cost = cost;
     this.currency = 'USD';
     this.type = type;
+    this.voip = voip;
 }
 
 /**
@@ -20,7 +21,7 @@ function PackageDataObject(id, name, title, cost, type){
  * @returns {PackageDataObject}
  */
 exports.createFromPackagesConfig = function (data, name){
-    return new PackageDataObject(data.id, name, data.title, data.cost, data.type);
+    return new PackageDataObject(data.id, name, data.title, data.cost, data.type, data.voip);
 };
 
 exports = PackageDataObject;

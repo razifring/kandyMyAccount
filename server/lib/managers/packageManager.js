@@ -88,6 +88,8 @@ exports.getPackageById = function(packageId, successCallback, errorCallback){
             packageId = _.parseInt(packageId);
         }
         let myPackage = _.find(packages, {id:packageId});
+        console.log("This is my package");
+        console.log(myPackage);
         successCallback(myPackage);
     }, errorCallback);
 

@@ -89,8 +89,40 @@ exports.executePayment = function(req, res) {
         } else {
             packageManager.applyPackage(payment.transactions[0].item_list.items[0].sku, msisdn,
                 function(result){
-                    console.log(result);
-                    res.json({status: true});
+                    console.log("apply package result: " +result);
+
+                    packageManager.getPackageById(payment.transactions[0].item_list.items[0].sku,
+                        function(packageData){
+                            var voipId = packageData.voip;
+                            console.log("VOIP ID:"+voipId);
+
+                            if(voipId > 0){
+                                //apply package here
+                                packageManager.applyPackage(voipId, msisdn,
+                                    function(result) {
+                                        console.log("result in assign VOIP");
+                                        console.log(result);
+                                        res.json({status: true});
+                                    },
+                                    function(e){
+                                        console.log(e);
+                                        res.json({status: false, message: 'VOIP package assign failed, please contact customer support. VOIP id: ' + voipId});
+                                    }
+                                );
+
+                            } else{
+
+                                res.json({status: true});
+                            }
+
+                          //  res.json({status: true});
+
+                        },
+                        function(e){
+                            console.log("INSIDE APPLY PACKAGE IN PAYPAL FOR GET PACKAGE ID(ERROR):"+e);
+                           // res.json({status: false, message: 'Purchase failed, please contact customer support. payment id: ' + paymentId});
+                        }
+                    );
                 },
                 function(e){
                     console.log(e);

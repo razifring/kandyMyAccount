@@ -15,7 +15,8 @@ module.exports = [
 		description: 'Call or text any phone worldwide.',
 		cost: 4.99,
 		type: packageEnum.type.credit,
-		purchasable: true
+		purchasable: true,
+		voip:1456
 	},
 	{
 		id: 1375,
@@ -23,7 +24,8 @@ module.exports = [
 		description: 'Valid for 30 days',
 		cost: 9.99,
 		type: packageEnum.type.credit,
-		purchasable: false
+		purchasable: false,
+		voip:0
 	},
 	{
 		id: 1376,
@@ -31,7 +33,8 @@ module.exports = [
 		description: 'Valid for 30 days',
 		cost: 14.99,
 		type: packageEnum.type.credit,
-		purchasable: false
+		purchasable: false,
+		voip:0
 	},
 	{
 		id: 1377,
@@ -40,7 +43,8 @@ module.exports = [
 		cost: 7.99,
 		type: packageEnum.type.minutes,
 		category: categories.telebabad,
-		purchasable: true
+		purchasable: true,
+		voip:1801
 	},
 	{
 		id: 1378,
@@ -49,7 +53,8 @@ module.exports = [
 		cost: 24.99,
 		type: packageEnum.type.minutes,
 		category: categories.telebabad,
-		purchasable: true
+		purchasable: true,
+		voip:1456
 
 	},
 	{
@@ -59,7 +64,8 @@ module.exports = [
 		cost: 'US$4.99',
 		type: packageEnum.type.minutes,
 		category: categories.phil,
-		purchasable: false
+		purchasable: false,
+		voip:0
 	},
 	{
 		id: 1380,
@@ -68,7 +74,8 @@ module.exports = [
 		cost: 9.99,
 		type: packageEnum.type.minutes,
 		category: categories.phil,
-		purchasable: false
+		purchasable: false,
+		voip:0
 	},
 	{
 		id: 1381,
@@ -77,7 +84,8 @@ module.exports = [
 		cost: 14.99,
 		type: packageEnum.type.minutes,
 		category: categories.phil,
-		purchasable: false
+		purchasable: false,
+		voip:0
 	},
 	{
 		id: 1456,
@@ -85,7 +93,8 @@ module.exports = [
 		description: '6 mins. to call the Philippines. Valid for 24Hours.',
 		cost: 0.99,
 		type: packageEnum.type.did,
-		purchasable: true
+		purchasable: true,
+		voip:1455
 	},
 	{
 		id: 1455,
@@ -93,7 +102,8 @@ module.exports = [
 		description: '6 Minutes 24 hours package',
 		cost: 0,
 		type: packageEnum.type.phil,
-		purchasable: false
+		purchasable: false,
+		voip:0
 	},
 	{
 		id: 1801,
@@ -101,7 +111,8 @@ module.exports = [
 		description: 'Free 7 days Phillipne number',
 		cost: 0,
 		type: packageEnum.type.did,
-		purchasable: false
+		purchasable: false,
+		voip:0
 	},
 
 
