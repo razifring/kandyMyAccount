@@ -68,7 +68,7 @@ exports.put = function(url, data, successCallback, errorCallback){
                     self.put(url, data, successCallback, errorCallback);
                 });
             }else{
-                errorCallback({message: error.message, code: error.code});
+                errorCallback({message: error.message, code: error.code, info: _.get(error, 'additional_information')});
             }
         });
     });
@@ -79,10 +79,10 @@ exports.successCallback = function(result, successCallback, errorCallback){
     let res = (_.isString(result))?JSON.parse(result):result;
     if(res.status === 0)
     {
-        successCallback(result);
+        successCallback(res);
     }
     else
     {
-        errorCallback({message: res.message, code: res.status});
+        errorCallback({message: res.message, code: res.status, info: _.get(res, 'additional_information.fring_message')});
     }
 };

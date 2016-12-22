@@ -125,15 +125,23 @@ exports.getDidPlans = function(allKandyPackages){
 };
 
 exports.redeemCard = function(pinCode, userId, successCallback, errorCallback){
+    let self = this;
     packageService.redeemCard(pinCode, userId, function(){
-        let topupPrefix = pinCode.substr(0,5);
-        let prefixConfig = _.get(topupConfig, topupPrefix);
-        if(prefixConfig){
-            for(let i = 0, len = prefixConfig.packages.length; i < len; i++ ){
-                this.applyPackage(prefixConfig.packages[i], userId, function(){}, errorCallback)
+        packageService.getTopupCard(pinCode, function(pinCodeData){
+            let serial = _.get(pinCodeData, 'result[0].serial');
+            if(serial){
+                let serialPrefix = serial.substr(0,5);
+                let prefixConfig = _.get(topupConfig, serialPrefix);
+                if(prefixConfig){
+                    for(let i = 0, len = prefixConfig.packages.length; i < len; i++ ){
+                        self.applyPackage(prefixConfig.packages[i], userId, successCallback, errorCallback)
+                    }
+                }
+                apiCache.clear('/api/packages/:msisdn');
             }
-        }
-        apiCache.clear('/api/packages/:msisdn');
+
+        }, errorCallback);
+
     }, errorCallback);
 
 };

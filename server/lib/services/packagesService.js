@@ -13,7 +13,7 @@ exports.getCreatedPackage = function(successCallback, errorCallback){
 };
 
 exports.getActivePackages = function(userId, successCallback, errorCallback){
-    var url = config.kandyApi.apiUrl + 'billing/users/packages/status/active?user_id=' + userId;
+    let url = config.kandyApi.apiUrl + 'billing/users/packages/status/active?user_id=' + userId;
     kandyRequest.get(url, function(data){
         kandyRequest.successCallback(data, successCallback, errorCallback);
     },errorCallback);
@@ -26,7 +26,13 @@ exports.redeemCard = function(pinCode, userId, successCallback, errorCallback){
         'pin_code': pinCode
     };
     kandyRequest.put(url, params, function(data){
-        console.log('packages are '+data);
+        kandyRequest.successCallback(data, successCallback, errorCallback);
+    },errorCallback);
+};
+
+exports.getTopupCard = function(pinCode, successCallback, errorCallback){
+    let url = config.kandyApi.apiUrl + 'billing/topup?pin_code=' + pinCode;
+    kandyRequest.get(url, function(data){
         kandyRequest.successCallback(data, successCallback, errorCallback);
     },errorCallback);
 };
