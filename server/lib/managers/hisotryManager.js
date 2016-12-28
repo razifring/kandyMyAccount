@@ -19,10 +19,11 @@ exports.getHistory = function(msisdn, type, start, end, successCallback, errorCa
             let packages = data.result.packages.map(package => {
                 let packageData = packageManager.getPackageConfigById(package.package_id);
                 console.log(packageData);
+                console.log(package);
                 return {
                     'transaction_time': package.transaction_time,
-                    'name': packageData.title,
-                    'cost': packageData.cost
+                    'name': _.get(packageData, 'title', package.package_name),
+                    'cost': _.get(packageData, 'cost')
                 }
             });
             successCallback(packages);

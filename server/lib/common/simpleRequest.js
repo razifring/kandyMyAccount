@@ -266,19 +266,32 @@ function put(url, payload, headers, successCallback, errorCallback) {
  * @return {error / json}
  */
 function get(url, successCallback, errorCallback) {
-
+    var err_msg;
     try {
         request.get(url, function(error, response, body) {
+            console.log(response);
             if (error || response.statusCode != 200)
             {
-                console.log(response.statusCode);
-                console.log(response.body);
-                var err_msg = (error && error.message ) ? error.message : "(no specific error object, http return code: " + response.statusCode + ")";
-                if(errorCallback)
-                {
-                    errorCallback({message: err_msg, code: response.statusCode});
+                if(response) {
+                    console.log(response.statusCode);
+                    console.log(response.body);
+                    err_msg = (error && error.message ) ? error.message : "(no specific error object, http return code: " + response.statusCode + ")";
+                    if(errorCallback)
+                    {
+                        errorCallback({message: err_msg, code: response.statusCode});
+                    }
+
+                } else {
+                    if(errorCallback)
+                    {
+                        console.log(error);
+                        err_msg = (error && error.message ) ? error.message : "Unknown error";
+                        errorCallback({message: err_msg, code: 502});
+                    }
                 }
+
                 return;
+
             }
             successCallback(JSON.parse(body));
         });

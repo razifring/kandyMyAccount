@@ -54,8 +54,8 @@ exports.associateDid = function(userId, packageClientId, successCallback, errorC
   let url = config.kandyApi.apiUrl + 'billing/dids/associate';
   let params = {
     "user_id": userId,
-    "client_package_id": packageClientId,
-    "provider": "kandy"
+    "assignmentId": packageClientId,
+    "provider_id": "kandy"
   };
   kandyRequest.put(url, params, successCallback, errorCallback);
 };

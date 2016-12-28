@@ -175,7 +175,7 @@ exports.applyPackage = function(packageId, userId, successCallback, errorCallbac
                 packageService.applyPackage(userId, packageData.name, successCallback, errorCallback);
             }
 
-            apiCache.clear('/api/packages/:msisdn');
+            apiCache.clear('/api/packages/' + userId);
 
             // if sticker package then apply stickers here:
         }
