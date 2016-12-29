@@ -1,5 +1,7 @@
 'use strict';
 var baseUrl =  'http://localhost:3000/';
+//var apiCache = require('apicache');
+//apiCache.options({ debug: true });
 
 module.exports = {
 
