@@ -10,6 +10,7 @@ var userPackageDataObject = require('../lib/dataObjects/userPackageDataObject');
 exports.getUserPackages = function(req, res) {
     packageManager.getActivePackages(req.params.msisdn,
         function(packages){
+            res.setHeader('Cache-Control', 'private, max-age=60'); // one year
             res.json(responseDataObject.create(true, {
                 packages: packages
             }));
@@ -27,6 +28,7 @@ exports.getPurchasable = function(req, res) {
             callPlans: packageManager.getCallPlans(allPackages),
             didPlans: packageManager.getDidPlans(allPackages)
         };
+        res.setHeader('Cache-Control', 'public, max-age=300'); // one year
         res.json(packages);
     },
     function(e){

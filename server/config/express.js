@@ -16,7 +16,8 @@ var express = require('express'),
     logger = require('express-logger'),
     bodyParser = require('body-parser'),
     session = require('client-sessions'),
-    cookieParser = require('cookie-parser');
+    cookieParser = require('cookie-parser'),
+    favicon = require('serve-favicon');
 
 module.exports = function(app) {
     app.set('showStackError', true);
@@ -139,7 +140,7 @@ module.exports = function(app) {
     //app.use(flash());
 
     // Setting the fav icon and static folder
-    //app.use(express.favicon());
+    app.use(favicon(config.root + '/public/favicon.ico'));
     app.use('/public', express.static(config.root + '/public'));
 
     bootstrapRoutes();
