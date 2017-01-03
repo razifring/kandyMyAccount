@@ -25,11 +25,14 @@ export class NavBarComponent {
         if(userObservable){
             userObservable.subscribe(value => {
                 this.msisdn = value.msisdn;
+                /*
+                *** Calls stickershop UAT generator
                 if(this.msisdn) {
                     this.userAccessToken = this.authService.getUserAccessToken(this.msisdn).subscribe(
                         userAccessToken => this.userAccessToken = userAccessToken
                     );
                 }
+                */
             });
         }
 
