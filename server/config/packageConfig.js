@@ -89,7 +89,7 @@ module.exports = [
 	},
 	{
 		id: 1456,
-		title: 'Add VOIP number package, $0.99 USD',
+		title: 'JuanaChat Plan',
 		description: '6 mins. to call the Philippines. Valid for 24Hours.',
 		cost: 0.99,
 		type: packageEnum.type.did,
@@ -108,14 +108,12 @@ module.exports = [
 	{
 		id: 1801,
 		title: '7 Days VOIP',
-		description: 'Free 7 days Phillipne number',
+		description: 'Free 7 days Philippines number',
 		cost: 0,
 		type: packageEnum.type.did,
 		purchasable: false,
 		voip:0
 	},
-
-
 
 
 ];
