@@ -81,7 +81,7 @@
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
             'angular2-cookie':            'npm:angular2-cookie',
             'lodash':            'npm:lodash',
-            'ng2-bootstrap/ng2-bootstrap': 'npm:ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
+            'ng2-bootstrap/ng2-bootstrap': 'npm:ng2-bootstrap/bundles/ng2-bootstrap.umd.min.js',
             'moment': 'npm:moment/moment.js'
         },
     });

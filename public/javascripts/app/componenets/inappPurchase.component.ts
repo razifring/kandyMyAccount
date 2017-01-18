@@ -8,7 +8,7 @@ export class InappPurchaseComponent {
     disableBtns:boolean = false;
 
     constructor(private _ngZone: NgZone){
-        window.angularComponentRef = {
+        window['angularComponentRef'] = {
             component: this,
             zone: _ngZone,
             purchaseCallback: (value) => this.purchaseCallback(value),
@@ -16,7 +16,7 @@ export class InappPurchaseComponent {
     }
 
     ngOnDestroy() {
-        window.angularComponent = null;
+        window['angularComponentRef'] = null;
     }
 
     triggerInappPurchase():void {
