@@ -18,6 +18,9 @@
 
     <script src="/javascripts/systemjs.config.js"></script>
     <script>
+      function fromIos(val){
+        window.angularComponentRef.zone.run(function () { window.angularComponentRef.purchaseCallback(val)})
+      }
       System.import('app').catch(function(err){ console.error(err); });
     </script>
   </head>

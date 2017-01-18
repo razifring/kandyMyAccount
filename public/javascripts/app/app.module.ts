@@ -37,6 +37,7 @@ import {HistoryService} from "./services/history.service";
 import {StickerService} from "./services/sticker.service";
 import {StickerCodes} from "./utils/stickerPackageCode";
 import {Rates} from "./utils/rates";
+import {InappPurchaseComponent} from "./componenets/inappPurchase.component";
 
 
 
@@ -88,6 +89,7 @@ import {Rates} from "./utils/rates";
         SimpleSpinnerComponent,
         SpinnerComponent,
         ThankyouComponent,
+        InappPurchaseComponent
     ],
     bootstrap: [ AppComponent ]
 })

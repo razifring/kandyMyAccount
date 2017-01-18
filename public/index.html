@@ -15,6 +15,11 @@
 
 
 </head>
+<script>
+    function fromIos(val){
+        window.angularComponentRef.zone.run(function () { window.angularComponentRef.purchaseCallback(val)})
+    }
+</script>
 <body>
 <app-main><div class="loading">Loading My Account. Please wait.</div></app-main>
 </body>
