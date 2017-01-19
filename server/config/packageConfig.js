@@ -184,7 +184,7 @@ module.exports = [
 		cost: 24.99,
 		type: packageEnum.type.minutes,
 		category: categories.telebabad,
-		purchasable: true,
+		purchasable: false,
 		hasDid: true
 
 	},

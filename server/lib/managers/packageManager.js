@@ -161,6 +161,7 @@ exports.redeemCard = function(pinCode, userId, successCallback, errorCallback){
 exports.applyPackage = function(packageId, userId, successCallback, errorCallback){
     this.getPackageById(packageId, function(packageData){
         if(packageData){
+            console.log('packageData: ' + JSON.stringify(packageData));
             if(packageData.hasDid === true){
                 // after applying package, associate a did.
                 packageService.applyPackage(userId, packageData.name, function(applyResult){
