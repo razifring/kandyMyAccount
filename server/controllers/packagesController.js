@@ -10,7 +10,7 @@ var userPackageDataObject = require('../lib/dataObjects/userPackageDataObject');
 exports.getUserPackages = function(req, res) {
     packageManager.getActivePackages(req.params.msisdn,
         function(packages){
-            res.setHeader('Cache-Control', 'private, max-age=60'); // one year
+            res.setHeader('Cache-Control', 'no-cache'); // one year
             res.json(responseDataObject.create(true, {
                 packages: packages
             }));

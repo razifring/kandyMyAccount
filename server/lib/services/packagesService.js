@@ -6,7 +6,7 @@ var config = require('../../config/config');
 var kandyRequest = require('../common/kandyRequest') ;
 
 exports.getCreatedPackage = function(successCallback, errorCallback){
-  var url = config.kandyApi.apiUrl + 'billing/packages/all';
+  var url = config.kandyApi.apiUrl + 'billing/packages/created';
   kandyRequest.get(url, function(data){
       kandyRequest.successCallback(data, successCallback, errorCallback);
   },errorCallback);

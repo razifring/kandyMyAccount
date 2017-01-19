@@ -3,51 +3,51 @@
 module.exports =
 	{
 		"88880": {
-			"packages": [11, 38]
+			"packages": [2223, 2246]
 		},
 
 		"10105": {
-			"packages": [11, 7]
+			"packages": [2223, 2309]
 		},
 
 		"10205": {
-			"packages": [11]
+			"packages": [2223]
 		},
 
 		"10305": {
-			"packages": [11, 15]
+			"packages": [2223, 2308]
 		},
 
 		"10505": {
-			"packages": [11]
+			"packages": [2223]
 		},
 
 		"10510": {
-			"packages": [11]
+			"packages": [2223]
 		},
 
 		"10408": {
-			"packages": [11]
+			"packages": [2223]
 		},
 
 		"10416": {
-			"packages": [11]
+			"packages": [2223]
 		},
 
 		"10432": {
-			"packages": [11]
+			"packages": [2223]
 		},
 
 		"11105": {
-			"packages": [7]
+			"packages": [2309]
 		},
 
 		"11210": {
-			"packages": [9]
+			"packages": [2310]
 		},
 
 		"11315": {
-			"packages": [8]
+			"packages": [2311]
 		},
 
 		"11405": {
@@ -63,83 +63,78 @@ module.exports =
 		},
 
 		"11703": {
-			"packages": [11]
+			"packages": [2223]
 		},
-
-		"10506": {
-			"packages": [12, 20]
-		},
-
 		"10102": {
-			"packages": [1378, 1456]
+			"packages": [2230, 2232]
 		},
 
 		"10202": {
-			"packages": [1378, 1456]
+			"packages": [2230, 2232]
 		},
 
 		"10302": {
-			"packages": [1378, 1456]
+			"packages": [2230, 2232]
 		},
 
 		"10402": {
-			"packages": [1378, 1456]
+			"packages": [2230, 2232]
 		},
 
 		"10702": {
-			"packages": [1378, 1456]
+			"packages": [2230, 2232]
 		},
 
 		"10104": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"10204": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"10304": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"10404": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"10704": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"10207": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"11702": {
-			"packages": [1378, 1456]
+			"packages": [2230, 2232]
 		},
 
 		"11707": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"10407": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"10107": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"10502": {
-			"packages": [1378, 1456]
+			"packages": [2230, 2232]
 		},
 
 		"10507": {
-			"packages": [1377, 1801]
+			"packages": [2228, 2231]
 		},
 
 		"10501": {
-			"packages": [1455]
+			"packages": [2224]
 		},
 		"10101": {
 			"packages": [1455]

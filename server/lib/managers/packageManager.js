@@ -63,10 +63,13 @@ exports.getActivePackages = function(msisdn, successCallback, errorCallback){
         self.getAllKandyPackages(function(allPackagesKandyData){
             for(let i =0; i < activePackages.length; i++){
                 let kandyPackageData = _.find(allPackagesKandyData, {package_name:activePackages[i].meta_package});
-                let dataObject = userPackageDataObject.createFromKandy(activePackages[i], kandyPackageData.package_id);
-                if(dataObject) {
-                    userActivePackages.push(dataObject);
+                if(kandyPackageData) {
+                    let dataObject = userPackageDataObject.createFromKandy(activePackages[i], kandyPackageData.package_id);
+                    if(dataObject) {
+                        userActivePackages.push(dataObject);
+                    }
                 }
+                console.log('WARNING: missing kandy package: ' +  JSON.stringify(activePackages[i]));
             }
             successCallback(userActivePackages);
         }, errorCallback);
@@ -82,7 +85,7 @@ exports.getActivePackages = function(msisdn, successCallback, errorCallback){
  */
 exports.getPackageById = function(packageId, successCallback, errorCallback){
     this.getAllPackages(false, function(packages){
-        console.log('inside getPackageById');
+        console.log('inside getPackageById, package id: ' . packageId);
         console.log(packages);
         if(typeof stringValue){
             packageId = _.parseInt(packageId);
@@ -158,7 +161,7 @@ exports.redeemCard = function(pinCode, userId, successCallback, errorCallback){
 exports.applyPackage = function(packageId, userId, successCallback, errorCallback){
     this.getPackageById(packageId, function(packageData){
         if(packageData){
-            if(packageData.type === packageEnum.type.did){
+            if(packageData.hasDid === true){
                 // after applying package, associate a did.
                 packageService.applyPackage(userId, packageData.name, function(applyResult){
                     applyResult = JSON.parse(applyResult);

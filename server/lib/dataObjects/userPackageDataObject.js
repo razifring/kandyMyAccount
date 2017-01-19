@@ -4,7 +4,7 @@
 var packageManager = require('../managers/packageManager');
 
 
-function PackageDataObject(id, name, balance, remainingMinutes, startTime, endTime, type){
+function PackageDataObject(id, name, balance, remainingMinutes, startTime, endTime, type, hasDid){
     this.id = id;
     this.name = name;
     this.balance = balance;
@@ -12,6 +12,7 @@ function PackageDataObject(id, name, balance, remainingMinutes, startTime, endTi
     this.startTime = startTime;
     this.endTime = endTime;
     this.type = type;
+    this.hasDid = hasDid;
     this.currency = 'USD';
 }
 
@@ -24,7 +25,7 @@ function PackageDataObject(id, name, balance, remainingMinutes, startTime, endTi
 exports.createFromKandy = function (data, packageId){
     let packageConfigData = packageManager.getPackageConfigById(packageId);
     if(packageConfigData) {
-        return new PackageDataObject(packageId, packageConfigData.title, data.balance, data.remaining_minutes, data.start_timestamp, data.end_timestamp, data.package_type);
+        return new PackageDataObject(packageId, packageConfigData.title, data.balance, data.remaining_minutes, data.start_timestamp, data.end_timestamp, packageConfigData.type, packageConfigData.hasDid);
     } else {
         return null;
     }

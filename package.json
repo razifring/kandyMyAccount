@@ -7,6 +7,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "start": "concurrently \"node ./bin/www\" \"npm run tsc:w\"",
+    "dev": "concurrently \"nodemon ./bin/www\" \"npm run tsc:w\"",
     "stop": "pkill --signal SIGINT myApp",
     "typings": "typings",
     "build-dev": "tsc -p . && gulp --env=dev",
