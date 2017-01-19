@@ -47,6 +47,16 @@ module.exports = [
 		hasDid: true
 	},
 	{
+		id: 2234,
+		title: 'Telebabad 30 Days',
+		description: '4,000 minutes to call PLDT, Smart and Sun numbers, 30 minutes to call other Philippine networks and a Philippine number for 30 days.',
+		cost: 24.99,
+		type: packageEnum.type.minutes,
+		category: categories.telebabad,
+		purchasable: true,
+		hasDid: true
+	},
+	{
 		id: 2327,
 		title: 'Member get Member',
 		description: 'Free 6 minutes to call any Philippines number for 24 hours.',
