@@ -210,3 +210,90 @@ function getPlansByType(type, allKandyPackages)
             }
         });
 }
+
+/**
+ *
+ * @param packageId
+ * @param msisdn
+ * @param userActivePackages
+ * @param successCallback
+ * @param errorCallback
+ * @returns Boolean
+ */
+exports.validatePackageById = function(packageId, msisdn, userActivePackages, successCallback, errorCallback){
+
+    // console.log("THIS IS MY PACKAGES IN MANAGER: "+JSON.stringify(userActivePackages));
+    this.getPackageById(packageId,function(packageData) {
+        var requestedPackageType;
+        let packageValid = null;
+        let messagePrompt = "";
+
+        if(packageData){
+            console.log("PACKAGE DATA I WANT TO PURCHASE: "+JSON.stringify(packageData));
+            requestedPackageType = packageData.type;
+
+            if(requestedPackageType === "credit"){
+                packageValid = true;
+                messagePrompt = "You can avail multiple credit";
+
+            } else if (requestedPackageType === "minutes") {
+                if(userActivePackages){
+                    let activeTelebabad = false;
+                    let activeCall = false;
+
+                    for (let i = 0; i < userActivePackages.length; i++) {
+                        let userActivePackageId = userActivePackages[i].id;
+
+                        if (!activeTelebabad && (userActivePackageId == 2233 || userActivePackageId == 2234)) {
+                            activeTelebabad = true;
+                        }
+                        if(!activeCall && userActivePackageId == 2328 ){//check if already register to a call plan
+                            activeCall = true;
+                        }
+                    } // end of for
+
+                    console.log("Active Call: "+activeCall+" Active Telebabad: "+activeTelebabad+" Package Found: ");
+                    /** for telebabad verification**/
+                    if((packageId == 2233) || packageId == 2234){
+                        if((activeTelebabad === false)){
+                            packageValid = true;
+                        }else{
+                            packageValid = false;
+                            messagePrompt = "You are still registered to a Telebabad plan. Please register again upon expiry of your Telebabad plan.";
+                        }
+                    }
+
+                    /** for call and plan verification**/
+                    if(packageId == 2328){
+                        if(activeCall === false && activeTelebabad === false){
+                            packageValid = true;
+                        }else if (activeTelebabad === true){
+                            packageValid = false;
+                            messagePrompt = "You are still registered to a Telebabad plan. Please register again upon expiry of your Telebabad plan.";
+                        }
+                        else{
+                            packageValid = false;
+                            messagePrompt ="You are still registered to a US$0.99 6 minute package. Please register again upon expiry of your call plan.";
+                        }
+                    }
+                }
+
+            } else {
+                packageValid = true;
+                messagePrompt = "No active packages";
+            }
+
+            let packageValidation = {isValid:packageValid, message:messagePrompt };
+            successCallback(packageValidation);
+            // console.log("This is the package Validation response");
+            // console.log(packageValidation);
+
+        }else{
+            successCallback(packageValidation);
+            // console.log("This is no active validation response :"+packageData);
+            //console.log(packageData);
+        }
+    },errorCallback);
+
+};
+

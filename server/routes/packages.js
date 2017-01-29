@@ -14,6 +14,8 @@ module.exports = function(app) {
 
     app.get('/api/packages/:msisdn', tokenManager.hasAuthorization, cache('10 minutes'), packages.getUserPackages);
 
+    app.post('/api/packages/validate/', tokenManager.hasAuthorization, packages.validatePurchasePackage);
+
     app.post('/api/cards', tokenManager.hasAuthorization, packages.redeemCard)
 
 

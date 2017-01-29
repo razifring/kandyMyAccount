@@ -6,6 +6,7 @@ import { PurchaseComponent }    from './componenets/purchase.component';
 import {LoginComponent} from "./componenets/login.component";
 import {AuthGuard} from "./_guards/auth.guard";
 import {ThankyouComponent} from "./componenets/thankyou.component";
+import {PurchaseMessageComponent} from "./componenets/purchasemessage.component";
 import {ProcessingComponent} from "./componenets/processing.component";
 import {CardsComponent} from "./componenets/cards.component";
 import {AutoLoginComponent} from "./componenets/autoLogin.component";
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
     { path: 'stickershop', component: StickershopComponent, canActivate: [AuthGuard]},
     { path: 'processing/:msisdn', component: ProcessingComponent},
     { path: 'thankyou', component: ThankyouComponent},
+    { path: 'purchasemessage/:message', component: PurchaseMessageComponent},
     { path: 'rates', component: RatesComponent},
     { path: 'cards', component: CardsComponent, canActivate: [AuthGuard]},
     { path: 'history', component: HistoryComponent, canActivate: [AuthGuard]},

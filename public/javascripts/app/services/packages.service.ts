@@ -24,6 +24,15 @@ export class PackagesService {
             .map(CommonService.extractData)
     }
 
+    validatePackage(packageId){
+        return this._http
+            .addJsonContentType()
+            .post('/api/packages/validate', {packageId: packageId, msisdn: this.userService.getCurrentUser().getValue().msisdn}, {})
+            .map(CommonService.extractData);
+
+
+    }
+
     redeemCard(cardNum: string) {
         return this._http
             .addJsonContentType()

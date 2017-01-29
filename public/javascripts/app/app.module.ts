@@ -38,7 +38,7 @@ import {StickerService} from "./services/sticker.service";
 import {StickerCodes} from "./utils/stickerPackageCode";
 import {Rates} from "./utils/rates";
 import {InappPurchaseComponent} from "./componenets/inappPurchase.component";
-
+import {PurchaseMessageComponent} from "./componenets/purchasemessage.component";
 
 
 @NgModule({
@@ -89,7 +89,8 @@ import {InappPurchaseComponent} from "./componenets/inappPurchase.component";
         SimpleSpinnerComponent,
         SpinnerComponent,
         ThankyouComponent,
-        InappPurchaseComponent
+        InappPurchaseComponent,
+        PurchaseMessageComponent
     ],
     bootstrap: [ AppComponent ]
 })

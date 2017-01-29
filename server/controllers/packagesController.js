@@ -47,3 +47,37 @@ exports.redeemCard = function(req, res){
         }
     );
 };
+
+exports.validatePurchasePackage =  function(req, res){
+    var packageIdToValidate = req.body.packageId;
+    var msisdn = req.body.msisdn;
+    //console.log("im an in validate purchase package: "+packageIdToValidate+" : "+msisdn);
+
+    packageManager.getActivePackages(msisdn,
+        function(userActivePackages){
+            if(userActivePackages){
+                console.log("packages in validation: "+userActivePackages);
+                packageManager.validatePackageById(packageIdToValidate,msisdn,userActivePackages,
+                    function(result){
+
+                        res.setHeader('Cache-Control', 'no-cache'); // one year
+                        res.json({status: true, body:{result}});
+
+                    },
+                    function(e){
+                        res.json(responseDataObject.create(false, e));
+                    }
+                );
+            }else{
+                var result={isValid:true, message:"No active package"};
+                res.setHeader('Cache-Control', 'no-cache'); // one year
+                res.json({status: true, body:{result}});
+                // console.log("No existing packages");
+            }
+        },
+        function(e){
+            res.json(responseDataObject.create(false, e));
+        }
+    );
+
+};
