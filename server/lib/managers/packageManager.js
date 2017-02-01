@@ -162,10 +162,12 @@ exports.applyPackage = function(packageId, userId, successCallback, errorCallbac
     this.getPackageById(packageId, function(packageData){
         if(packageData){
             console.log('packageData: ' + JSON.stringify(packageData));
+            console.log('package data name: '+packageData.name);
             if(packageData.hasDid === true){
                 // after applying package, associate a did.
                 packageService.applyPackage(userId, packageData.name, function(applyResult){
                     applyResult = JSON.parse(applyResult);
+                    console.log("APPLY RESULT IN packageManager.applyPackage: "+ JSON.stringify(applyResult));
                     let packageClientId = _.get(applyResult, 'result.assignmentId');
                     if(packageClientId)  {
                       packageService.associateDid(userId, packageClientId, function(didNumber){
