@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     { path: 'rates', component: RatesComponent},
     { path: 'cards', component: CardsComponent, canActivate: [AuthGuard]},
     { path: 'history', component: HistoryComponent, canActivate: [AuthGuard]},
-    { path: 'inappPurchase', component: InappPurchaseComponent},
+    { path: 'inappPurchase', component: InappPurchaseComponent, canActivate: [AuthGuard]},
     { path: '', component: MyAccountComponent, canActivate: [AuthGuard]},
     { path: '**', component: LoginComponent}
 ];
