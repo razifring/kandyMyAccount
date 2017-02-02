@@ -1,1 +1,18 @@
-<button (click)="triggerInappPurchase('juanachat2_1usdcallphbucket')" class="btn btn-primary" [disabled]="disableBtns">Inapp Purchase test</button>
+<div class="error-message">{{error}}</div>
+<div class="purchase-page">
+    <h1 class="page-title">Purchase</h1>
+    <div *ngIf="disableBtns">
+        Processing your request...
+        <simple-spinner></simple-spinner>
+    </div>
+    <div *ngIf="!disableBtns">
+        <div class="top5">
+            <select-package [selected]=selectedPackageId [packages]=creditPlans (onSelect)="triggerInappPurchase($event)"></select-package>
+        </div>
+
+        <select-package [selected]=selectedPackageId [packages]=didPlans (onSelect)="packageSelected($event)"></select-package>
+
+        <select-package [selected]=selectedPackageId [packages]=callPlans?.telebabad (onSelect)="packageSelected($event)"></select-package>
+    </div>
+
+</div>

@@ -18,7 +18,7 @@
 
     <script src="/javascripts/systemjs.config.js"></script>
     <script>
-      function fromIos(val){
+      function inappPurchaseCallback(val){
         window.angularComponentRef.zone.run(function () { window.angularComponentRef.purchaseCallback(val)})
       }
       System.import('app').catch(function(err){ console.error(err); });

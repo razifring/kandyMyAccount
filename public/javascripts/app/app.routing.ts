@@ -17,7 +17,7 @@ import {InappPurchaseComponent} from "./componenets/inappPurchase.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
-    { path: 'login/:uat/:msisdn', component: AutoLoginComponent},
+    { path: 'login/:uat/:msisdn/', component: AutoLoginComponent},
     { path: 'myAccount', component: MyAccountComponent, canActivate: [AuthGuard]},
     { path: 'purchase', component: PurchaseComponent, canActivate: [AuthGuard]},
     { path: 'stickershop', component: StickershopComponent, canActivate: [AuthGuard]},
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     { path: 'rates', component: RatesComponent},
     { path: 'cards', component: CardsComponent, canActivate: [AuthGuard]},
     { path: 'history', component: HistoryComponent, canActivate: [AuthGuard]},
-    { path: 'inappPurchase/:uat/:msisdn', component: InappPurchaseComponent},
+    { path: 'inappPurchase', component: InappPurchaseComponent},
     { path: '', component: MyAccountComponent, canActivate: [AuthGuard]},
     { path: '**', component: LoginComponent}
 ];
