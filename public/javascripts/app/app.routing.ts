@@ -17,7 +17,7 @@ import {InappPurchaseComponent} from "./componenets/inappPurchase.component";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
-    { path: 'login/:uat/:msisdn/', component: AutoLoginComponent},
+    { path: 'login/:uat/:msisdn', component: AutoLoginComponent},
     { path: 'myAccount', component: MyAccountComponent, canActivate: [AuthGuard]},
     { path: 'purchase', component: PurchaseComponent, canActivate: [AuthGuard]},
     { path: 'stickershop', component: StickershopComponent, canActivate: [AuthGuard]},
