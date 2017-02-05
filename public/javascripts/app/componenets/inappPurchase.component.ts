@@ -1,6 +1,7 @@
 import {Component, NgZone} from '@angular/core';
 import {PackagesService} from "../services/packages.service";
 import * as _ from 'lodash';
+import { Title }     from '@angular/platform-browser';
 
 @Component({
     templateUrl: 'templates/inapp-purchase.html',
@@ -18,8 +19,10 @@ export class InappPurchaseComponent {
 
     constructor(
         private _ngZone: NgZone,
-        private packagesService: PackagesService
+        private packagesService: PackagesService,
+        private titleService: Title
     ){
+        this.titleService.setTitle('JuanaChat - Purchase a plan')
         window['angularComponentRef'] = {
             component: this,
             zone: _ngZone,
