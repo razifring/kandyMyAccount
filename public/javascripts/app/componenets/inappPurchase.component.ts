@@ -58,7 +58,7 @@ export class InappPurchaseComponent {
                     if(res.body.result.isValid === true) {
                         let productId = _.get(this.plansLookup[this.selectedPackageId], 'iosProductId');
                         if(productId){
-                            window.location.href = "productId:" + productId;
+                            window.location.href = "inapp://productid:" + productId;
                         } else {
                             this.error = 'missing product ID';
                         }
