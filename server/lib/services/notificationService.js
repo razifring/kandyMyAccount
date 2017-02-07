@@ -5,7 +5,7 @@ var tokenManager = require('../managers/tokenManager');
 exports.test = function(){
     request('https://api-de.kandy.io/v1.3/domains/billing/packages/created?key=DAT015f805002cc43b9b9d9a285b8a8c499', function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body)
+            console.log(body);
             console.log('notification service');
         }
     });
@@ -16,7 +16,9 @@ exports.chat_notification = function(user_msisdn, message){
         // console.log('here is the DAT token = ' + dat_token);
         tokenManager.getStickerUserAccessToken(user_msisdn,
             function(uat_token){
-                // console.log('here is the UAT token = ' + uat_token);
+
+                var token = 'UAT7cf033f4af234fe7afccdc05947dfdd8'; // juanachat sender UAT
+                console.log('here is the UAT token = ' + token);
                 request({
                     url: config.kandyApi.apiUrl + 'provision/users/user?key=' + dat_token +'&user_id=' + user_msisdn,
                     method: 'GET',
@@ -37,10 +39,10 @@ exports.chat_notification = function(user_msisdn, message){
                                     "text": message
                                 }
                             }
-                        }
+                        };
 
                         request({
-                            url: 'https://api-de.kandy.io/v1.3/devices/messages?key=' + uat_token + '&device_id=' + user_device_id,
+                            url: 'https://api-de.kandy.io/v1.3/devices/messages?key=' + token + '&device_id=' + user_device_id,
                             method: 'POST',
                             json: requestData
                         }, function (error, response, body) {
