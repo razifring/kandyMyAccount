@@ -14,11 +14,12 @@ exports.test = function(){
 exports.chat_notification = function(user_msisdn, message){
     tokenManager.getDomainAccessToken(function(dat_token){
         // console.log('here is the DAT token = ' + dat_token);
-        tokenManager.getStickerUserAccessToken(user_msisdn,
+        var user = 'juanachat';
+        tokenManager.getStickerUserAccessToken(user,
             function(uat_token){
 
-                var token = 'UAT7cf033f4af234fe7afccdc05947dfdd8'; // juanachat sender UAT
-                console.log('here is the UAT token = ' + token);
+              //  var token = 'UAT7cf033f4af234fe7afccdc05947dfdd8'; // juanachat sender UAT
+                console.log('here is the UAT token = ' + uat_token);
                 request({
                     url: config.kandyApi.apiUrl + 'provision/users/user?key=' + dat_token +'&user_id=' + user_msisdn,
                     method: 'GET',
@@ -42,7 +43,7 @@ exports.chat_notification = function(user_msisdn, message){
                         };
 
                         request({
-                            url: 'https://api-de.kandy.io/v1.3/devices/messages?key=' + token + '&device_id=' + user_device_id,
+                            url: 'https://api-de.kandy.io/v1.3/devices/messages?key=' + uat_token + '&device_id=' + user_device_id,
                             method: 'POST',
                             json: requestData
                         }, function (error, response, body) {
@@ -61,7 +62,7 @@ exports.chat_notification = function(user_msisdn, message){
             }
         );
     });
-}
+};
 
 exports.text_notification = function(){
     var requestData = {
@@ -84,13 +85,13 @@ exports.text_notification = function(){
             console.log('text notification service');
         }
     });
-}
+};
 
 exports.get_dat_token = function() {
     tokenManager.getDomainAccessToken(function(token){
         console.log('here is the DAT token = ' + token);
     });
-}
+};
 
 exports.get_uat_token = function(user_msisdn) {
     tokenManager.getStickerUserAccessToken(user_msisdn,
@@ -102,7 +103,7 @@ exports.get_uat_token = function(user_msisdn) {
             res.json(responseDataObject.create(false, e));
         }
     );
-}
+};
 
 exports.get_provisioned_user = function(user_msisdn) {
     request({
@@ -117,7 +118,7 @@ exports.get_provisioned_user = function(user_msisdn) {
             console.log('kandy url = ' + config.kandyApi.apiUrl);
         }
     });
-}
+};
 
 function generateRandomString(length) {
     var text = "";
