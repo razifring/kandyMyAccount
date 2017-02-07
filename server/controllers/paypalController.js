@@ -87,8 +87,8 @@ exports.executePayment = function(req, res) {
 
     paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
         if (error) {
-            console.log(error.response);
-            res.json({status: false, message: 'Purchase failed, please try again'});
+            console.log("execute error: "+error);
+            res.json({status: false, message: 'Purchase failed, socket hang up. Please try again'});
         } else {
 
             //apply first purchase bonus

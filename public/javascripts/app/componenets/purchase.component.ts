@@ -72,6 +72,8 @@ export class PurchaseComponent implements OnInit{
                     } else {
                         this.disableBtns = false;
                         this.isProcessing = false;
+                        let message = "Network error "+res.body.code;
+                        this.router.navigate(['/purchasemessage/'+message]);
                     }
 
                 },

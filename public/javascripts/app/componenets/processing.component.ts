@@ -36,6 +36,8 @@ export class ProcessingComponent implements OnInit{
                                     this.router.navigate(['/thankyou']);
                                 } else {
                                     // TODO: display error message
+                                    let message = res.message;
+                                    this.router.navigate(['/purchasemessage/'+message]);
                                 }
 
 
