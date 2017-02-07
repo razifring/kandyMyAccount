@@ -1,5 +1,5 @@
 import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import {HttpModule, JsonpModule} from '@angular/http';
 import { AppComponent }  from './componenets/app.component';
 import { routing } from './app.routing';
@@ -65,7 +65,8 @@ import {PurchaseMessageComponent} from "./componenets/purchasemessage.component"
         CookieService,
         HistoryService,
         StickerService,
-        StickerCodes
+        StickerCodes,
+        Title
 
     ],
     declarations: [

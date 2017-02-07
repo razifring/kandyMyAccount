@@ -17,7 +17,8 @@ module.exports = [
         type: packageEnum.type.credit,
         purchasable: true,
         hasDid: true,
-        mesg:"Thank you for purchasing $5 credits to call or text your loved ones anywhere. Your package will expire on "
+        mesg:"Thank you for purchasing $5 credits to call or text your loved ones anywhere. Your package will expire on ",
+        iosProductId: "juanachat2_1usdcallphbucket"
     },
     {
         id: 2339,
@@ -27,7 +28,8 @@ module.exports = [
         type: packageEnum.type.credit,
         purchasable: true,
         hasDid: true,
-        mesg:"Thank you for purchasing $10 credits to call or text your loved ones anywhere. Your package will expire on "
+        mesg:"Thank you for purchasing $10 credits to call or text your loved ones anywhere. Your package will expire on ",
+        iosProductId: "juanachat2_1usdcallphbucket"
     },
     {
         id: 2341,
@@ -37,7 +39,8 @@ module.exports = [
         type: packageEnum.type.credit,
         purchasable: true,
         hasDid: true,
-        mesg:"Thank you for purchasing $15 credits to call or text your loved ones anywhere. Your package will expire on "
+        mesg:"Thank you for purchasing $15 credits to call or text your loved ones anywhere. Your package will expire on ",
+        iosProductId: "juanachat2_1usdcallphbucket"
     },
     {
         id: 2233,
@@ -48,8 +51,8 @@ module.exports = [
         category: categories.telebabad,
         purchasable: true,
         hasDid: true,
-        mesg:"Thank you for choosing JuanaChat's 7D Telebabad offer! Call friends and loves ones in the Philippines anytime anyday. Please be guided by the Fair Usage Policy which ensures that all subscribers can enjoy consistent service quality. Learn more about it at htts://juanachat.com/fair-use-policy.html"
-
+        mesg:"Thank you for choosing JuanaChat's 7D Telebabad offer! Call friends and loves ones in the Philippines anytime anyday. Please be guided by the Fair Usage Policy which ensures that all subscribers can enjoy consistent service quality. Learn more about it at htts://juanachat.com/fair-use-policy.html",
+        iosProductId: "juanachat2_1usdcallphbucket"
     },
     {
         id: 2234,

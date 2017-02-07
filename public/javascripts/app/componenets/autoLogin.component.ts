@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -23,6 +24,7 @@ export class AutoLoginComponent implements OnInit {
             (param: any) => {
                 let msisdn = this.route.snapshot.params['msisdn'];
                 let userAccessToken = this.route.snapshot.params['uat'];
+                let destinationPage = _.get(this.route.snapshot.queryParams, 'page');
                 if(userAccessToken)
                 {
                     this.authenticationService.autologin(msisdn, userAccessToken)
@@ -30,7 +32,12 @@ export class AutoLoginComponent implements OnInit {
                             res => {
                                 this.isLoading = false;
                                 if(res.status) {
-                                    this.router.navigate(['/myAccount']);
+                                    console.log(destinationPage);
+                                    if(destinationPage) {
+                                        this.router.navigate(['/' + destinationPage]);
+                                    } else {
+                                        this.router.navigate(['/myAccount']);
+                                    }
                                 } else {
                                     this.error = res.body.message;
                                 }

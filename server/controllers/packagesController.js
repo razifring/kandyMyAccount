@@ -59,10 +59,8 @@ exports.validatePurchasePackage =  function(req, res){
                 console.log("packages in validation: "+userActivePackages);
                 packageManager.validatePackageById(packageIdToValidate,msisdn,userActivePackages,
                     function(result){
-
                         res.setHeader('Cache-Control', 'no-cache'); // one year
                         res.json({status: true, body:{result}});
-
                     },
                     function(e){
                         res.json(responseDataObject.create(false, e));
