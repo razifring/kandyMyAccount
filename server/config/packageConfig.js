@@ -171,9 +171,10 @@ module.exports = [
         description: 'Topup card package',
         cost: 0.99,
         type: packageEnum.type.did,
-        purchasable: false,
+        purchasable: true,
         voip:0,
-        hasDid: true
+        hasDid: true,
+        iosProductId: "juanachat2_3usdvoip"
     },
     {
         id: 2223,
@@ -182,8 +183,7 @@ module.exports = [
         cost: 2.99,
         type: packageEnum.type.did,
         purchasable: false,
-        hasDid: true,
-        iosProductId: "juanachat2_3usdvoip"
+        hasDid: true
     },
     {
         id: 2228,
