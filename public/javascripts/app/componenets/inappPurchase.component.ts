@@ -22,7 +22,7 @@ export class InappPurchaseComponent {
         private packagesService: PackagesService,
         private titleService: Title
     ){
-        this.titleService.setTitle('JuanaChat - Purchase a plan')
+        this.titleService.setTitle('JuanaChat - Purchase a plan');
         window['angularComponentRef'] = {
             component: this,
             zone: _ngZone,
@@ -35,9 +35,16 @@ export class InappPurchaseComponent {
         this.packagesService.getPurchsablePackages()
             .subscribe(
                 res => {
-                    this.creditPlans = res.creditPlans;
-                    this.callPlans = _.groupBy(res.callPlans,'category');
-                    this.didPlans = res.didPlans;
+                    this.creditPlans = _.filter(res.creditPlans, function(val, key){
+                        return val.hasOwnProperty('iosProductId');
+                    });
+                    this.callPlans = _.groupBy(_.filter(res.callPlans, function(val, key){
+                                                return val.hasOwnProperty('iosProductId');
+                                    }), 'category');
+                    this.didPlans = _.filter(res.didPlans, function(val, key){
+                        return val.hasOwnProperty('iosProductId');
+                    });
+
                     let plansLookup;
                     _.each(res, function(plansAr){
                         plansLookup = _.keyBy(plansAr, 'id');
