@@ -4,7 +4,7 @@ var packageEnum = require('../lib/enums/packageEnums');
 
 
 var categories = {
-    phil: 'philipene',
+    phil: 'philippines',
     telebabad: 'telebabad',
 };
 

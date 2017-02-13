@@ -8,8 +8,11 @@
       <div class="purchase-package-description">Use credits to call any number in the world – even if those numbers are not connected to the internet. </div>
       -->
     <div class="top5">
-        <select-package [selected]=selectedPackageId [packages]=creditPlans (onSelect)="packageSelected($event)"></select-package>
+        <select-package [selected]=selectedPackageId [packages]=callPlans?.philippines (onSelect)="packageSelected($event)"></select-package>
     </div>
+
+
+        <select-package [selected]=selectedPackageId [packages]=creditPlans (onSelect)="packageSelected($event)"></select-package>
     <!--
     <div class="clearfix"></div>
     <paypal-button (ButtonClicked)=goToPaypal($event) [disabled]=disableBtns [isProcessing]=isProcessing></paypal-button>
@@ -20,7 +23,6 @@
     <div class="purchase-package-description">Give this Phlippine Mobile Number out to friends and family in the Philippines.
         PLDT, Smart and Sun numbers in the Philippines may call you at this number and pay local rates. They can call you at PHP 6.50/min or text you at PHP 1.00/text.</div>
         -->
-    <select-package [selected]=selectedPackageId [packages]=didPlans (onSelect)="packageSelected($event)"></select-package>
 
     <!--
     <div class="clearfix"></div>
@@ -39,8 +41,9 @@
     <h2>Telebabad Pinas Offers</h2>
     <div class="purchase-package-description">Call all you want to the Philippines with Telebabad Pinas. Choose between {{callPlans?.telebabad?.length}} plans that best suit your telebabad needs.</div>
         -->
+    <select-package [selected]=selectedPackageId [packages]=callPlans?.telebabad (onSelect)="packageSelected($event)"></select-package>
+    <select-package [selected]=selectedPackageId [packages]=didPlans (onSelect)="packageSelected($event)"></select-package>
 
-        <select-package [selected]=selectedPackageId [packages]=callPlans?.telebabad (onSelect)="packageSelected($event)"></select-package>
 
     <div class="clearfix"></div>
     <paypal-button (ButtonClicked)=goToPaypal($event) [hidden]=disableBtns  [isProcessing]=isProcessing></paypal-button>
