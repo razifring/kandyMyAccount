@@ -10,9 +10,9 @@
             <select-package [selected]=selectedPackageId [packages]=creditPlans (onSelect)="triggerInappPurchase($event)"></select-package>
         </div>
 
-        <select-package [selected]=selectedPackageId [packages]=didPlans (onSelect)="packageSelected($event)"></select-package>
+        <select-package [selected]=selectedPackageId [packages]=didPlans (onSelect)="triggerInappPurchase($event)"></select-package>
 
-        <select-package [selected]=selectedPackageId [packages]=callPlans?.telebabad (onSelect)="packageSelected($event)"></select-package>
+        <select-package [selected]=selectedPackageId [packages]=callPlans?.telebabad (onSelect)="triggerInappPurchase($event)"></select-package>
     </div>
 
 </div>
