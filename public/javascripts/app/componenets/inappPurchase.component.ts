@@ -86,6 +86,9 @@ export class InappPurchaseComponent {
 
     purchaseCallback(result):void {
         this.disableBtns = false;
+        if(!result) {
+           this.error = "Package purchase failed."
+        }
     }
 
 }

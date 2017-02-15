@@ -45,6 +45,7 @@
     <select-package [selected]=selectedPackageId [packages]=didPlans (onSelect)="packageSelected($event)"></select-package>
 
 
+
     <div class="clearfix"></div>
     <paypal-button (ButtonClicked)=goToPaypal($event) [hidden]=disableBtns  [isProcessing]=isProcessing></paypal-button>
 
