@@ -79,3 +79,32 @@ exports.validatePurchasePackage =  function(req, res){
     );
 
 };
+
+exports.inappPurchasePackage = function(req, res){
+    let key = req.query.key;
+    let packageId = req.body.package_id;
+    let receiptId = req.body.receipt_id;
+    let isSandbox = req.body.is_sandbox;
+
+    if ((key === undefined) ||
+        (packageId === undefined) ||
+        (receiptId === undefined) ||
+        (isSandbox === undefined)) {
+
+        let msg = 'A parameter is missing from the request.';
+        res.json(responseDataObject.create(false, msg));
+    }
+
+    packageManager.inappPurchasePackage(
+        key,
+        packageId,
+        receiptId,
+        isSandbox,
+        function(response){
+            res.status(200).json(response);
+        },
+        function(response){
+            res.status(500).json(response);
+        }
+    );
+};

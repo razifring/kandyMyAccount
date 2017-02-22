@@ -2,6 +2,7 @@
  * Created by razih on 10/10/2016.
  */
 var packageService = require('../services/packagesService');
+var appleService = require('../services/appleService');
 var packageConfig = require('../../config/packageConfig');
 var packageEnum = require('../enums/packageEnums');
 var _ = require('lodash');
@@ -10,6 +11,7 @@ var userPackageDataObject = require('../dataObjects/userPackageDataObject');
 var allPackages = [];
 var apiCache = require('apicache');
 var topupConfig = require('../../config/topupConfig');
+var tokenManager = require('./tokenManager');
 
 exports.getAllPackages = function(onlyPurchasable, successCallback, errorCallback){
 
@@ -112,7 +114,6 @@ exports.getPackageByName = function(packageName, successCallback, errorCallback)
         console.log(packages);
         successCallback(myPackage);
     }, errorCallback);
-
 };
 
 exports.getCreditPlans = function(allKandyPackages){
@@ -202,6 +203,61 @@ exports.hasDidPackage = function(userId, successCallback, errorCallback){
   }, errorCallback);
 };
 
+exports.inappPurchasePackage = function(key, iosProductId, receiptId, isSandbox, successCallback, errorCallback) {
+    var self = this;
+    var packageConfig = getPackageByProductId(iosProductId);
+
+    if(!packageConfig) {
+        errorCallback( { "result": {
+            "receipt_id": receiptId,
+            "package_id": iosProductId,
+            "user_id": '',
+            "receipt_validation_status": 4,
+            "validation_status_description": 'Product id does not match a package.',
+            "product_package_id": ""
+        }});
+    }
+
+    tokenManager.getUserIdByUserAccessToken(key,
+        function(userId){
+            var response =  { "result": {
+                "receipt_id": receiptId,
+                "package_id": iosProductId,
+                "user_id": userId,
+                "receipt_validation_status": 4,
+                "validation_status_description": "Server Error",
+                "product_package_id": ""
+            }};
+            appleService.validatePurchase(userId, receiptId, isSandbox, function(result){
+                let status = result.purchaseStatus;
+                self.applyPackage(packageConfig.id, userId, function(){
+                    response.result.receipt_validation_status = status;
+                    response.result.validation_status_description = 'success';
+                    successCallback(response);
+                }, function(errorData){
+                    console.log(errorData);
+                    response.result.receipt_validation_status = errorData;
+                    errorCallback(response);
+                })
+            }, function(errorData){
+                console.log(errorData);
+                response.result.receipt_validation_status = errorData.purchaseStatus;
+                errorCallback(response);
+            });
+        }, function(errorData){
+            console.log(errorData);
+            errorCallback( { "result": {
+                "receipt_id": receiptId,
+                "package_id": iosProductId,
+                "user_id": '',
+                "receipt_validation_status": 4,
+                "validation_status_description": errorData,
+                "product_package_id": ""
+            }});
+        }
+    );
+};
+
 function getPlansByType(type, allKandyPackages)
 {
     var serverPackageIds = allKandyPackages.map(item => item.id);
@@ -211,6 +267,11 @@ function getPlansByType(type, allKandyPackages)
                 return item;
             }
         });
+}
+
+function getPackageByProductId(iosProductId) {
+    let packages = _.filter(packageConfig, {'iosProductId':iosProductId})
+    return _.get(packages, '0';
 }
 
 /**

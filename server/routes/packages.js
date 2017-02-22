@@ -16,6 +16,8 @@ module.exports = function(app) {
 
     app.post('/api/packages/validate/', tokenManager.hasAuthorization, packages.validatePurchasePackage);
 
+    app.post('/api/packages/inapp/', packages.inappPurchasePackage);
+
     app.post('/api/cards', tokenManager.hasAuthorization, packages.redeemCard)
 
 
