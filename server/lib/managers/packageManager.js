@@ -271,7 +271,7 @@ function getPlansByType(type, allKandyPackages)
 
 function getPackageByProductId(iosProductId) {
     let packages = _.filter(packageConfig, {'iosProductId':iosProductId})
-    return _.get(packages, '0';
+    return _.get(packages, '0');
 }
 
 /**
