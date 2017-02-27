@@ -23,11 +23,17 @@ export class RedeemCardFormComponent {
     _keyPress(event: any) {
         const pattern = /[0-9\+\-\ ]/;
         let inputChar = String.fromCharCode(event.keyCode);
-             console.log(inputChar, event.keyCode);
-        if (!pattern.test(inputChar)) {
+        let key = event.keyCode;
+        console.log(inputChar, event.keyCode);
+        console.log("this is the event: "+key);
+        if(key == 37 || key == 38 || key == 39 || key == 40 || key == 8 || key == 46) { // Left / Up / Right / Down Arrow, Backspace, Delete keys
+            return;
+        }
+        if (!pattern.test(inputChar)|| event.keyCode == 8) {
             // invalid character, prevent input
             event.preventDefault();
         }
+
     }
 
 

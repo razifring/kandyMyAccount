@@ -2,15 +2,15 @@
     <form *ngIf="!successResponse" class="redeem-card-form" (ngSubmit)="onSubmit()" #redeemForm="ngForm">
         <div class="form-group row">
             <span class="redeem-input col-xs-4 col-md-2">
-                <input type="text"(keydown)="_keyPress($event)" class="form-control" name="field1" id="field1" placeholder="1234" minlength="4" maxlength="4" [(ngModel)]="model.field1" required #field1="ngModel">
+               <input type="text" (keydown)="_keyPress($event)"  class="form-control" name="field1" id="field1" placeholder="1234"  minlength="4" ngModel maxlength="4" [(ngModel)]="model.field1" required #field1="ngModel">
             </span>
             <span class="hidden-xs dash-glue">-</span>
             <span class="redeem-input col-xs-4 col-md-2">
-                <input type="text" (keydown)="_keyPress($event)"  class="form-control" name="field2"  id="field2" placeholder="1234" minlength="4" maxlength="4"  [(ngModel)]="model.field2" required #field2="ngModel">
+                <input  type="text" (keydown)="_keyPress($event)"  class="form-control" name="field2"  id="field2" placeholder="1234" minlength="4" maxlength="4"  [(ngModel)]="model.field2" required #field2="ngModel">
             </span>
             <span class="hidden-xs dash-glue">-</span>
             <span class="redeem-input col-xs-4 col-md-2">
-                <input type="text" (keydown)="_keyPress($event)"  class="form-control" name="field3"  id="field3" placeholder="1234" minlength="4" maxlength="4" [(ngModel)]="model.field3" required #field3="ngModel">
+                <input  type="text" (keydown)="_keyPress($event)"  class="form-control" name="field3"  id="field3" placeholder="1234" minlength="4" maxlength="4" [(ngModel)]="model.field3" required #field3="ngModel">
             </span>
         </div>
         <div class="clearfix"></div>
